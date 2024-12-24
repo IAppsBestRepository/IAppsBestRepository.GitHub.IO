@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RevenueCat</title>
+    <link rel="stylesheet" href="/Styles/RevenueCat.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Форма для добавления данных</h2>
+            <label for="bearerKey">Bearer Key:</label>
+            <input type="text" id="bearerKey">
+            <button onclick="getProductID()">Получить ProductID / Entitlements</button>
+            <button onclick="installJSON()">Установить .JSON</button>
+        </div>
+
+        <div class="form-container">
+            <h2>JSON данные</h2>
+            <pre id="jsonDataDisplay" style="display: none;"></pre>
+        </div>
+    </div>
+
+    <script src="/Scripts/RevenueCat.js"></script>
+</body>
+
+</html>

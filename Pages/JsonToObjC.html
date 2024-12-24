@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер JSON</title>
+    <link rel="stylesheet" href="/Styles/JsonToObjC.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Форма для добавления данных</h2>
+            <button for="jsonFileInput" class="custom-file-upload">
+                Загрузить .JSON
+                <input type="file" id="jsonFileInput" accept=".json" onchange="loadJSON()">
+            </button>
+        </div>
+        <div class="form-container">
+            <h2>OBJ-C данные</h2>
+            <pre id="objCData" style="display: none;"></pre>
+        </div>
+    </div>
+    <script src="/Scripts/JsonToObjC.js"></script>
+</body>
+
+</html>
