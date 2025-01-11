@@ -819,9 +819,9 @@
         "appName": "Instagram Regram",
         "appBundle": "com.burbn.instagram",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8f/0b/ff/8f0bffc6-7d00-6901-5d15-a523dde3e405/Prod-0-0-1x_U007emarketing-0-7-0-85-220.png/350x350.png",
-        "appVersion": "361.0.0 | 197.9 MB | IOS 15.1",
-        "appDescription": "▎Модификация Regram 1.0 - b19\n▎Активирована подписка \"Patreon\"\n\nВойдите в свой аккаунт в настройках модификации Regram и нажмите на иконку своего профиля для активации подписки",
-        "appUpdateTime": "2025-01-11T22:09:48+0530"
+        "appVersion": "362.1.0 | 167 MB | IOS 15.1",
+        "appDescription": "▎Модификация Regram 1.0 - b18\n▎Активирована подписка \"Patreon\"\n▎Fix Extension\n\nВойдите в свой аккаунт в настройках модификации Regram и нажмите на иконку своего профиля для активации подписки",
+        "appUpdateTime": "2025-01-12T04:34:45+0530"
     },
     {
         "appName": "Halide Mark II",
