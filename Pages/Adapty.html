@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adapty</title>
+    <link rel="stylesheet" href="/Styles/Adapty.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Форма для добавления данных</h2>
+            <label for="apiKey">Api Key:</label>
+            <input type="text" id="apiKey">
+            <button onclick="getProductID()">Получить ProductID</button>
+            <button onclick="installJSON()">Установить .JSON</button>
+        </div>
+
+        <div class="form-container">
+            <h2>JSON данные</h2>
+            <pre id="jsonDataDisplay" style="display: none;"></pre>
+        </div>
+    </div>
+    <script src="/Scripts/Adapty.js"></script>
+</body>
+
+</html>

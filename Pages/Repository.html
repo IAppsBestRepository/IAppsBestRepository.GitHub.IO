@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление в Репозиторий</title>
+    <link rel="stylesheet" href="/Styles/Repository.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Форма для добавления данных</h2>
+            <button for="jsonFileInput" class="custom-file-upload">
+                Загрузить .JSON
+                <input type="file" id="jsonFileInput" accept=".json" onchange="loadJSON()">
+            </button>
+
+            <label for="appType">Тип:</label>
+            <select id="appType">
+                <option value="true">Платное</option>
+                <option value="false">Бесплатное</option>
+            </select>
+
+            <label for="appCategory">Категория:</label>
+            <select id="appCategory">
+                <option value="0">Приложение</option>
+                <option value="1">Игра</option>
+            </select>
+
+            <label for="appName">Название:</label>
+            <input type="text" id="appName" oninput="showMatches()">
+            <div id="matchesList" class="autocomplete-items"></div>
+
+            <label for="appVersion">BundleId:</label>
+            <input type="text" id="appBundle">
+
+            <label for="appVersion">Версия:</label>
+            <input type="text" id="appVersion">
+
+            <label for="appVersion">Вес:</label>
+            <input type="text" id="appSize">
+
+            <label for="appVersion">Версия iOS:</label>
+            <input type="text" id="appVersionIOS">
+
+            <label for="appImage">Ссылка на изображение:</label>
+            <input type="text" id="appImage">
+
+            <label for="appPackage">Ссылка на приложение:</label>
+            <input type="text" id="appPackage">
+
+            <label for="appDescription">Описание приложения:</label>
+            <textarea id="appDescription" rows="4"></textarea>
+
+            <button onclick="applyChanges()">Применить изменения</button>
+            <button onclick="installJSONWithBundle()">Установить .JSON с Bundle</button>
+            <button onclick="installJSONWithoutBundle()">Установить .JSON без Bundle</button>
+            <button onclick="parseJSON()">Парсить .JSON для GitHub</button>
+        </div>
+
+        <div class="form-container">
+            <h2>JSON данные</h2>
+            <pre id="jsonDataDisplay" style="display: none;"></pre>
+        </div>
+    </div>
+
+    <script src="/Scripts/Repository.js"></script>
+</body>
+
+</html>

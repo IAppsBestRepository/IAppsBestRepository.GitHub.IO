@@ -1,0 +1,156 @@
+:root {
+    --notification: #58A6FF;
+    --github-dark: #010409;
+    --github-dark-lighter: #0D1117;
+    --github-dark-border: #30363D;
+    --github-button-hover: #8B949E;
+    --background: #171B20;
+    --color: #828B94;
+    --github: #C9D1D9;
+    --navigation-hover: #292F36;
+    --navbar-height: 4rem;
+
+    --hover-color: #282C34;
+    --focus-color: #007bff;
+    --highlight-color: #58A6FF;
+}
+
+body {
+    font-family: "Segoe UI", "Noto Sans", sans-serif;
+    font-size: 14px;
+    background-color: var(--github-dark);
+    color: var(--github);
+    user-select: none;
+    opacity: 1;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app-container {
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    background: var(--github-dark-lighter);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--github-dark-border);
+    transition: background 0.3s ease, border 0.3s ease;
+    overflow-x: hidden;
+}
+    
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    flex-wrap: nowrap;
+}
+
+#app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+#app-icon:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+#screenshots-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    background: var(--hover-color);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+#screenshots-container img {
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#screenshots-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+.app-container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 12px;
+}
+
+.app-header {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#app-icon {
+    width: 70px;
+    height: 70px;
+}
+
+#screenshots-container img {
+    width: 150px;
+}
+}
+
+@media (max-width: 480px) {
+.app-container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 10px;
+}
+
+.app-header {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#app-icon {
+    width: 60px;
+    height: 60px;
+}
+
+#screenshots-container img {
+    width: 120px;
+}
+}
+
+@media (max-width: 449px) {
+.app-container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 8px;
+}
+
+.app-header {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#app-icon {
+    width: 50px;
+    height: 50px;
+}
+
+#screenshots-container img {
+    width: 120px;
+}
+}
