@@ -83,12 +83,13 @@ document.querySelector('.num-selector button[data-num="3"]').classList.add('acti
 let animationFrameId = null;
 let currentUrls = [];
 let images = [];
-
+/*
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => resizeCanvas(), 100);
 });
+*/
 
 const resizeCanvas = () => {
     const canvasContainer = document.getElementById('canvasContainer');
