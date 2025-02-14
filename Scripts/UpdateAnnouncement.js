@@ -35,7 +35,6 @@ document.querySelector('.download-canvas-btn').addEventListener('click', async (
         unsharpThreshold: 3
     });
     
-    // Создаем ссылку для скачивания
     const link = document.createElement('a');
     link.download = `canvas-${Date.now()}.png`;
     link.href = targetCanvas.toDataURL('image/png');
@@ -89,9 +88,9 @@ const resizeCanvas = () => {
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
 
-    // canvasContainer.style.display = 'none';
-    // canvasContainer.offsetHeight;
-    // canvasContainer.style.display = 'inline-block';
+    canvasContainer.style.display = 'none';
+    canvasContainer.offsetHeight;
+    canvasContainer.style.display = 'inline-block';
     
     const containerRect = canvasContainer.getBoundingClientRect();
     const baseCanvasWidth = 1000;
