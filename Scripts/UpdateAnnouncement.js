@@ -1,9 +1,53 @@
-document.querySelector('.download-canvas-btn').addEventListener('click', () => {
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = 
+        window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+    if (!window.requestAnimationFrame)
+    window.requestAnimationFrame = function(callback, element) {
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+        var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+        timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+    };
+    if (!window.cancelAnimationFrame)
+    window.cancelAnimationFrame = function(id) {
+        clearTimeout(id);
+    };
+}());
+
+document.querySelector('.download-canvas-btn').addEventListener('click', async () => {
+    try {
     const canvas = document.getElementById('myCanvas');
+    const upscaleFactor = 3;
+    const targetCanvas = document.createElement('canvas');
+    targetCanvas.width = canvas.width * upscaleFactor;
+    targetCanvas.height = canvas.height * upscaleFactor;
+    
+    await pica().resize(canvas, targetCanvas, {
+        quality: 3,
+        unsharpAmount: 80,
+        unsharpThreshold: 3
+    });
+    
+    // Создаем ссылку для скачивания
     const link = document.createElement('a');
-    link.download = `repository-banner-${Date.now()}.png`;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
+    link.download = `canvas-${Date.now()}.png`;
+    link.href = targetCanvas.toDataURL('image/png');
+    link.dispatchEvent(new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: false
+    }));
+    } catch (error) {
+    console.error('Ошибка скачивания:', error);
+    alert('Ошибка: ' + error.message);
+    }
 });
 
 let selectedNum = 3;
@@ -16,8 +60,8 @@ const generateInputs = num => {
         const div = document.createElement('div');
         div.className = 'input-group';
         div.innerHTML = `
-          <label>Изображение ${i + 1}:</label>
-          <input type="text" id="img${i}" placeholder="Ссылка на изображение">
+        <label>Изображение ${i + 1}:</label>
+        <input type="text" id="img${i}" placeholder="Ссылка на изображение">
         `;
         inputsContainer.appendChild(div);
     });
@@ -37,66 +81,94 @@ numButtons.forEach(button => {
 document.querySelector('.num-selector button[data-num="3"]').classList.add('active');
 
 let animationFrameId = null;
+let currentUrls = [];
+let images = [];
 
-document.getElementById('displayBtn').addEventListener('click', () => {
-    const urls = Array.from({length: selectedNum})
-      .map((_, i) => document.getElementById(`img${i}`).value.trim());
-
-    if (urls.some(url => !url)) {
-        alert("Пожалуйста, заполните все ссылки на изображения");
-        return;
-    }
-
+const resizeCanvas = () => {
     const canvasContainer = document.getElementById('canvasContainer');
-    canvasContainer.style.display = 'inline-block';
-  
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
-    const [canvasWidth, canvasHeight] = [1000, 400];
+    
+    const baseCanvasWidth = 1000;
+    const baseCanvasHeight = 400;
+    const aspectRatio = baseCanvasWidth / baseCanvasHeight;
+    const isMobile = window.innerWidth <= 768;
+    
+    let canvasWidth, canvasHeight;
+    if (isMobile) {
+        canvasWidth = Math.min(baseCanvasWidth, window.innerWidth * 0.95);
+        canvasHeight = canvasWidth / aspectRatio;
+    } else {
+        canvasWidth = baseCanvasWidth;
+        canvasHeight = baseCanvasHeight;
+    }
+    
     const dpr = window.devicePixelRatio || 1;
-
     canvas.width = canvasWidth * dpr;
     canvas.height = canvasHeight * dpr;
     canvas.style.width = `${canvasWidth}px`;
     canvas.style.height = `${canvasHeight}px`;
     ctx.scale(dpr, dpr);
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = "high";
+    
+    if (currentUrls.length > 0) {
+        drawCanvas(canvasWidth, canvasHeight, baseCanvasWidth, baseCanvasHeight);
+    }
+};
 
-    const images = [];
+document.getElementById('displayBtn').addEventListener('click', () => {
+    const urls = Array.from({length: selectedNum})
+        .map((_, i) => document.getElementById(`img${i}`).value.trim());
+    
+    if (urls.some(url => !url)) {
+        alert("Пожалуйста, заполните все ссылки на изображения");
+        return;
+    }
+    
+    currentUrls = urls;
+    const canvasContainer = document.getElementById('canvasContainer');
+    canvasContainer.style.display = 'inline-block';
+    
+    images = [];
     let loadedCount = 0;
-
+    
     urls.forEach((url, index) => {
         const img = new Image();
         img.crossOrigin = "anonymous";
         img.onload = () => {
             loadedCount++;
-            if (loadedCount === selectedNum) drawCanvas();
+            if (loadedCount === selectedNum) {
+                resizeCanvas();
+            }
         };
         img.onerror = () => alert(`Ошибка загрузки изображения ${index + 1}`);
         img.src = url;
         images.push(img);
     });
+});
 
-    const drawCanvas = () => {
-        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+const drawCanvas = (canvasWidth, canvasHeight, baseCanvasWidth, baseCanvasHeight) => {
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    const baseScale = canvasWidth / baseCanvasWidth;
 
     const targetHeights = {
         3: [70, 90, 70],
         5: [60, 80, 100, 80, 60],
         7: [50, 65, 80, 100, 80, 65, 50]
-    }[selectedNum];
+    }[selectedNum].map(h => h * baseScale);
 
-    const bottomLine = 300;
+    const bottomLine = canvasHeight * 0.75;
     const yPositions = targetHeights.map(h => bottomLine - h);
     const widths = images.map((img, i) => img.width * (targetHeights[i] / img.height));
-    const overlap = 20;
+    const overlap = 20 * baseScale;
     const groupWidth = widths.reduce((a, b) => a + b, 0) - (selectedNum - 1) * overlap;
     const startX = (canvasWidth - groupWidth) / 2;
     const xs = [startX];
 
     for (let i = 1; i < selectedNum; i++) {
-        xs[i] = xs[i-1] + widths[i-1] - overlap;
+        xs[i] = xs[i - 1] + widths[i - 1] - overlap;
     }
 
     const drawOrder = {
@@ -105,7 +177,8 @@ document.getElementById('displayBtn').addEventListener('click', () => {
         7: [0, 6, 1, 5, 2, 4, 3]
     }[selectedNum];
 
-    const drawRoundedImage = (image, x, y, width, height, radius) => {
+    const drawRoundedImage = (image, x, y, width, height, radiusBase) => {
+        const radius = radiusBase * baseScale;
         ctx.save();
         ctx.beginPath();
         ctx.moveTo(x + radius, y);
@@ -141,20 +214,21 @@ document.getElementById('displayBtn').addEventListener('click', () => {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         ctx.fillStyle = "#0D1117";
         ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-  
+        
         const text = "Update Repository";
-        ctx.font = "bold 32px sans-serif";
+        ctx.font = `bold ${24 * baseScale}px sans-serif`;
         const textWidth = ctx.measureText(text).width;
         ctx.fillStyle = animateGradient(time);
-        ctx.fillText(text, (canvasWidth - textWidth) / 2, 160);
-  
+        ctx.fillText(text, (canvasWidth - textWidth) / 2, canvasHeight * 0.4);
+        
         drawOrder.forEach(i => {
             drawRoundedImage(images[i], xs[i], yPositions[i], widths[i], targetHeights[i], 20);
         });
-  
+        
         animationFrameId = requestAnimationFrame(drawFrame);
     };
 
     drawFrame(0);
-  };
-});
+};
+
+window.addEventListener('resize', resizeCanvas);
