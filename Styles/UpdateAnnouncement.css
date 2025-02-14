@@ -123,6 +123,7 @@ button#displayBtn:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     position: relative;
     max-width: 100%;
+    height: auto;
     overflow: auto;
 }
 
@@ -131,7 +132,6 @@ canvas {
     border-radius: 8px;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 2.5;
 }
 
 .download-canvas-btn {
