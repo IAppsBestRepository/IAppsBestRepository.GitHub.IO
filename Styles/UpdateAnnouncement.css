@@ -132,6 +132,7 @@ canvas {
     border-radius: 8px;
     max-width: 100%;
     height: auto;
+    aspect-ratio: 2.5;
 }
 
 .download-canvas-btn {
