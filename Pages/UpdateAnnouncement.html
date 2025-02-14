@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Announcement</title>
+    <link rel="stylesheet" href="/Styles/UpdateAnnouncement.css">
+</head>
+
+<body>
+    <h1>Display settings</h1>
+    <div>
+        <div class="num-selector">
+            <span>Number of images:</span>
+            <button data-num="3">3</button>
+            <button data-num="5">5</button>
+            <button data-num="7">7</button>
+        </div>
+        <div id="inputsContainer"></div>
+        <div class="button-container">
+            <button id="displayBtn">Create Canvas</button>
+        </div>
+    </div>
+  
+    <div class="canvas-container" id="canvasContainer" style="display: none;">
+        <canvas id="myCanvas"></canvas>
+        <button class="download-canvas-btn" title="Download Image"></button>
+    </div>
+    <script src="/Scripts/UpdateAnnouncement.js"></script>
+</body>
+
+</html>
