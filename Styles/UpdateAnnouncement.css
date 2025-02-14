@@ -18,28 +18,37 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
+    padding: 15px;
+    -webkit-text-size-adjust: 100%;
 }
 
 h1 {
     text-align: center;
     color: var(--notification);
     margin-bottom: 20px;
+    font-size: 1.5rem;
 }
 
 .num-selector {
     margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
 }
 
 .num-selector button {
-    margin: 0 5px;
-    padding: 10px 20px;
+    margin: 0;
+    padding: 8px 16px;
     background-color: transparent;
     border: 1px solid var(--notification);
     border-radius: 8px;
     color: var(--notification);
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .num-selector button:hover {
@@ -63,15 +72,16 @@ h1 {
     font-weight: bold;
     margin-bottom: 5px;
     color: var(--notification);
+    font-size: 0.9rem;
 }
 
 input[type="text"] {
-    padding: 12px;
+    padding: 10px;
     border: 1px solid var(--github-dark-border);
     border-radius: 8px;
     background-color: var(--github-dark-lighter);
     color: var(--github);
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: border-color 0.3s ease;
 }
 
@@ -88,15 +98,16 @@ input[type="text"]:focus {
 }
 
 button#displayBtn {
-    padding: 12px 40px;
+    padding: 12px 30px;
     background-color: transparent;
     border: 1px solid var(--notification);
     border-radius: 8px;
     color: var(--notification);
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: auto;
+    -webkit-tap-highlight-color: transparent;
 }
 
 button#displayBtn:hover {
@@ -106,17 +117,21 @@ button#displayBtn:hover {
 .canvas-container {
     margin-top: 20px;
     border: 2px solid var(--github-dark-border);
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     background-color: var(--github-dark-lighter);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: inline-block;
     position: relative;
+    max-width: 100%;
+    overflow: auto;
 }
 
 canvas {
     background-color: var(--github-dark-lighter);
     border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 2.5;
 }
 
 .download-canvas-btn {
@@ -134,6 +149,7 @@ canvas {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .download-canvas-btn:hover {
@@ -145,4 +161,42 @@ canvas {
     content: '↓';
     font-size: 18px;
     color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+        justify-content: flex-start;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        margin: 15px 0;
+    }
+    
+    .num-selector {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    
+    .num-selector button {
+        width: auto;
+        padding: 8px 12px;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+    }
+
+    .canvas-container {
+        padding: 10px;
+        width: 100%;
+    }
+
+    button#displayBtn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
 }
