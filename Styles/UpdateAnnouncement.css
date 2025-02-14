@@ -1,0 +1,148 @@
+:root {
+    --notification: #58A6FF;
+    --github-dark: #010409;
+    --github-dark-lighter: #0D1117;
+    --github-dark-border: #30363D;
+    --github: #C9D1D9;
+    --hover-color: #282C34;
+}
+
+body {
+    font-family: "Segoe UI", "Noto Sans", sans-serif;
+    font-size: 16px;
+    background-color: var(--github-dark);
+    color: var(--github);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    color: var(--notification);
+    margin-bottom: 20px;
+}
+
+.num-selector {
+    margin-bottom: 15px;
+}
+
+.num-selector button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid var(--notification);
+    border-radius: 8px;
+    color: var(--notification);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.num-selector button:hover {
+    background-color: var(--github-dark-border);
+}
+
+.num-selector button.active {
+    background-color: var(--notification);
+    color: var(--github-dark);
+    border-color: var(--notification);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--notification);
+}
+
+input[type="text"] {
+    padding: 12px;
+    border: 1px solid var(--github-dark-border);
+    border-radius: 8px;
+    background-color: var(--github-dark-lighter);
+    color: var(--github);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--notification);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button#displayBtn {
+    padding: 12px 40px;
+    background-color: transparent;
+    border: 1px solid var(--notification);
+    border-radius: 8px;
+    color: var(--notification);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: auto;
+}
+
+button#displayBtn:hover {
+    background-color: var(--github-dark-border);
+}
+
+.canvas-container {
+    margin-top: 20px;
+    border: 2px solid var(--github-dark-border);
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--github-dark-lighter);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    position: relative;
+}
+
+canvas {
+    background-color: var(--github-dark-lighter);
+    border-radius: 8px;
+}
+
+.download-canvas-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.download-canvas-btn:hover {
+    background: var(--github-dark-border);
+    transform: scale(1.1);
+}
+
+.download-canvas-btn::after {
+    content: '↓';
+    font-size: 18px;
+    color: #ffffff;
+}
