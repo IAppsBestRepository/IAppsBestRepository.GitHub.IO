@@ -84,6 +84,12 @@ let animationFrameId = null;
 let currentUrls = [];
 let images = [];
 
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => resizeCanvas(), 100);
+});
+
 const resizeCanvas = () => {
     const canvasContainer = document.getElementById('canvasContainer');
     const canvas = document.getElementById('myCanvas');
@@ -92,11 +98,14 @@ const resizeCanvas = () => {
     const baseCanvasWidth = 1000;
     const baseCanvasHeight = 400;
     const aspectRatio = baseCanvasWidth / baseCanvasHeight;
-    const isMobile = window.innerWidth <= 768;
     
+    const isContainerVisible = canvasContainer.style.display !== 'none';
+    const containerWidth = isContainerVisible ? canvasContainer.clientWidth : window.innerWidth;
+    const isMobile = containerWidth <= 768;
+
     let canvasWidth, canvasHeight;
     if (isMobile) {
-        canvasWidth = Math.min(baseCanvasWidth, window.innerWidth * 0.95);
+        canvasWidth = Math.min(baseCanvasWidth, containerWidth * 0.95);
         canvasHeight = canvasWidth / aspectRatio;
     } else {
         canvasWidth = baseCanvasWidth;
@@ -230,10 +239,3 @@ const drawCanvas = (canvasWidth, canvasHeight, baseCanvasWidth, baseCanvasHeight
 
     drawFrame(0);
 };
-
-window.addEventListener('DOMContentLoaded', () => {
-    resizeCanvas();
-    window.addEventListener('load', () => {
-        resizeCanvas();
-    });
-});
