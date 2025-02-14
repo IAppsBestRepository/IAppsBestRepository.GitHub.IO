@@ -88,15 +88,19 @@ const resizeCanvas = () => {
     const canvasContainer = document.getElementById('canvasContainer');
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
+
+    canvasContainer.style.display = 'none';
+    canvasContainer.offsetHeight;
+    canvasContainer.style.display = 'inline-block';
     
+    const containerRect = canvasContainer.getBoundingClientRect();
     const baseCanvasWidth = 1000;
     const baseCanvasHeight = 400;
     const aspectRatio = baseCanvasWidth / baseCanvasHeight;
-    const isMobile = window.innerWidth <= 768;
     
     let canvasWidth, canvasHeight;
-    if (isMobile) {
-        canvasWidth = Math.min(baseCanvasWidth, window.innerWidth * 0.95);
+    if (containerRect.width <= 768) {
+        canvasWidth = Math.min(baseCanvasWidth, containerRect.width * 0.95);
         canvasHeight = canvasWidth / aspectRatio;
     } else {
         canvasWidth = baseCanvasWidth;
@@ -137,7 +141,7 @@ document.getElementById('displayBtn').addEventListener('click', () => {
         img.onload = () => {
             loadedCount++;
             if (loadedCount === selectedNum) {
-                resizeCanvas();
+                setTimeout(resizeCanvas, 50);
             }
         };
         img.onerror = () => alert(`Ошибка загрузки изображения ${index + 1}`);
@@ -230,5 +234,13 @@ const drawCanvas = (canvasWidth, canvasHeight, baseCanvasWidth, baseCanvasHeight
 
     drawFrame(0);
 };
+
+window.addEventListener('DOMContentLoaded', () => {
+    resizeCanvas();
+    
+    window.addEventListener('load', () => {
+        resizeCanvas();
+    });
+});
 
 window.addEventListener('resize', resizeCanvas);
