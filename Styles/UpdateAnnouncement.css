@@ -122,8 +122,7 @@ button#displayBtn:hover {
     background-color: var(--github-dark-lighter);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     position: relative;
-    width: 100%;
-    max-width: 1200px;
+    max-width: 100%;
     height: auto;
     overflow: auto;
 }
@@ -131,11 +130,9 @@ button#displayBtn:hover {
 canvas {
     background-color: var(--github-dark-lighter);
     border-radius: 8px;
-    max-width: 1000px;
+    max-width: 100%;
     height: auto;
     aspect-ratio: 2.5;
-    width: 100% !important;
-    height: auto !important;
 }
 
 .download-canvas-btn {
