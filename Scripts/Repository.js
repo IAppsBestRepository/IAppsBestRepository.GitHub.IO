@@ -1,4 +1,5 @@
 var jsonData;
+var originalJsonData;
 
 function loadJSON() {
     var input = document.getElementById('jsonFileInput');
@@ -7,10 +8,52 @@ function loadJSON() {
 
     reader.onload = function() {
         jsonData = JSON.parse(reader.result);
+        originalJsonData = JSON.parse(JSON.stringify(jsonData));
         displayJSON();
     };
 
     reader.readAsText(file);
+}
+
+function generateAnnouncement() {
+    if (!jsonData || !originalJsonData) {
+        alert('Сначала загрузите JSON файл!');
+        return;
+    }
+
+    const currentApps = jsonData.appRepositories;
+    const originalApps = originalJsonData.appRepositories;
+
+    const newApps = [];
+    const updatedApps = [];
+
+    currentApps.forEach(currentApp => {
+        const originalApp = originalApps.find(a => a.appName.toLowerCase() === currentApp.appName.toLowerCase());
+        if (!originalApp) {
+            newApps.push(currentApp.appName);
+        } else {
+            const keys = Object.keys(currentApp).filter(key => key !== 'appUpdateTime');
+            let isUpdated = keys.some(key => currentApp[key] !== originalApp[key]);
+            if (isUpdated) updatedApps.push(currentApp.appName);
+        }
+    });
+
+    let announcementText = '🇷🇺 Обновление репозитория\n\n';
+    
+    if (newApps.length > 0) {
+        announcementText += 'Добавлены новые приложения:\n';
+        newApps.forEach(app => announcementText += `- ${app}\n`);
+        announcementText += '\n';
+    }
+    
+    if (updatedApps.length > 0) {
+        announcementText += 'Обновлены приложения:\n';
+        updatedApps.forEach(app => announcementText += `- ${app}\n`);
+    }
+
+    navigator.clipboard.writeText(announcementText)
+        .then(() => alert('Анонс скопирован в буфер!'))
+        .catch(() => alert('Ошибка копирования'));
 }
 
 function displayJSON() {
@@ -64,7 +107,6 @@ document.addEventListener('click', function(event) {
         matchesList.innerHTML = '';
     }
 });
-
 
 function syntaxHighlight(json) {
     return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
