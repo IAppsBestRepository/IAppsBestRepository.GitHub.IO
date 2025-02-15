@@ -83,34 +83,32 @@ document.querySelector('.num-selector button[data-num="3"]').classList.add('acti
 let animationFrameId = null;
 let currentUrls = [];
 let images = [];
-/*
+
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => resizeCanvas(), 100);
 });
-*/
 
 const resizeCanvas = () => {
     const canvasContainer = document.getElementById('canvasContainer');
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
     
-    const baseCanvasWidth = 1000;
+    const baseCanvasWidth = Math.min(1000, window.innerWidth * 0.9); // Динамическая базовая ширина
     const baseCanvasHeight = 400;
     const aspectRatio = baseCanvasWidth / baseCanvasHeight;
     
-    const isContainerVisible = canvasContainer.style.display !== 'none';
-    const containerWidth = isContainerVisible ? canvasContainer.clientWidth : window.innerWidth;
-    const isMobile = containerWidth <= 768;
+    const isMobile = window.innerWidth <= 768;
 
     let canvasWidth, canvasHeight;
     if (isMobile) {
-        canvasWidth = Math.min(baseCanvasWidth, containerWidth * 0.95);
+        canvasWidth = Math.min(baseCanvasWidth, window.innerWidth * 0.95);
         canvasHeight = canvasWidth / aspectRatio;
     } else {
-        canvasWidth = baseCanvasWidth;
-        canvasHeight = baseCanvasHeight;
+        const containerWidth = canvasContainer.clientWidth || window.innerWidth;
+        canvasWidth = Math.min(1000, containerWidth * 0.9);
+        canvasHeight = canvasWidth / aspectRatio;
     }
     
     const dpr = window.devicePixelRatio || 1;
