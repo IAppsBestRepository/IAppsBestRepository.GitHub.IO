@@ -38,18 +38,30 @@ function generateAnnouncement() {
         }
     });
 
-    let announcementText = '🇷🇺 Обновление репозитория\n\n';
-    
+    if (newApps.length === 0 && updatedApps.length === 0) {
+        alert('Нет изменений для анонса!');
+        return;
+    }
+
+    let announcementText = '';
+
+    announcementText += '🇷🇺 Обновление репозитория\n\n';
     if (newApps.length > 0) {
-        announcementText += 'Добавлены новые приложения:\n';
-        newApps.forEach(app => announcementText += `- ${app}\n`);
-        announcementText += '\n';
+        announcementText += `Добавлены новые приложения:\n${newApps.join(', ')}\n\n`;
     }
-    
     if (updatedApps.length > 0) {
-        announcementText += 'Обновлены приложения:\n';
-        updatedApps.forEach(app => announcementText += `- ${app}\n`);
+        announcementText += `Обновлены приложения:\n${updatedApps.join(', ')}\n\n`;
     }
+
+    announcementText += '🇺🇸 Update repository\n\n';
+    if (newApps.length > 0) {
+        announcementText += `New applications added:\n${newApps.join(', ')}\n\n`;
+    }
+    if (updatedApps.length > 0) {
+        announcementText += `Updated applications:\n${updatedApps.join(', ')}\n\n`;
+    }
+
+    announcementText = announcementText.replace(/\n{3,}/g, '\n\n').trim();
 
     navigator.clipboard.writeText(announcementText)
         .then(() => alert('Анонс скопирован в буфер!'))
