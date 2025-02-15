@@ -84,6 +84,7 @@ let animationFrameId = null;
 let currentUrls = [];
 let images = [];
 
+// Добавленный обработчик события resize с debounce
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
@@ -95,20 +96,21 @@ const resizeCanvas = () => {
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
     
-    const baseCanvasWidth = Math.min(1000, window.innerWidth * 0.9); // Динамическая базовая ширина
+    const baseCanvasWidth = 1000;
     const baseCanvasHeight = 400;
     const aspectRatio = baseCanvasWidth / baseCanvasHeight;
     
-    const isMobile = window.innerWidth <= 768;
+    const isContainerVisible = canvasContainer.style.display !== 'none';
+    const containerWidth = isContainerVisible ? canvasContainer.clientWidth : window.innerWidth;
+    const isMobile = containerWidth <= 768;
 
     let canvasWidth, canvasHeight;
     if (isMobile) {
-        canvasWidth = Math.min(baseCanvasWidth, window.innerWidth * 0.95);
+        canvasWidth = Math.min(baseCanvasWidth, containerWidth * 0.95);
         canvasHeight = canvasWidth / aspectRatio;
     } else {
-        const containerWidth = canvasContainer.clientWidth || window.innerWidth;
-        canvasWidth = Math.min(1000, containerWidth * 0.9);
-        canvasHeight = canvasWidth / aspectRatio;
+        canvasWidth = baseCanvasWidth;
+        canvasHeight = baseCanvasHeight;
     }
     
     const dpr = window.devicePixelRatio || 1;
@@ -238,3 +240,10 @@ const drawCanvas = (canvasWidth, canvasHeight, baseCanvasWidth, baseCanvasHeight
 
     drawFrame(0);
 };
+
+window.addEventListener('DOMContentLoaded', () => {
+    resizeCanvas();
+    window.addEventListener('load', () => {
+        resizeCanvas();
+    });
+});
