@@ -176,11 +176,6 @@
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false // Не показывать перевод автоматически
       }, 'google_translate_element');
-
-      // Скрываем контейнер через небольшую задержку, чтобы дать время на инициализацию
-      setTimeout(function() {
-        document.getElementById('google_translate_element').style.display = 'none';
-      }, 2000); // 500 миллисекунд достаточно для инициализации
     }
 
     // Функция для перевода на английский
