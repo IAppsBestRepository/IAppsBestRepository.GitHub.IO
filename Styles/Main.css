@@ -27,28 +27,6 @@ body {
     min-height: 100vh;
 }
 
-.translate-li {
-    position: relative;
-    display: inline-block;
-  }
-
-  #google_translate_element {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    z-index: 9999;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
-
-  .hidden {
-    display: none;
-  }
-
 .search-settings-wrapper {
     position: relative;
     width: 100%;
