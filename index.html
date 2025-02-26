@@ -167,28 +167,39 @@
   <!-- Инициализация Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
+      // Делаем контейнер видимым перед инициализацией
+      document.getElementById('google_translate_element').style.display = 'block';
+      
       new google.translate.TranslateElement({
-        pageLanguage: 'ru',
-        includedLanguages: 'en',
+        pageLanguage: 'ru', // Исходный язык страницы
+        includedLanguages: 'en', // Перевод только на английский
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
+        autoDisplay: false // Не показывать перевод автоматически
       }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-  <!-- Функция для программного перевода страницы на английский -->
-  <script>
+      // Скрываем контейнер через небольшую задержку, чтобы дать время на инициализацию
+      setTimeout(function() {
+        document.getElementById('google_translate_element').style.display = 'none';
+      }, 500); // 500 миллисекунд достаточно для инициализации
+    }
+
+    // Функция для перевода на английский
     function translateToEnglish() {
       var combo = document.querySelector('.goog-te-combo');
       if (combo) {
         combo.value = 'en';
         combo.dispatchEvent(new Event('change'));
       } else {
-        console.error('Элемент для перевода не найден.');
+        console.error('Элемент для перевода не найден. Попробуйте еще раз.');
+        // Повторная попытка инициализации, если элемент не найден
+        googleTranslateElementInit();
+        setTimeout(translateToEnglish, 1000); // Повторяем через 1 секунду
       }
     }
   </script>
+  
+  <!-- Подключение скрипта Google Translate -->
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 
