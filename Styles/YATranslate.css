@@ -12,10 +12,13 @@
 }
 
 .language-flags {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: nowrap;
+    display: block; /* изменено с flex на block */
+    margin-top: 5px; /* отступ сверху */
+}
+
+.language-flags .lang__link {
+    display: inline-block; /* флаги будут выстраиваться в ряд, но на новой строке */
+    margin: 0 8px; /* отступы между флагами */
 }
 
 .language-flags .lang__img {
