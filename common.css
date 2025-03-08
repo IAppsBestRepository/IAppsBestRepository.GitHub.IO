@@ -534,6 +534,8 @@ header {
 .sidebar-content ul li a i {
   margin-right: 10px;
   color: var(--primary-color);
+  width: 20px;
+  text-align: center;
 }
 
 .sidebar-content ul li a:hover {
