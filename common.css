@@ -529,6 +529,8 @@ header {
   display: flex;
   align-items: center;
   transition: var(--transition);
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .sidebar-content ul li a i {
@@ -536,11 +538,30 @@ header {
   color: var(--primary-color);
   width: 20px;
   text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar-content ul li a span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidebar-content ul li a:hover {
   color: var(--primary-color);
   transform: translateX(5px);
+}
+
+/* Адаптивность для сайдбара на маленьких экранах */
+@media (max-width: 350px) {
+  .sidebar {
+    width: 250px;
+    left: -250px;
+  }
+  
+  .sidebar-content ul li a {
+    font-size: 0.95rem;
+  }
 }
 
 .overlay {

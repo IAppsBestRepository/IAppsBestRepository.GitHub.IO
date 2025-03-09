@@ -509,7 +509,7 @@ function handleAccessModal() {
   if (purchaseBtn) {
     purchaseBtn.addEventListener('click', () => {
       // Здесь может быть код для перехода на страницу оплаты
-      window.location.href = 'https://bit.ly/3Xvdyab';
+      window.location.href = 'https://t.me/your_channel';
     });
   }
 }

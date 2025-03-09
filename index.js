@@ -392,124 +392,31 @@ function renderPagination() {
   paginationContainer.appendChild(prevButton);
 
   // Определение диапазона страниц для отображения
-  // Показываем только первые 3 страницы + последнюю
-  const maxVisiblePages = 3;
-
-  let startPage, endPage;
+  const maxVisiblePages = 3; // Количество видимых страниц (не считая многоточия и последней)
+  
   if (totalPages <= maxVisiblePages + 1) {
     // Если страниц мало, показываем все
-    startPage = 1;
-    endPage = totalPages;
-  } else if (currentPage <= maxVisiblePages) {
-    // Если текущая страница в пределах первых отображаемых страниц
-    startPage = 1;
-    endPage = maxVisiblePages;
-  } else if (currentPage > totalPages - maxVisiblePages) {
-    // Если текущая страница близко к концу
-    startPage = totalPages - maxVisiblePages + 1;
-    endPage = totalPages;
+    for (let i = 1; i <= totalPages; i++) {
+      addPageButton(i, paginationContainer);
+    }
   } else {
-    // Если текущая страница находится в середине
-    // Показываем первые страницы отдельно
-    for (let i = 1; i <= Math.min(maxVisiblePages, totalPages); i++) {
-      const pageButton = document.createElement('button');
-      pageButton.textContent = i;
-      if (i === currentPage) {
-        pageButton.classList.add('active');
-      }
-      pageButton.addEventListener('click', () => {
-        currentPage = i;
-        renderApps();
-        renderPagination();
-      });
-      paginationContainer.appendChild(pageButton);
+    // Если много страниц, применяем динамическую логику
+    
+    // Определяем начальную страницу (текущая становится первой видимой)
+    let startPage = currentPage;
+    let endPage = Math.min(currentPage + 2, totalPages);
+    
+    // Отображаем страницы начиная с текущей
+    for (let i = startPage; i <= endPage; i++) {
+      addPageButton(i, paginationContainer);
     }
-
-    // Добавляем многоточие
-    if (currentPage > maxVisiblePages + 1) {
-      const ellipsisButton = document.createElement('button');
-      ellipsisButton.textContent = '...';
-      ellipsisButton.disabled = true;
-      paginationContainer.appendChild(ellipsisButton);
+    
+    // Если не достигли последней страницы, показываем многоточие
+    if (endPage < totalPages) {
+      addEllipsis(paginationContainer);
+      // Всегда показываем последнюю страницу
+      addPageButton(totalPages, paginationContainer);
     }
-
-    // Добавляем текущую страницу, если она не в начале и не в конце
-    if (currentPage > maxVisiblePages && currentPage < totalPages - maxVisiblePages + 1) {
-      const currentPageButton = document.createElement('button');
-      currentPageButton.textContent = currentPage;
-      currentPageButton.classList.add('active');
-      paginationContainer.appendChild(currentPageButton);
-    }
-
-    // Добавляем многоточие перед последней страницей
-    if (currentPage < totalPages - maxVisiblePages) {
-      const ellipsisButton = document.createElement('button');
-      ellipsisButton.textContent = '...';
-      ellipsisButton.disabled = true;
-      paginationContainer.appendChild(ellipsisButton);
-    }
-
-    // Добавляем последнюю страницу
-    const lastPageButton = document.createElement('button');
-    lastPageButton.textContent = totalPages;
-    if (currentPage === totalPages) {
-      lastPageButton.classList.add('active');
-    }
-    lastPageButton.addEventListener('click', () => {
-      currentPage = totalPages;
-      renderApps();
-      renderPagination();
-    });
-    paginationContainer.appendChild(lastPageButton);
-
-    // Добавляем кнопку "Вперед" и выходим из функции,
-    // так как мы уже добавили все необходимые кнопки
-    const nextButton = document.createElement('button');
-    nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
-    nextButton.disabled = currentPage === totalPages;
-    nextButton.addEventListener('click', () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderApps();
-        renderPagination();
-      }
-    });
-    paginationContainer.appendChild(nextButton);
-
-    return; // Выходим из функции, так как уже добавили все кнопки
-  }
-
-  // Страницы пагинации
-  for (let i = startPage; i <= endPage; i++) {
-    const pageButton = document.createElement('button');
-    pageButton.textContent = i;
-    if (i === currentPage) {
-      pageButton.classList.add('active');
-    }
-    pageButton.addEventListener('click', () => {
-      currentPage = i;
-      renderApps();
-      renderPagination();
-    });
-    paginationContainer.appendChild(pageButton);
-  }
-
-  // Добавляем многоточие если нужно
-  if (endPage < totalPages) {
-    const ellipsisButton = document.createElement('button');
-    ellipsisButton.textContent = '...';
-    ellipsisButton.disabled = true;
-    paginationContainer.appendChild(ellipsisButton);
-
-    // Последняя страница
-    const lastPageButton = document.createElement('button');
-    lastPageButton.textContent = totalPages;
-    lastPageButton.addEventListener('click', () => {
-      currentPage = totalPages;
-      renderApps();
-      renderPagination();
-    });
-    paginationContainer.appendChild(lastPageButton);
   }
 
   // Кнопка "Вперед"
@@ -524,6 +431,29 @@ function renderPagination() {
     }
   });
   paginationContainer.appendChild(nextButton);
+  
+  // Вспомогательная функция для добавления кнопки страницы
+  function addPageButton(pageNumber, container) {
+    const pageButton = document.createElement('button');
+    pageButton.textContent = pageNumber;
+    if (pageNumber === currentPage) {
+      pageButton.classList.add('active');
+    }
+    pageButton.addEventListener('click', () => {
+      currentPage = pageNumber;
+      renderApps();
+      renderPagination();
+    });
+    container.appendChild(pageButton);
+  }
+  
+  // Вспомогательная функция для добавления многоточия
+  function addEllipsis(container) {
+    const ellipsisButton = document.createElement('button');
+    ellipsisButton.textContent = '...';
+    ellipsisButton.disabled = true;
+    container.appendChild(ellipsisButton);
+  }
 }
 
 // Обновление счетчика результатов
@@ -653,7 +583,7 @@ function handleAccessModal() {
   if (purchaseBtn) {
     purchaseBtn.addEventListener('click', () => {
       // Здесь может быть код для перехода на страницу оплаты
-      window.location.href = 'https://bit.ly/3Xvdyab';
+      window.location.href = 'https://t.me/your_channel';
     });
   }
 }
