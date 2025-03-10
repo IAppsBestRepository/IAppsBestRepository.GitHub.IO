@@ -335,6 +335,28 @@
             </button>
             <input type="file" id="jsonFileInput" accept=".json" onchange="loadJSON()">
           </div>
+          <button class="action-btn" id="manualJsonBtn">
+            <i class="fas fa-pencil-alt"></i>
+            <span data-translate="insert_json">Вставить JSON</span>
+          </button>
+        </div>
+
+        <div id="manualJsonModal" class="manual-json-modal">
+          <div class="manual-json-content">
+            <div class="modal-header">
+              <h3 data-translate="insert_json">Вставить JSON</h3>
+              <button id="closeManualJson" class="close-btn">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <textarea id="manualJsonInput" placeholder="Вставьте ваш JSON код сюда..." data-translate-placeholder="insert_json_placeholder"></textarea>
+              <button id="applyManualJson" class="action-btn">
+                <i class="fas fa-check"></i>
+                <span data-translate="apply">Применить</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="converter-section">

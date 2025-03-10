@@ -69,6 +69,10 @@ const translations = {
     'generate_code': 'Генератор кода',
     'converter_title': 'Конвертер JSON в Objective-C',
     'upload_json': 'Загрузить JSON',
+    'insert_json': 'Вставить JSON',
+    'insert_json_placeholder': 'Вставьте ваш JSON код сюда...',
+    'apply': 'Применить',
+    'json_parse_error': 'Ошибка разбора JSON. Проверьте формат.',
     'objc_result': 'Результат в Objective-C',
     'settings': 'Настройки',
     'theme': 'Тема',
@@ -88,6 +92,10 @@ const translations = {
     'generate_code': 'Code Generator',
     'converter_title': 'JSON to Objective-C Converter',
     'upload_json': 'Upload JSON',
+    'insert_json': 'Insert JSON',
+    'insert_json_placeholder': 'Paste your JSON code here...',
+    'apply': 'Apply',
+    'json_parse_error': 'JSON parsing error. Check the format.',
     'objc_result': 'Objective-C Result',
     'settings': 'Settings',
     'theme': 'Theme',
@@ -121,11 +129,60 @@ function setLanguage(lang) {
 }
 
 
+function processManualJson() {
+    const jsonText = document.getElementById('manualJsonInput').value;
+    
+    try {
+        const json = JSON.parse(jsonText);
+        const objCData = JSONToObjC(json);
+        document.getElementById('objCData').textContent = objCData;
+        document.getElementById('objCData').style.display = "block";
+        
+        document.getElementById('manualJsonModal').classList.remove('active');
+        document.body.style.overflow = '';
+    } catch (error) {
+        alert(translations[currentLanguage].json_parse_error);
+        console.error('Error parsing JSON:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     
     const savedLanguage = localStorage.getItem('preferred_language');
     if (savedLanguage) {
         setLanguage(savedLanguage);
+    }
+    
+    const manualJsonBtn = document.getElementById('manualJsonBtn');
+    const manualJsonModal = document.getElementById('manualJsonModal');
+    const closeManualJson = document.getElementById('closeManualJson');
+    const applyManualJson = document.getElementById('applyManualJson');
+    
+    if (manualJsonBtn) {
+        manualJsonBtn.addEventListener('click', function() {
+            manualJsonModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    if (closeManualJson) {
+        closeManualJson.addEventListener('click', function() {
+            manualJsonModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    if (applyManualJson) {
+        applyManualJson.addEventListener('click', processManualJson);
+    }
+    
+    if (manualJsonModal) {
+        manualJsonModal.addEventListener('click', function(e) {
+            if (e.target === manualJsonModal) {
+                manualJsonModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
     }
 
     

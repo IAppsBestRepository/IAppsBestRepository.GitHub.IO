@@ -63,6 +63,10 @@ const translations = {
     'clear_modifications_title': 'Очистить модификации',
     'copy_code_title': 'Копировать код',
     'code_copied': 'Код скопирован!',
+    'insert_json': 'Вставить JSON',
+    'insert_json_title': 'Вставить JSON вручную',
+    'insert_json_placeholder': 'Вставьте ваш JSON код сюда...',
+    'apply': 'Применить',
     'data_type_string': 'Строка',
     'data_type_number': 'Число',
     'data_type_boolean': 'Булево',
@@ -141,6 +145,10 @@ const translations = {
     'clear_modifications_title': 'Clear modifications',
     'copy_code_title': 'Copy code',
     'code_copied': 'Code copied!',
+    'insert_json': 'Insert JSON',
+    'insert_json_title': 'Insert JSON manually',
+    'insert_json_placeholder': 'Paste your JSON code here...',
+    'apply': 'Apply',
     'data_type_string': 'String',
     'data_type_number': 'Number',
     'data_type_boolean': 'Boolean',
@@ -240,6 +248,73 @@ function loadUserPreferences() {
     } else if (savedTheme === 'dark' && currentTheme === 'light') {
       toggleTheme();
     }
+  }
+}
+
+function handleManualJsonModals() {
+  // Обработчики для основного JSON (частичная подмена)
+  const manualJsonBtn = document.getElementById('manual-json-btn');
+  const manualJsonModal = document.getElementById('manual-json-modal');
+  const closeManualJson = document.getElementById('close-manual-json');
+  const applyManualJson = document.getElementById('apply-manual-json');
+  
+  if (manualJsonBtn) {
+    manualJsonBtn.addEventListener('click', () => {
+      manualJsonModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  
+  if (closeManualJson) {
+    closeManualJson.addEventListener('click', () => {
+      manualJsonModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+  
+  if (applyManualJson) {
+    applyManualJson.addEventListener('click', processManualJson);
+  }
+  
+  if (manualJsonModal) {
+    manualJsonModal.addEventListener('click', (e) => {
+      if (e.target === manualJsonModal) {
+        manualJsonModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  
+  const manualFullJsonBtn = document.getElementById('manual-full-json-btn');
+  const manualFullJsonModal = document.getElementById('manual-full-json-modal');
+  const closeManualFullJson = document.getElementById('close-manual-full-json');
+  const applyManualFullJson = document.getElementById('apply-manual-full-json');
+  
+  if (manualFullJsonBtn) {
+    manualFullJsonBtn.addEventListener('click', () => {
+      manualFullJsonModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  
+  if (closeManualFullJson) {
+    closeManualFullJson.addEventListener('click', () => {
+      manualFullJsonModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+  
+  if (applyManualFullJson) {
+    applyManualFullJson.addEventListener('click', processManualFullJson);
+  }
+  
+  if (manualFullJsonModal) {
+    manualFullJsonModal.addEventListener('click', (e) => {
+      if (e.target === manualFullJsonModal) {
+        manualFullJsonModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   }
 }
 
@@ -364,6 +439,22 @@ function loadJSONFile() {
     };
 
     reader.readAsText(file);
+  }
+}
+
+function processManualJson() {
+  const jsonText = document.getElementById('manual-json-input').value;
+  
+  try {
+    originalJsonData = JSON.parse(jsonText);
+    displayJSONStructure(originalJsonData);
+    updateGeneratedCode();
+    
+    document.getElementById('manual-json-modal').classList.remove('active');
+    document.body.style.overflow = '';
+  } catch (error) {
+    alert(translations[currentLanguage].json_parse_error);
+    console.error('Error parsing JSON:', error);
   }
 }
 
@@ -1110,6 +1201,22 @@ function loadFullJSONFile() {
     };
 
     reader.readAsText(file);
+  }
+}
+
+function processManualFullJson() {
+  const jsonText = document.getElementById('manual-full-json-input').value;
+  
+  try {
+    fullJsonData = JSON.parse(jsonText);
+    displayFullJSONStructure(fullJsonData);
+    updateGeneratedCode();
+    
+    document.getElementById('manual-full-json-modal').classList.remove('active');
+    document.body.style.overflow = '';
+  } catch (error) {
+    alert(translations[currentLanguage].json_parse_error);
+    console.error('Error parsing JSON:', error);
   }
 }
 
@@ -2044,6 +2151,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   handleAccessModal();
+  
+  // Обработчики для модальных окон ручного ввода JSON
+  handleManualJsonModals();
 
   
   const languageToggle = document.getElementById('language-toggle');

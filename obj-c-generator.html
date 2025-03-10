@@ -174,15 +174,38 @@
         <div class="json-upload-section">
           <div class="section-header">
             <h2 data-translate="original_json">Оригинальный JSON</h2>
-            <label for="json-file-input" class="upload-button" title="Загрузить JSON" data-translate-title="upload_json_title">
-              <i class="fas fa-upload"></i>
-            </label>
+            <div class="section-actions">
+              <label for="json-file-input" class="upload-button" title="Загрузить JSON" data-translate-title="upload_json_title">
+                <i class="fas fa-upload"></i>
+              </label>
+              <button id="manual-json-btn" class="action-button" title="Вставить JSON вручную" data-translate-title="insert_json_title">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+            </div>
             <input type="file" id="json-file-input" accept=".json" hidden>
           </div>
           <div id="json-structure" class="json-structure">
             <div class="placeholder" data-translate="json_placeholder">
               <i class="fas fa-file-upload"></i>
               <p>Загрузите JSON файл для отображения структуры данных</p>
+            </div>
+          </div>
+          
+          <div id="manual-json-modal" class="manual-json-modal">
+            <div class="manual-json-content">
+              <div class="modal-header">
+                <h3 data-translate="insert_json">Вставить JSON</h3>
+                <button id="close-manual-json" class="close-btn">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <textarea id="manual-json-input" placeholder="Вставьте ваш JSON код сюда..." data-translate-placeholder="insert_json_placeholder"></textarea>
+                <button id="apply-manual-json" class="primary-btn">
+                  <i class="fas fa-check"></i>
+                  <span data-translate="apply">Применить</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -207,15 +230,38 @@
         <div class="json-upload-section">
           <div class="section-header">
             <h2 data-translate="custom_json">Пользовательский JSON</h2>
-            <label for="full-json-file-input" class="upload-button" title="Загрузить JSON" data-translate-title="upload_json_title">
-              <i class="fas fa-upload"></i>
-            </label>
+            <div class="section-actions">
+              <label for="full-json-file-input" class="upload-button" title="Загрузить JSON" data-translate-title="upload_json_title">
+                <i class="fas fa-upload"></i>
+              </label>
+              <button id="manual-full-json-btn" class="action-button" title="Вставить JSON вручную" data-translate-title="insert_json_title">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+            </div>
             <input type="file" id="full-json-file-input" accept=".json" hidden>
           </div>
           <div id="full-json-structure" class="json-structure">
             <div class="placeholder" data-translate="json_placeholder">
               <i class="fas fa-file-upload"></i>
               <p>Загрузите JSON файл для полной подмены</p>
+            </div>
+          </div>
+          
+          <div id="manual-full-json-modal" class="manual-json-modal">
+            <div class="manual-json-content">
+              <div class="modal-header">
+                <h3 data-translate="insert_json">Вставить JSON</h3>
+                <button id="close-manual-full-json" class="close-btn">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <textarea id="manual-full-json-input" placeholder="Вставьте ваш JSON код сюда..." data-translate-placeholder="insert_json_placeholder"></textarea>
+                <button id="apply-manual-full-json" class="primary-btn">
+                  <i class="fas fa-check"></i>
+                  <span data-translate="apply">Применить</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -160,6 +160,68 @@
   }
 }
 
+.manual-json-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.manual-json-modal.active {
+  display: flex;
+}
+
+.manual-json-content {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.manual-json-content .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.manual-json-content .modal-header h3 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.manual-json-content .modal-body {
+  padding: 20px;
+}
+
+#manualJsonInput {
+  width: 100%;
+  min-height: 300px;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+#applyManualJson {
+  margin-left: auto;
+  display: block;
+}
+
 @media (max-width: 480px) {
   .button-group {
     flex-direction: column;
@@ -178,5 +240,9 @@
   .converter-container h1 {
     font-size: 1.3rem;
     margin-top: 5px;
+  }
+  
+  #manualJsonInput {
+    min-height: 200px;
   }
 }
