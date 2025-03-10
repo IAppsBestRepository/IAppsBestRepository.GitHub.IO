@@ -7,6 +7,7 @@
   <title>Информация о приложении</title>
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="app-details.css">
+  <link rel="stylesheet" href="animations.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -126,12 +127,12 @@
         <i class="fas fa-arrow-left"></i> <span data-translate="back_to_catalog">Вернуться в каталог</span>
       </button>
 
-      <div class="app-details-container">
+      <div class="app-details-container fade-in-element">
         <div class="app-icon-container">
           <img id="app-icon" class="app-icon" src="" alt="Иконка приложения">
         </div>
         <div class="app-info-container">
-          <h1 id="app-name"></h1>
+          <h1 id="app-name" class="parallax-element" data-parallax-speed="0.1"></h1>
           <div class="app-meta">
             <div class="app-meta-item" id="app-category"></div>
             <div class="app-meta-item" id="app-developer"></div>
@@ -185,6 +186,7 @@
   </footer>
 
   <script src="app-details.js"></script>
+  <script src="animations.js"></script>
 </body>
 
 </html>

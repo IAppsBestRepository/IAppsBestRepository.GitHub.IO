@@ -209,9 +209,30 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 655px) {
   .update-repo-container h1 {
     font-size: 1.4rem;
     margin-top: 15px;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .file-input-container {
+    width: 100%;
+  }
+  
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input, 
+  .form-group textarea, 
+  .form-group select {
+    width: 100%;
   }
 }

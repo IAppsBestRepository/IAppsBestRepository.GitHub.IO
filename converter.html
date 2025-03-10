@@ -7,6 +7,7 @@
   <title>Конвертер JSON в Objective-C</title>
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="converter.css">
+  <link rel="stylesheet" href="animations.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">tyle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -206,6 +207,41 @@
         font-size: 1.5rem;
       }
     }
+
+    @media (max-width: 480px) {
+      .button-group {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .converter-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .action-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .file-input-container {
+        width: 100%;
+      }
+
+      .input-section textarea,
+      .output-section textarea {
+        min-height: 200px;
+      }
+
+      .converter-container h1 {
+        font-size: 1.3rem;
+        margin-top: 5px;
+      }
+
+      #manualJsonInput {
+        min-height: 200px;
+      }
+    }
   </style>
 </head>
 
@@ -325,7 +361,7 @@
   <main>
     <div class="container">
       <div class="converter-container">
-        <h1 data-translate="converter_title" style="margin-top: 5px;">Конвертер JSON в Objective-C</h1>
+        <h1 data-translate="converter_title" class="parallax-element" data-parallax-speed="0.1" style="margin-top: 5px;">Конвертер JSON в Objective-C</h1>
 
         <div class="button-group" style="margin-top: 10px;">
           <div class="file-input-container">
@@ -359,7 +395,7 @@
           </div>
         </div>
 
-        <div class="converter-section">
+        <div class="converter-section fade-in-element">
           <div class="section-header" style="margin-bottom: 0;">
             <h2 class="section-title" data-translate="objc_result" style="margin-bottom: 0; padding-bottom: 0;">
               Результат в Objective-C</h2>
@@ -393,6 +429,7 @@
   </footer>
 
   <script src="converter.js"></script>
+  <script src="animations.js"></script>
 </body>
 
 </html>

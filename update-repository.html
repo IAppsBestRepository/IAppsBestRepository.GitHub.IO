@@ -6,6 +6,7 @@
   <title>Обновление репозитория</title>
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="update-repository.css">
+  <link rel="stylesheet" href="animations.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="dark-theme update-repository">
@@ -118,7 +119,7 @@
   <main>
     <div class="container">
       <div class="update-repo-container">
-        <h1 data-translate="update_repository_title">Обновление репозитория</h1>
+        <h1 data-translate="update_repository_title" class="parallax-element" data-parallax-speed="0.1">Обновление репозитория</h1>
         
         <div class="button-group">
           <div class="file-input-container">
@@ -140,7 +141,7 @@
         
         <h2 class="form-section-title" data-translate="app_edit_form">Форма редактирования приложения</h2>
         
-        <div class="form-container">
+        <div class="form-container fade-in-element hover-glow">
           <div>
             <div class="form-group autocomplete-container">
               <label for="appName" data-translate="app_name">Название приложения</label>
@@ -258,5 +259,6 @@
   </footer>
 
   <script src="update-repository.js"></script>
+  <script src="animations.js"></script>
 </body>
 </html>

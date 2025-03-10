@@ -6,12 +6,13 @@
   <title>Поиск приложений в AppStore</title>
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="app-search.css">
+  <link rel="stylesheet" href="animations.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="dark-theme app-search">
   <div class="overlay" id="overlay"></div>
-  
+
   <div class="access-modal" id="access-modal">
     <div class="access-modal-content">
       <div class="access-modal-header">
@@ -59,7 +60,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="settings-modal" id="settings-modal">
     <div class="settings-modal-content">
       <div class="settings-modal-header">
@@ -83,7 +84,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <button id="close-sidebar" class="close-btn">
@@ -120,7 +121,7 @@
     <div class="container">
       <div class="search-page-container">
         <h1 data-translate="app_search_title">Поиск приложений в AppStore</h1>
-        
+
         <form id="searchform" class="search-form" style="margin-top: 15px;">
           <input type="text" id="search" class="search-input" placeholder="Введите название приложения или BundleID" data-translate-placeholder="search_app_placeholder">
           <select id="country" class="country-select">
@@ -145,9 +146,9 @@
             <span data-translate="search_button">Искать</span>
           </button>
         </form>
-        
+
         <div id="results"></div>
-        
+
         <table id="results-table" class="results-table">
           <tbody id="results"></tbody>
         </table>
