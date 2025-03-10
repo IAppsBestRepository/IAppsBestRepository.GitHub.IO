@@ -1,7 +1,4 @@
-
-/* Общие стили для всех страниц */
 :root {
-  /* Светлая тема */
   --light-primary-color: #5C6BC0;
   --light-primary-light: #8e99f3;
   --light-primary-dark: #26418f;
@@ -12,7 +9,6 @@
   --light-card-bg: #fff;
   --light-border-color: #eaeaea;
 
-  /* Темная тема */
   --dark-primary-color: #7986CB;
   --dark-primary-light: #9fa8da;
   --dark-primary-dark: #5c6bc0;
@@ -23,7 +19,6 @@
   --dark-card-bg: #1e1e1e;
   --dark-border-color: #333;
 
-  /* Общие переменные */
   --header-height: 70px;
   --footer-height: 180px;
   --sidebar-width: 280px;
@@ -31,7 +26,6 @@
   --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 
-  /* Активная тема по умолчанию - темная */
   --primary-color: var(--dark-primary-color);
   --primary-light: var(--dark-primary-light);
   --primary-dark: var(--dark-primary-dark);
@@ -85,7 +79,6 @@ body {
   padding: 0 20px;
 }
 
-/* Header */
 header {
   background-color: var(--card-bg);
   box-shadow: var(--box-shadow);
@@ -159,7 +152,6 @@ header {
   transform: scale(1.1);
 }
 
-/* Модальное окно настроек */
 .settings-modal {
   position: fixed;
   top: 0;
@@ -318,7 +310,6 @@ header {
   background-color: var(--primary-dark);
 }
 
-/* Стили для кнопки "Купить доступ" */
 .buy-access-btn {
   display: inline-flex;
   align-items: center;
@@ -346,7 +337,6 @@ header {
   font-size: 1rem;
 }
 
-/* Модальное окно для покупки доступа */
 .access-modal {
   position: fixed;
   top: 0;
@@ -481,7 +471,6 @@ header {
   box-shadow: 0 4px 12px rgba(255, 82, 82, 0.6);
 }
 
-/* Sidebar */
 .sidebar {
   position: fixed;
   top: 0;
@@ -552,7 +541,6 @@ header {
   transform: translateX(5px);
 }
 
-/* Адаптивность для сайдбара на маленьких экранах */
 @media (max-width: 350px) {
   .sidebar {
     width: 250px;
@@ -582,7 +570,6 @@ header {
   visibility: visible;
 }
 
-/* Custom Select Styles */
 .display-settings select {
   background-color: var(--card-bg);
   color: var(--text-color);
@@ -615,14 +602,12 @@ header {
   font-size: 0.95rem;
 }
 
-/* Main Content */
 main {
   flex: 1;
   margin-top: var(--header-height);
   padding: 0;
 }
 
-/* Footer */
 footer {
   background-color: var(--card-bg);
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
@@ -702,7 +687,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Адаптивность */
 @media (max-width: 830px) {
   header {
     height: auto;
@@ -730,14 +714,12 @@ footer {
     align-items: center;
   }
 
-  /* Группируем кнопки темы и языка вместе */
   .theme-toggle,
   .language-toggle {
     margin: 0;
     position: static;
   }
 
-  /* Создаем контейнер для группировки кнопок справа */
   .left-side .logo {
     order: 1;
   }
@@ -761,7 +743,6 @@ footer {
     margin-bottom: 5px;
   }
 
-  /* Оптимизированный отступ для основного контента, чтобы не перекрывался кнопкой */
   main {
     margin-top: calc(var(--header-height) + 40px);
     padding: 15px 0;
@@ -866,7 +847,6 @@ footer {
   }
 }
 
-/* Специфичное исправление для ширины экрана 834px */
 @media (width: 834px) {
   .footer-social {
     justify-content: center !important;
@@ -875,7 +855,6 @@ footer {
   }
 }
 
-/* Специфичные стили для Safari */
 @supports (-webkit-touch-callout: none) {
   .footer-social {
     display: flex !important;

@@ -1,11 +1,8 @@
-
-// Глобальные переменные
 let currentLanguage = 'ru';
 let currentTheme = 'dark';
 var jsonData;
 var originalJsonData;
 
-// Словарь для многоязычности
 const translations = {
   'ru': {
     'menu': 'Меню',
@@ -117,12 +114,10 @@ const translations = {
   }
 };
 
-// Функция для переключения языка
 function setLanguage(lang) {
   currentLanguage = lang;
   document.getElementById('language-toggle').textContent = lang.toUpperCase();
 
-  // Обновляем все элементы с атрибутом data-translate
   const elements = document.querySelectorAll('[data-translate]');
   elements.forEach(element => {
     const key = element.getAttribute('data-translate');
@@ -131,7 +126,6 @@ function setLanguage(lang) {
     }
   });
 
-  // Обновляем плейсхолдеры
   const placeholders = document.querySelectorAll('[data-translate-placeholder]');
   placeholders.forEach(element => {
     const key = element.getAttribute('data-translate-placeholder');
@@ -140,11 +134,9 @@ function setLanguage(lang) {
     }
   });
 
-  // Сохраняем предпочтение пользователя
   localStorage.setItem('preferred_language', lang);
 }
 
-// Функция для переключения темы
 function toggleTheme() {
   const body = document.body;
   const themeIcon = document.querySelector('#theme-toggle i');
@@ -168,19 +160,15 @@ function toggleTheme() {
     currentTheme = 'light';
   }
 
-  // Сохраняем предпочтение пользователя
   localStorage.setItem('preferred_theme', currentTheme);
 }
 
-// Загрузка пользовательских настроек
 function loadUserPreferences() {
-  // Загрузка предпочтительного языка
   const savedLanguage = localStorage.getItem('preferred_language');
   if (savedLanguage) {
     setLanguage(savedLanguage);
   }
 
-  // Загрузка предпочтительной темы
   const savedTheme = localStorage.getItem('preferred_theme');
   if (savedTheme) {
     if (savedTheme === 'light' && currentTheme === 'dark') {
@@ -191,28 +179,24 @@ function loadUserPreferences() {
   }
 }
 
-// Обработка сайдбара
 function handleSidebar() {
   const menuBtn = document.getElementById('menu-btn');
   const closeSidebarBtn = document.getElementById('close-sidebar');
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
 
-  // Открытие сайдбара
   menuBtn.addEventListener('click', () => {
     sidebar.classList.add('active');
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   });
 
-  // Закрытие сайдбара кнопкой
   closeSidebarBtn.addEventListener('click', () => {
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
   });
 
-  // Закрытие сайдбара по клику на оверлей
   overlay.addEventListener('click', () => {
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
@@ -220,13 +204,11 @@ function handleSidebar() {
   });
 }
 
-// Обработка модального окна настроек
 function handleSettingsModal() {
   const closeSettingsBtn = document.getElementById('close-settings');
   const settingsModal = document.getElementById('settings-modal');
 
-  // Закрытие модального окна настроек кнопкой
-  if (closeSettingsBtn) {
+    if (closeSettingsBtn) {
     closeSettingsBtn.addEventListener('click', () => {
       settingsModal.classList.remove('active');
       document.body.style.overflow = '';
@@ -234,8 +216,7 @@ function handleSettingsModal() {
     });
   }
 
-  // Закрытие модального окна настроек по клику вне его содержимого
-  if (settingsModal) {
+    if (settingsModal) {
     settingsModal.addEventListener('click', (e) => {
       if (e.target === settingsModal) {
         settingsModal.classList.remove('active');
@@ -246,15 +227,13 @@ function handleSettingsModal() {
   }
 }
 
-// Обработка модального окна покупки доступа
 function handleAccessModal() {
   const buyAccessBtn = document.getElementById('buy-access-btn');
   const closeAccessBtn = document.getElementById('close-access');
   const accessModal = document.getElementById('access-modal');
   const purchaseBtn = document.querySelector('.purchase-access-btn');
   
-  // Открытие модального окна покупки доступа
-  if (buyAccessBtn) {
+    if (buyAccessBtn) {
     buyAccessBtn.addEventListener('click', (e) => {
       e.preventDefault();
       accessModal.classList.add('active');
@@ -263,8 +242,7 @@ function handleAccessModal() {
     });
   }
 
-  // Закрытие модального окна покупки доступа кнопкой
-  if (closeAccessBtn) {
+    if (closeAccessBtn) {
     closeAccessBtn.addEventListener('click', () => {
       accessModal.classList.remove('active');
       document.body.style.overflow = '';
@@ -272,8 +250,7 @@ function handleAccessModal() {
     });
   }
 
-  // Закрытие модального окна покупки доступа по клику вне его содержимого
-  if (accessModal) {
+    if (accessModal) {
     accessModal.addEventListener('click', (e) => {
       if (e.target === accessModal) {
         accessModal.classList.remove('active');
@@ -284,7 +261,6 @@ function handleAccessModal() {
   }
 }
 
-// Функции для работы с репозиторием
 function loadJSON() {
     var input = document.getElementById('jsonFileInput');
     var file = input.files[0];
@@ -434,8 +410,7 @@ function showMatches() {
             document.getElementById('appImage').value = match.appImage || '';
             document.getElementById('appBundle').value = match.appBundle || '';
             
-            // Извлекаем данные из строки версии
-            if (match.appVersion) {
+                        if (match.appVersion) {
                 const versionParts = match.appVersion.split('|');
                 if (versionParts.length >= 3) {
                     document.getElementById('appVersion').value = versionParts[0].trim();
@@ -635,33 +610,25 @@ function parseJSON() {
     a.click();
 }
 
-// Обработчики событий
 document.addEventListener('DOMContentLoaded', () => {
-  // Загрузка пользовательских настроек
-  loadUserPreferences();
+    loadUserPreferences();
 
-  // Обработчик переключения темы
-  const themeToggle = document.getElementById('theme-toggle');
+    const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', toggleTheme);
 
-  // Обработчик переключения языка
-  const languageToggle = document.getElementById('language-toggle');
+    const languageToggle = document.getElementById('language-toggle');
   languageToggle.addEventListener('click', () => {
     const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
     setLanguage(newLang);
   });
 
-  // Настройка сайдбара
-  handleSidebar();
+    handleSidebar();
 
-  // Настройка модального окна настроек
-  handleSettingsModal();
+    handleSettingsModal();
   
-  // Настройка модального окна покупки доступа
-  handleAccessModal();
+    handleAccessModal();
 
-  // Добавляем обработчик для кнопки настроек в сайдбаре
-  const settingsToggleSidebar = document.getElementById('settings-toggle-sidebar');
+    const settingsToggleSidebar = document.getElementById('settings-toggle-sidebar');
   if (settingsToggleSidebar) {
     settingsToggleSidebar.addEventListener('click', (e) => {
       e.preventDefault();
@@ -674,8 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden';
         overlay.classList.add('active');
 
-        // Закрываем сайдбар при открытии настроек
-        if (sidebar) {
+                if (sidebar) {
           sidebar.classList.remove('active');
         }
       }

@@ -1,5 +1,3 @@
-
-/* Специальные стили для страницы update-repository */
 .update-repo-container {
   padding: 0;
   max-width: 1200px;
@@ -167,7 +165,6 @@
   text-align: center;
 }
 
-/* Специальные медиа-запросы для заголовка */
 .update-repository main {
   margin-top: var(--header-height);
 }

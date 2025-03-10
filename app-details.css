@@ -1,5 +1,3 @@
-
-/* Специальные стили для страницы app-details */
 .app-details-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -58,7 +56,6 @@
   color: var(--text-light);
 }
 
-/* Добавляем отступ после "Последнего обновления" */
 #update-time {
   margin-bottom: 10px;
 }
@@ -121,7 +118,6 @@
   color: white;
 }
 
-/* Адаптивность */
 @media (max-width: 830px) {
   .app-details-container {
     grid-template-columns: 1fr;
@@ -158,7 +154,6 @@
     text-align: left;
   }
 
-  /* Уменьшаем отступ кнопки "Вернуться в каталог" и контента */
   .back-button {
     margin-top: 10px;
     margin-bottom: 15px;

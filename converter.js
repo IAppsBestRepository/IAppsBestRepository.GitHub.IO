@@ -1,5 +1,3 @@
-
-// Функция загрузки JSON-файла
 function loadJSON() {
     var file = document.getElementById('jsonFileInput');
     var reader = new FileReader();
@@ -11,7 +9,7 @@ function loadJSON() {
     reader.readAsText(file.files[0]);
 }
 
-// Функция преобразования JSON в Objective-C код
+
 function JSONToObjC(value, level = 0) {
     var indentation = "    ".repeat(level);
     var nextIndentation = "    ".repeat(level + 1);
@@ -38,7 +36,7 @@ function JSONToObjC(value, level = 0) {
     return '';
 }
 
-// Функция копирования Objective-C кода
+
 function copyObjCCode() {
     const objCCode = document.getElementById('objCData').textContent;
     navigator.clipboard.writeText(objCCode)
@@ -60,7 +58,7 @@ function copyObjCCode() {
         });
 }
 
-// Словарь для многоязычности
+
 const translations = {
   'ru': {
     'menu': 'Меню',
@@ -68,6 +66,7 @@ const translations = {
     'update_repository': 'Обновить репозиторий',
     'app_search': 'Поиск приложений в AppStore',
     'converter': 'Конвертер',
+    'generate_code': 'Генератор кода',
     'converter_title': 'Конвертер JSON в Objective-C',
     'upload_json': 'Загрузить JSON',
     'objc_result': 'Результат в Objective-C',
@@ -86,6 +85,7 @@ const translations = {
     'update_repository': 'Update Repository',
     'app_search': 'Search Apps in AppStore',
     'converter': 'Converter',
+    'generate_code': 'Code Generator',
     'converter_title': 'JSON to Objective-C Converter',
     'upload_json': 'Upload JSON',
     'objc_result': 'Objective-C Result',
@@ -102,12 +102,12 @@ const translations = {
 
 let currentLanguage = 'ru';
 
-// Функция для переключения языка
+
 function setLanguage(lang) {
   currentLanguage = lang;
   document.getElementById('language-toggle').textContent = lang.toUpperCase();
 
-  // Обновляем все элементы с атрибутом data-translate
+  
   const elements = document.querySelectorAll('[data-translate]');
   elements.forEach(element => {
     const key = element.getAttribute('data-translate');
@@ -116,19 +116,19 @@ function setLanguage(lang) {
     }
   });
 
-  // Сохраняем предпочтение пользователя
+  
   localStorage.setItem('preferred_language', lang);
 }
 
-// Функция для обработки темы и настроек сайта
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Загрузка предпочтительного языка
+    
     const savedLanguage = localStorage.getItem('preferred_language');
     if (savedLanguage) {
         setLanguage(savedLanguage);
     }
 
-    // Обработчик кнопки меню
+    
     const menuBtn = document.getElementById('menu-btn');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.classList.add('active');
     });
     
-    // Закрытие сайдбара при клике на крестик
+    
     const closeSidebarBtn = document.getElementById('close-sidebar');
     
     closeSidebarBtn.addEventListener('click', function() {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.classList.remove('active');
     });
     
-    // Закрытие сайдбара при клике на оверлей
+    
     overlay.addEventListener('click', function() {
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Обработчик кнопки настроек в сайдбаре
+    
     const settingsToggleSidebar = document.getElementById('settings-toggle-sidebar');
     const settingsModal = document.getElementById('settings-modal');
     
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Закрытие модального окна настроек
+    
     const closeSettingsBtn = document.getElementById('close-settings');
     
     if (closeSettingsBtn) {
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Переключение темы
+    
     const themeToggleBtn = document.getElementById('theme-toggle');
     
     if (themeToggleBtn) {
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Обработчик переключения языка
+    
     const languageToggle = document.getElementById('language-toggle');
     if (languageToggle) {
         languageToggle.addEventListener('click', function() {

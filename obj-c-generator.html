@@ -1,12 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог приложений</title>
+  <title>Генератор OBJ-C кода</title>
   <link rel="stylesheet" href="common.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="obj-c-generator.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -36,7 +37,7 @@
           </div>
           <div class="pricing-item">
             <h4 data-translate="quarterly_plan">Трехмесячный план</h4>
-            <div class="price" data-translate="quarterly_price">599 ₽</div>
+            <div class="price" data-translate="quarterly_price">999 ₽</div>
             <ul>
               <li data-translate="access_feature1">Доступ ко всем приложениям</li>
               <li data-translate="access_feature2">Приоритетная поддержка</li>
@@ -47,11 +48,12 @@
           <div class="pricing-item featured">
             <div class="featured-label" data-translate="best_value">Выгодно</div>
             <h4 data-translate="yearly_plan">Годовой план</h4>
-            <div class="price" data-translate="yearly_price">899 ₽</div>
+            <div class="price" data-translate="yearly_price">2999 ₽</div>
             <ul>
               <li data-translate="access_feature1">Доступ ко всем приложениям</li>
               <li data-translate="access_feature2">Приоритетная поддержка</li>
               <li data-translate="access_feature3">Без рекламы</li>
+              <li data-translate="access_feature4">Ранний доступ к новинкам</li>
               <li data-translate="access_feature6">Скидка 35%</li>
             </ul>
           </div>
@@ -118,11 +120,6 @@
           </button>
           <div class="logo">IAppsBest</div>
         </div>
-        <div class="search-container">
-          <input type="text" id="search-input" placeholder="Поиск приложений..."
-            data-translate-placeholder="search_placeholder">
-          <button id="search-btn"><i class="fas fa-search"></i></button>
-        </div>
         <a href="https://bit.ly/3Xvdyab" class="buy-access-btn" id="buy-access-btn">
           <i class="fas fa-crown"></i>
           <span data-translate="buy_access">Купить доступ</span>
@@ -133,31 +130,108 @@
 
   <main>
     <div class="container">
-      <div class="top-bar">
-        <div class="results-count" id="results-count"><span data-translate="found_apps">Найдено приложений</span>:
-          <span>0</span></div>
-        <div class="display-settings">
-          <label for="sort-order" data-translate="sort_by">Сортировка:</label>
-          <select id="sort-order" class="custom-select">
-            <option value="default" data-translate="sort_default">По умолчанию</option>
-            <option value="newest" data-translate="sort_newest">Сначала новые</option>
-            <option value="oldest" data-translate="sort_oldest">Сначала старые</option>
+      <div class="title-section">
+        <h1 data-translate="obj_c_generator_title">Генератор OBJ-C кода</h1>
+        <p data-translate="obj_c_generator_description">Создание кода частичной или полной подмены данных для OBJ-C</p>
+      </div>
+
+      <div class="generator-form">
+        <div class="form-group">
+          <label for="url-input" data-translate="url_input">URL запроса:</label>
+          <input type="text" id="url-input" placeholder="Введите URL запроса" data-translate-placeholder="url_input_placeholder">
+        </div>
+
+        <div class="form-group">
+          <label data-translate="mechanism_selection">Выбор механизма:</label>
+          <select id="mechanism-select" class="custom-select">
+            <option value="dataTaskWithRequest" data-translate="mechanism_datatask">- (id)dataTaskWithRequest</option>
+            <option value="_dataTaskWithRequest">- (id)_dataTaskWithRequest</option>
+            <option value="sessionDelegate">SessionDelegate</option>
           </select>
-          <label for="cards-per-page" data-translate="apps_per_page">Приложений на странице:</label>
-          <select id="cards-per-page" class="custom-select">
-            <option value="20">20</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
+        </div>
+        
+        <div class="form-group" id="delegate-input-container" style="display: none;">
+          <label for="delegate-input" data-translate="delegate_input">Имя делегата:</label>
+          <input type="text" id="delegate-input" placeholder="Введите имя делегата" data-translate-placeholder="delegate_input_placeholder">
+        </div>
+
+        <div class="form-group">
+          <label data-translate="substitution_type">Тип подмены:</label>
+          <div class="custom-radio-group">
+            <label class="custom-radio">
+              <input type="radio" name="substitution-type" value="partial" checked>
+              <span class="custom-radio-label" data-translate="partial_substitution">Частичная подмена</span>
+            </label>
+            <label class="custom-radio">
+              <input type="radio" name="substitution-type" value="full">
+              <span class="custom-radio-label" data-translate="full_substitution">Полная подмена</span>
+            </label>
+          </div>
         </div>
       </div>
 
-      <div class="app-cards" id="app-cards">
+      <div id="partial-substitution-section" class="substitution-section">
+        <div class="json-upload-section">
+          <div class="section-header">
+            <h2 data-translate="original_json">Оригинальный JSON</h2>
+            <label for="json-file-input" class="upload-button" title="Загрузить JSON" data-translate-title="upload_json_title">
+              <i class="fas fa-upload"></i>
+            </label>
+            <input type="file" id="json-file-input" accept=".json" hidden>
+          </div>
+          <div id="json-structure" class="json-structure">
+            <div class="placeholder" data-translate="json_placeholder">
+              <i class="fas fa-file-upload"></i>
+              <p>Загрузите JSON файл для отображения структуры данных</p>
+            </div>
+          </div>
+        </div>
 
+        <div class="modifications-section">
+          <div class="section-header">
+            <h2 data-translate="json_modifications">Модификации JSON</h2>
+            <button id="clear-modifications" class="action-button" title="Очистить модификации" data-translate-title="clear_modifications_title">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+          <div id="modifications-list" class="modifications-list">
+            <div class="placeholder" data-translate="modifications_placeholder">
+              <i class="fas fa-edit"></i>
+              <p>Выберите ключи в структуре JSON для их модификации</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="pagination" id="pagination">
+      <div id="full-substitution-section" class="substitution-section" style="display:none;">
+        <div class="json-upload-section">
+          <div class="section-header">
+            <h2 data-translate="custom_json">Пользовательский JSON</h2>
+            <label for="full-json-file-input" class="upload-button" title="Загрузить JSON" data-translate-title="upload_json_title">
+              <i class="fas fa-upload"></i>
+            </label>
+            <input type="file" id="full-json-file-input" accept=".json" hidden>
+          </div>
+          <div id="full-json-structure" class="json-structure">
+            <div class="placeholder" data-translate="json_placeholder">
+              <i class="fas fa-file-upload"></i>
+              <p>Загрузите JSON файл для полной подмены</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="generated-code-section">
+        <div class="section-header">
+          <h2 data-translate="generated_code">Сгенерированный код</h2>
+          <button id="copy-code" class="action-button" title="Копировать код" data-translate-title="copy_code_title">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+        <pre id="generated-code" class="generated-code">
+// Здесь будет отображен сгенерированный код
+// Загрузите JSON и внесите модификации для генерации кода
+        </pre>
       </div>
     </div>
   </main>
@@ -179,7 +253,7 @@
     </div>
   </footer>
 
-  <script src="index.js"></script>
+  <script src="obj-c-generator.js"></script>
 </body>
 
 </html>

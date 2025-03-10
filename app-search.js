@@ -1,9 +1,6 @@
-
-// Глобальные переменные
 let currentLanguage = 'ru';
 let currentTheme = 'dark';
 
-// Словарь для многоязычности
 const translations = {
   'ru': {
     'menu': 'Меню',
@@ -85,12 +82,12 @@ const translations = {
   }
 };
 
-// Функция для переключения языка
+
 function setLanguage(lang) {
   currentLanguage = lang;
   document.getElementById('language-toggle').textContent = lang.toUpperCase();
 
-  // Обновляем все элементы с атрибутом data-translate
+  
   const elements = document.querySelectorAll('[data-translate]');
   elements.forEach(element => {
     const key = element.getAttribute('data-translate');
@@ -99,7 +96,7 @@ function setLanguage(lang) {
     }
   });
 
-  // Обновляем плейсхолдеры
+  
   const placeholders = document.querySelectorAll('[data-translate-placeholder]');
   placeholders.forEach(element => {
     const key = element.getAttribute('data-translate-placeholder');
@@ -108,7 +105,7 @@ function setLanguage(lang) {
     }
   });
 
-  // Обновляем страны в селекте
+  
   const countrySelect = document.getElementById('country');
   if (countrySelect) {
     if (lang === 'en') {
@@ -150,11 +147,11 @@ function setLanguage(lang) {
     }
   }
 
-  // Сохраняем предпочтение пользователя
+  
   localStorage.setItem('preferred_language', lang);
 }
 
-// Функция для переключения темы
+
 function toggleTheme() {
   const body = document.body;
   const themeIcon = document.querySelector('#theme-toggle i');
@@ -178,19 +175,19 @@ function toggleTheme() {
     currentTheme = 'light';
   }
 
-  // Сохраняем предпочтение пользователя
+  
   localStorage.setItem('preferred_theme', currentTheme);
 }
 
-// Загрузка пользовательских настроек
+
 function loadUserPreferences() {
-  // Загрузка предпочтительного языка
+  
   const savedLanguage = localStorage.getItem('preferred_language');
   if (savedLanguage) {
     setLanguage(savedLanguage);
   }
 
-  // Загрузка предпочтительной темы
+  
   const savedTheme = localStorage.getItem('preferred_theme');
   if (savedTheme) {
     if (savedTheme === 'light' && currentTheme === 'dark') {
@@ -201,14 +198,14 @@ function loadUserPreferences() {
   }
 }
 
-// Обработка сайдбара
+
 function handleSidebar() {
   const menuBtn = document.getElementById('menu-btn');
   const closeSidebarBtn = document.getElementById('close-sidebar');
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
 
-  // Открытие сайдбара
+  
   menuBtn.addEventListener('click', () => {
     sidebar.classList.add('active');
     overlay.classList.add('active');
@@ -216,7 +213,7 @@ function handleSidebar() {
     console.log("Открытие сайдбара");
   });
 
-  // Закрытие сайдбара кнопкой
+  
   closeSidebarBtn.addEventListener('click', () => {
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
@@ -224,7 +221,7 @@ function handleSidebar() {
     console.log("Закрытие сайдбара");
   });
 
-  // Закрытие сайдбара по клику на оверлей
+  
   overlay.addEventListener('click', () => {
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
@@ -232,13 +229,13 @@ function handleSidebar() {
   });
 }
 
-// Обработка модального окна настроек
+
 function handleSettingsModal() {
   const settingsToggle = document.getElementById('settings-toggle');
   const closeSettingsBtn = document.getElementById('close-settings');
   const settingsModal = document.getElementById('settings-modal');
 
-  // Закрытие модального окна настроек кнопкой
+  
   if (closeSettingsBtn) {
     closeSettingsBtn.addEventListener('click', () => {
       settingsModal.classList.remove('active');
@@ -247,7 +244,7 @@ function handleSettingsModal() {
     });
   }
 
-  // Закрытие модального окна настроек по клику вне его содержимого
+  
   if (settingsModal) {
     settingsModal.addEventListener('click', (e) => {
       if (e.target === settingsModal) {
@@ -259,14 +256,14 @@ function handleSettingsModal() {
   }
 }
 
-// Обработка модального окна покупки доступа
+
 function handleAccessModal() {
   const buyAccessBtn = document.getElementById('buy-access-btn');
   const closeAccessBtn = document.getElementById('close-access');
   const accessModal = document.getElementById('access-modal');
   const purchaseBtn = document.querySelector('.purchase-access-btn');
   
-  // Открытие модального окна покупки доступа
+  
   if (buyAccessBtn) {
     buyAccessBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -276,7 +273,7 @@ function handleAccessModal() {
     });
   }
 
-  // Закрытие модального окна покупки доступа кнопкой
+  
   if (closeAccessBtn) {
     closeAccessBtn.addEventListener('click', () => {
       accessModal.classList.remove('active');
@@ -285,7 +282,7 @@ function handleAccessModal() {
     });
   }
 
-  // Закрытие модального окна покупки доступа по клику вне его содержимого
+  
   if (accessModal) {
     accessModal.addEventListener('click', (e) => {
       if (e.target === accessModal) {
@@ -297,7 +294,7 @@ function handleAccessModal() {
   }
 }
 
-// Функция для поиска приложений по BundleID или названию
+
 function getBundleId(searchvalue) {
   var country = document.getElementById("country").value;
   var isBundleId = searchvalue.includes(".");
@@ -335,7 +332,7 @@ function getBundleId(searchvalue) {
   }
 }
 
-// Функция отображения информации о приложении
+
 function displayApp(app) {
   var appName = app.trackName;
   var appId = app.trackId;
@@ -367,46 +364,46 @@ function displayApp(app) {
   $("#results").append(result);
 }
 
-// Функция копирования в буфер обмена
+
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
     alert("Copied to clipboard: " + text);
   });
 }
 
-// Обработчики событий
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Загрузка пользовательских настроек
+  
   loadUserPreferences();
 
-  // Обработчик переключения темы
+  
   const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', toggleTheme);
 
-  // Обработчик переключения языка
+  
   const languageToggle = document.getElementById('language-toggle');
   languageToggle.addEventListener('click', () => {
     const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
     setLanguage(newLang);
   });
 
-  // Настройка сайдбара
+  
   handleSidebar();
 
-  // Настройка модального окна настроек
+  
   handleSettingsModal();
   
-  // Настройка модального окна покупки доступа
+  
   handleAccessModal();
 
-  // Обработчик формы поиска
+  
   $("#searchform").submit(function(event) {
     event.preventDefault();
     var searchfield = $("#search");
     getBundleId(searchfield.val());
   });
 
-  // Добавляем обработчик для кнопки настроек в сайдбаре
+  
   const settingsToggleSidebar = document.getElementById('settings-toggle-sidebar');
   if (settingsToggleSidebar) {
     settingsToggleSidebar.addEventListener('click', (e) => {
@@ -420,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden';
         overlay.classList.add('active');
 
-        // Закрываем сайдбар при открытии настроек
+        
         if (sidebar) {
           sidebar.classList.remove('active');
         }
@@ -429,5 +426,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Делаем функцию copyToClipboard глобальной
+
 window.copyToClipboard = copyToClipboard;

@@ -1,8 +1,6 @@
-// Глобальные переменные
 let currentLanguage = 'ru';
 let currentTheme = 'dark';
 
-// Словарь для многоязычности
 const translations = {
   'ru': {
     'menu': 'Меню',
@@ -118,12 +116,12 @@ const translations = {
   }
 };
 
-// Функция для переключения языка
+
 function setLanguage(lang) {
   currentLanguage = lang;
   document.getElementById('language-toggle').textContent = lang.toUpperCase();
 
-  // Обновляем все элементы с атрибутом data-translate
+  
   const elements = document.querySelectorAll('[data-translate]');
   elements.forEach(element => {
     const key = element.getAttribute('data-translate');
@@ -132,7 +130,7 @@ function setLanguage(lang) {
     }
   });
 
-  // Обновляем плейсхолдеры
+  
   const placeholders = document.querySelectorAll('[data-translate-placeholder]');
   placeholders.forEach(element => {
     const key = element.getAttribute('data-translate-placeholder');
@@ -141,16 +139,16 @@ function setLanguage(lang) {
     }
   });
 
-  // Сохраняем предпочтение пользователя
+  
   localStorage.setItem('preferred_language', lang);
 
-  // Обновляем информацию о приложении
+  
   updateAppDetailsTranslations();
 
-  // Обновляем цены в модальном окне
+  
   updateAccessModalPricing();
 
-  // Обновляем кнопку "Купить доступ"
+  
   const buyAccessBtn = document.getElementById('buy-access-btn');
   if (buyAccessBtn) {
     const buyAccessSpan = buyAccessBtn.querySelector('span');
@@ -161,7 +159,7 @@ function setLanguage(lang) {
 }
 
 
-// Обновление переводимых элементов на странице с детальной информацией
+
 function updateAppDetailsTranslations() {
   const appVersion = sessionStorage.getItem('app_version');
   const appDescription = sessionStorage.getItem('app_description');
@@ -189,7 +187,7 @@ function updateAppDetailsTranslations() {
   }
 }
 
-// Функция для переключения темы
+
 function toggleTheme() {
   const body = document.body;
   const themeIcon = document.querySelector('#theme-toggle i');
@@ -208,11 +206,11 @@ function toggleTheme() {
     currentTheme = 'light';
   }
 
-  // Сохраняем предпочтение пользователя
+  
   localStorage.setItem('preferred_theme', currentTheme);
 }
 
-// Получение данных о приложении по его идентификатору
+
 async function loadAppDetails() {
   const appBundle = sessionStorage.getItem('app_bundle');
 
@@ -245,12 +243,12 @@ async function loadAppDetails() {
       window.location.href = 'index.html';
     }
   } else {
-    // Если идентификатор приложения отсутствует, возвращаемся на главную страницу
+    
     window.location.href = 'index.html';
   }
 }
 
-// Отображение подробной информации о приложении
+
 function displayAppDetails(app) {
   const appVersion = sessionStorage.getItem('app_version');
   const appDescription = sessionStorage.getItem('app_description');
@@ -270,7 +268,7 @@ function displayAppDetails(app) {
       dateOptions
     );
 
-    // Проверяем ширину экрана для адаптивности отображения
+    
     const isMobile = window.innerWidth < 840;
 
     document.getElementById("current-version").textContent = `${translations[currentLanguage].current_version}: ${currentVersion}`;
@@ -280,17 +278,17 @@ function displayAppDetails(app) {
     document.getElementById("description-modify").innerHTML = appDescription.replace(/\n/g, '<br>');
 
 
-    // Проверка на наличие описания
+    
     const descriptionElement = document.getElementById("app-description-modifications");
     if (app.description && app.description.trim() !== '') {
-      // Создаем короткую версию описания (примерно первые 150 символов)
+      
       const shortDescription = app.description.slice(0, 150) + (app.description.length > 150 ? '...' : '');
       descriptionElement.innerHTML = shortDescription.replace(/\n/g, '<br>');
     } else {
       descriptionElement.innerHTML = translations[currentLanguage].no_description;
     }
 
-    // Проверка на наличие примечаний к релизу
+    
     const releaseNotesElement = document.getElementById("release-notes-modifications");
     if (app.releaseNotes && app.releaseNotes.trim() !== '') {
       const shortReleaseNotes = app.releaseNotes.slice(0, 150) + (app.releaseNotes.length > 150 ? '...' : '');
@@ -318,7 +316,7 @@ function displayAppDetails(app) {
       const screenshotsContainer = document.getElementById("screenshots-container");
       screenshotsContainer.innerHTML = '';
 
-      // Используем скриншоты для текущего устройства, если они доступны
+      
       const screenshots = app.screenshotUrls || [];
 
       if (screenshots.length === 0) {
@@ -342,21 +340,21 @@ function displayAppDetails(app) {
   });
 }
 
-// Обработка сайдбара
+
 function handleSidebar() {
   const menuBtn = document.getElementById('menu-btn');
   const closeSidebarBtn = document.getElementById('close-sidebar');
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
 
-  // Открытие сайдбара
+  
   menuBtn.addEventListener('click', () => {
     sidebar.classList.add('active');
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   });
 
-  // Закрытие сайдбара кнопкой
+  
   closeSidebarBtn.addEventListener('click', () => {
     console.log('Закрытие сайдбара');
     sidebar.classList.remove('active');
@@ -364,14 +362,14 @@ function handleSidebar() {
     document.body.style.overflow = '';
   });
 
-  // Закрытие сайдбара по клику на оверлей
+  
   overlay.addEventListener('click', () => {
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
   });
 
-  // Добавляем обработчик для кнопки настроек в сайдбаре
+  
   const settingsToggleSidebar = document.getElementById('settings-toggle-sidebar');
   if (settingsToggleSidebar) {
     settingsToggleSidebar.addEventListener('click', (e) => {
@@ -381,7 +379,7 @@ function handleSidebar() {
         settingsModal.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Закрываем сайдбар при открытии настроек
+        
         if (sidebar) {
           sidebar.classList.remove('active');
         }
@@ -389,7 +387,7 @@ function handleSidebar() {
           overlay.classList.remove('active');
         }
 
-        // Закрытие модального окна настроек кнопкой
+        
         const closeSettingsBtn = document.getElementById('close-settings');
         if (closeSettingsBtn) {
           closeSettingsBtn.addEventListener('click', () => {
@@ -399,7 +397,7 @@ function handleSidebar() {
           });
         }
 
-        // Закрытие модального окна настроек по клику вне его содержимого
+        
         if (settingsModal) {
           settingsModal.addEventListener('click', (e) => {
             if (e.target === settingsModal) {
@@ -414,15 +412,15 @@ function handleSidebar() {
   }
 }
 
-// Загрузка пользовательских настроек
+
 function loadUserPreferences() {
-  // Загрузка предпочтительного языка
+  
   const savedLanguage = localStorage.getItem('preferred_language');
   if (savedLanguage) {
     setLanguage(savedLanguage);
   }
 
-  // Загрузка предпочтительной темы
+  
   const savedTheme = localStorage.getItem('preferred_theme');
   if (savedTheme) {
     if (savedTheme === 'light' && currentTheme === 'dark') {
@@ -433,59 +431,59 @@ function loadUserPreferences() {
   }
 }
 
-// Обработчики событий
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Загрузка пользовательских настроек
+  
   loadUserPreferences();
 
-  // Загрузка данных о приложении
+  
   loadAppDetails();
 
-  // Обработчик кнопки "Назад"
+  
   const backButton = document.getElementById('back-button');
   backButton.addEventListener('click', () => {
-    // Убедимся, что sessionStorage содержит currentPage, прежде чем перенаправлять
+    
     if (!sessionStorage.getItem('currentPage')) {
       sessionStorage.setItem('currentPage', '1');
     }
     window.location.href = 'index.html';
   });
 
-  // Обработчик переключения темы
+  
   const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', toggleTheme);
 
-  // Обработчик переключения языка
+  
   const languageToggle = document.getElementById('language-toggle');
   languageToggle.addEventListener('click', () => {
     const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
     setLanguage(newLang);
-    updateAccessModalPricing(); // Обновляем текст в модальном окне при смене языка
+    updateAccessModalPricing(); 
   });
 
-  // Настройка сайдбара
+  
   handleSidebar();
 });
 
-// Обработка модального окна покупки доступа
+
 function handleAccessModal() {
   const buyAccessBtn = document.getElementById('buy-access-btn');
   const closeAccessBtn = document.getElementById('close-access');
   const accessModal = document.getElementById('access-modal');
   const purchaseBtn = document.querySelector('.purchase-access-btn');
 
-  // Открытие модального окна покупки доступа
+  
   if (buyAccessBtn) {
     buyAccessBtn.addEventListener('click', (e) => {
       e.preventDefault();
       accessModal.classList.add('active');
       document.body.style.overflow = 'hidden';
       document.getElementById('overlay').classList.add('active');
-      updateAccessModalPricing(); // Update pricing when modal opens
+      updateAccessModalPricing(); 
     });
   }
 
-  // Закрытие модального окна покупки доступа кнопкой
+  
   if (closeAccessBtn) {
     closeAccessBtn.addEventListener('click', () => {
       accessModal.classList.remove('active');
@@ -494,7 +492,7 @@ function handleAccessModal() {
     });
   }
 
-  // Закрытие модального окна покупки доступа по клику вне его содержимого
+  
   if (accessModal) {
     accessModal.addEventListener('click', (e) => {
       if (e.target === accessModal) {
@@ -505,32 +503,32 @@ function handleAccessModal() {
     });
   }
 
-  // Обработка нажатия на кнопку "Приобрести доступ"
+  
   if (purchaseBtn) {
     purchaseBtn.addEventListener('click', () => {
-      // Здесь может быть код для перехода на страницу оплаты
+      
       window.location.href = 'https://bit.ly/3Xvdyab';
     });
   }
 }
 
-// Функция для обновления цен в модальном окне
+
 function updateAccessModalPricing() {
-  // Находим элементы с классом price в модальном окне
+  
   const priceElements = document.querySelectorAll('.pricing-item .price');
 
   if (priceElements && priceElements.length >= 3) {
-    // Обновляем значения для трех элементов цены
+    
     const translations_key = currentLanguage === 'ru' ? 'monthly_price' : 'monthly_price';
     const translations_key2 = currentLanguage === 'ru' ? 'quarterly_price' : 'quarterly_price';
     const translations_key3 = currentLanguage === 'ru' ? 'yearly_price' : 'yearly_price';
 
-    // Устанавливаем атрибут data-translate для корректного перевода
+    
     priceElements[0].setAttribute('data-translate', translations_key);
     priceElements[1].setAttribute('data-translate', translations_key2);
     priceElements[2].setAttribute('data-translate', translations_key3);
 
-    // Устанавливаем текст
+    
     priceElements[0].textContent = translations[currentLanguage][translations_key];
     priceElements[1].textContent = translations[currentLanguage][translations_key2];
     priceElements[2].textContent = translations[currentLanguage][translations_key3];
@@ -538,7 +536,7 @@ function updateAccessModalPricing() {
 }
 
 
-// Вызов функции обработки модального окна при загрузке страницы
+
 document.addEventListener('DOMContentLoaded', () => {
   handleAccessModal();
 });
