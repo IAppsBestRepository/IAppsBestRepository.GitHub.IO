@@ -1,16 +1,43 @@
-.title-section {
-  text-align: center;
-  margin-bottom: 30px;
+.update-repo-container {
+  padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.title-section h1 {
-  color: var(--primary-color);
-  margin-bottom: 10px;
+.update-repo-container h1 {
+  margin-top: 30px;
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
 }
 
-.title-section p {
-  color: var(--text-color);
-  font-size: 1.1rem;
+@media (max-width: 850px) {
+  header {
+    height: 50px;
+    min-height: 50px;
+  }
+
+  .header-content {
+    height: 50px;
+    padding: 0;
+  }
+
+  main {
+    margin-top: 50px;
+  }
+
+  .update-repo-container h1 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .update-repo-container h1 {
+    font-size: 1.3rem;
+    margin-top: 15px;
+  }
 }
 
 .generator-form {

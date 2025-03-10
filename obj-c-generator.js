@@ -376,47 +376,7 @@ function handleSettingsModal() {
 
 
 function handleAccessModal() {
-  const buyAccessBtn = document.getElementById('buy-access-btn');
-  const closeAccessBtn = document.getElementById('close-access');
-  const accessModal = document.getElementById('access-modal');
-  const purchaseBtn = document.querySelector('.purchase-access-btn');
-
-  
-  if (buyAccessBtn) {
-    buyAccessBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      accessModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('overlay').classList.add('active');
-    });
-  }
-
-  
-  if (closeAccessBtn) {
-    closeAccessBtn.addEventListener('click', () => {
-      accessModal.classList.remove('active');
-      document.body.style.overflow = '';
-      document.getElementById('overlay').classList.remove('active');
-    });
-  }
-
-  
-  if (accessModal) {
-    accessModal.addEventListener('click', (e) => {
-      if (e.target === accessModal) {
-        accessModal.classList.remove('active');
-        document.body.style.overflow = '';
-        document.getElementById('overlay').classList.remove('active');
-      }
-    });
-  }
-
-  
-  if (purchaseBtn) {
-    purchaseBtn.addEventListener('click', () => {
-      window.location.href = 'https://bit.ly/3Xvdyab';
-    });
-  }
+  // Функция оставлена пустой для совместимости
 }
 
 
