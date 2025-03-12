@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор OBJ-C кода</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="obj-c-generator.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dark-theme">
+  <div class="overlay" id="overlay"></div>
+
+  
+
+  <div class="settings-modal" id="settings-modal">
+    <div class="settings-modal-content">
+      <div class="settings-modal-header">
+        <h3 data-translate="settings">Настройки</h3>
+        <button id="close-settings" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="settings-modal-body">
+        <div class="settings-item">
+          <span data-translate="theme">Тема</span>
+          <button id="theme-toggle" class="theme-toggle-btn">
+            <i class="fas fa-moon"></i>
+            <span data-translate="dark_theme">Темная</span>
+          </button>
+        </div>
+        <div class="settings-item">
+          <span data-translate="language">Язык</span>
+          <button id="language-toggle" class="language-toggle-btn">RU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button id="close-sidebar" class="close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="sidebar-content">
+      <h3 data-translate="menu">Меню</h3>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> <span data-translate="home">Главная</span></a></li>
+        <li><a href="update-repository.html"><i class="fas fa-cloud-upload-alt"></i> <span
+              data-translate="update_repository">Обновить репозиторий</span></a></li>
+        <li><a href="app-search.html"><i class="fas fa-search"></i> <span data-translate="app_search">Поиск приложений в
+              AppStore</span></a></li>
+        <li><a href="converter.html"><i class="fas fa-exchange-alt"></i> <span
+              data-translate="converter">Конвертер</span></a></li>
+        <li><a href="obj-c-generator.html"><i class="fas fa-code"></i> <span
+              data-translate="obj_c_generator">Генератор кода OBJ-C</span></a></li>
+        <li><a href="#" id="settings-toggle-sidebar"><i class="fas fa-cog"></i> <span
+              data-translate="settings">Настройки</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="left-side">
+          <button id="menu-btn" class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="logo">IAppsBest</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="update-repo-container">
+        <h1 data-translate="obj_c_generator_title" class="parallax-element" data-parallax-speed="0.1">Генератор OBJ-C кода</h1>
+
+      <div class="generator-form fade-in-element hover-glow">
+        <div class="form-group">
+          <label for="url-input" data-translate="url_input">URL запроса:</label>
+          <input type="text" id="url-input" placeholder="Введите URL запроса" data-translate-placeholder="url_input_placeholder">
+        </div>
+
+        <div class="form-group">
+          <label data-translate="mechanism_selection">Выбор механизма:</label>
+          <select id="mechanism-select" class="custom-select">
+            <option value="dataTaskWithRequest" data-translate="mechanism_datatask">- (id)dataTaskWithRequest</option>
+            <option value="_dataTaskWithRequest">- (id)_dataTaskWithRequest</option>
+            <option value="sessionDelegate">SessionDelegate</option>
+          </select>
+        </div>
+        
+        <div class="form-group" id="delegate-input-container" style="display: none;">
+          <label for="delegate-input" data-translate="delegate_input">Имя делегата:</label>
+          <input type="text" id="delegate-input" placeholder="Введите имя делегата" data-translate-placeholder="delegate_input_placeholder">
+        </div>
+
+        <div class="form-group">
+          <label data-translate="substitution_type">Тип подмены:</label>
+          <div class="custom-radio-group">
+            <label class="custom-radio">
+              <input type="radio" name="substitution-type" value="partial" checked>
+              <span class="custom-radio-label" data-translate="partial_substitution">Частичная подмена</span>
+            </label>
+            <label class="custom-radio">
+              <input type="radio" name="substitution-type" value="full">
+              <span class="custom-radio-label" data-translate="full_substitution">Полная подмена</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div id="partial-substitution-section" class="substitution-section">
+        <div class="json-upload-section">
+          <div class="section-header">
+            <h2 data-translate="original_json">Оригинальный JSON</h2>
+            <div class="section-actions">
+              <label for="json-file-input" class="upload-button" title="Загрузить JSON" data-translate-title="upload_json_title">
+                <i class="fas fa-upload"></i>
+              </label>
+              <button id="manual-json-btn" class="action-button" title="Вставить JSON вручную" data-translate-title="insert_json_title">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+            </div>
+            <input type="file" id="json-file-input" accept=".json" hidden>
+          </div>
+          <div id="json-structure" class="json-structure">
+            <div class="placeholder" data-translate="json_placeholder">
+              <i class="fas fa-file-upload"></i>
+              <p>Загрузите JSON файл для отображения структуры данных</p>
+            </div>
+          </div>
+          
+          <div id="manual-json-modal" class="manual-json-modal">
+            <div class="manual-json-content">
+              <div class="modal-header">
+                <h3 data-translate="insert_json">Вставить JSON</h3>
+                <button id="close-manual-json" class="close-btn">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <textarea id="manual-json-input" placeholder="Вставьте ваш JSON код сюда..." data-translate-placeholder="insert_json_placeholder"></textarea>
+                <button id="apply-manual-json" class="primary-btn">
+                  <i class="fas fa-check"></i>
+                  <span data-translate="apply">Применить</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modifications-section">
+          <div class="section-header">
+            <h2 data-translate="json_modifications">Модификации JSON</h2>
+            <button id="clear-modifications" class="action-button" title="Очистить модификации" data-translate-title="clear_modifications_title">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+          <div id="modifications-list" class="modifications-list">
+            <div class="placeholder" data-translate="modifications_placeholder">
+              <i class="fas fa-edit"></i>
+              <p>Выберите ключи в структуре JSON для их модификации</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="full-substitution-section" class="substitution-section" style="display:none;">
+        <div class="json-upload-section">
+          <div class="section-header">
+            <h2 data-translate="custom_json">Пользовательский JSON</h2>
+            <div class="section-actions">
+              <label for="full-json-file-input" class="upload-button" title="Загрузить JSON" data-translate-title="upload_json_title">
+                <i class="fas fa-upload"></i>
+              </label>
+              <button id="manual-full-json-btn" class="action-button" title="Вставить JSON вручную" data-translate-title="insert_json_title">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+            </div>
+            <input type="file" id="full-json-file-input" accept=".json" hidden>
+          </div>
+          <div id="full-json-structure" class="json-structure">
+            <div class="placeholder" data-translate="json_placeholder">
+              <i class="fas fa-file-upload"></i>
+              <p>Загрузите JSON файл для полной подмены</p>
+            </div>
+          </div>
+          
+          <div id="manual-full-json-modal" class="manual-json-modal">
+            <div class="manual-json-content">
+              <div class="modal-header">
+                <h3 data-translate="insert_json">Вставить JSON</h3>
+                <button id="close-manual-full-json" class="close-btn">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <textarea id="manual-full-json-input" placeholder="Вставьте ваш JSON код сюда..." data-translate-placeholder="insert_json_placeholder"></textarea>
+                <button id="apply-manual-full-json" class="primary-btn">
+                  <i class="fas fa-check"></i>
+                  <span data-translate="apply">Применить</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="generated-code-section">
+        <div class="section-header">
+          <h2 data-translate="generated_code">Сгенерированный код</h2>
+          <button id="copy-code" class="action-button" title="Копировать код" data-translate-title="copy_code_title">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+        <pre id="generated-code" class="generated-code">
+// Здесь будет отображен сгенерированный код
+// Загрузите JSON и внесите модификации для генерации кода
+        </pre>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">IAppsBest</div>
+        <div class="footer-links">
+          <a href="#" data-translate="home">Главная</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://bit.ly/410kOxh" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 IAppsBest. <span data-translate="rights">Все права защищены</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="obj-c-generator.js"></script>
+  <script src="animations.js"></script>
+</body>
+
+</html>
