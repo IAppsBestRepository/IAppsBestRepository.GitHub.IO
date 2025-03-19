@@ -519,8 +519,8 @@ function updateAccessModalPricing() {
 
   if (priceElements && priceElements.length >= 3) {
     
-    const translations_key = currentLanguage === 'ru' ? 'monthly_price' : 'monthly_price';
-    const translations_key2 = currentLanguage === 'ru' ? 'quarterly_price' : 'quarterly_price';
+    const translations_key = currentLanguage === 'ru' ? 'quarterly_price' : 'quarterly_price';
+    const translations_key2 = currentLanguage === 'ru' ? 'half-yearly_price' : 'half-yearly_price';
     const translations_key3 = currentLanguage === 'ru' ? 'yearly_price' : 'yearly_price';
 
     
