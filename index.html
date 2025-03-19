@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог приложений</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dark-theme">
+  <div class="overlay" id="overlay"></div>
+
+  <div class="access-modal" id="access-modal">
+    <div class="access-modal-content">
+      <div class="access-modal-header">
+        <h3 data-translate="buy_access_title">Платный доступ к каталогу</h3>
+        <button id="close-access" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="access-modal-body">
+        <p data-translate="access_description">Получите полный доступ к каталогу приложений с расширенным функционалом и
+          дополнительными возможностями.</p>
+        <div class="pricing-table">
+          <div class="pricing-item">
+            <h4 data-translate="quarterly_plan">Трехмесячный план</h4>
+            <div class="price" data-translate="quarterly_price">399 ₽</div>
+            <ul>
+              <li data-translate="access_feature1">Доступ ко всем приложениям</li>
+              <li data-translate="access_feature2">Приоритетная поддержка</li>
+              <li data-translate="access_feature3">Без рекламы</li>
+            </ul>
+          </div>
+          <div class="pricing-item">
+            <h4 data-translate="half-yearly_plan">Шестимесячный план</h4>
+            <div class="price" data-translate="half-yearly_price">599 ₽</div>
+            <ul>
+              <li data-translate="access_feature1">Доступ ко всем приложениям</li>
+              <li data-translate="access_feature2">Приоритетная поддержка</li>
+              <li data-translate="access_feature3">Без рекламы</li>
+              <li data-translate="access_feature5">Скидка 15%</li>
+            </ul>
+          </div>
+          <div class="pricing-item featured">
+            <div class="featured-label" data-translate="best_value">Выгодно</div>
+            <h4 data-translate="yearly_plan">Годовой план</h4>
+            <div class="price" data-translate="yearly_price">899 ₽</div>
+            <ul>
+              <li data-translate="access_feature1">Доступ ко всем приложениям</li>
+              <li data-translate="access_feature2">Приоритетная поддержка</li>
+              <li data-translate="access_feature3">Без рекламы</li>
+              <li data-translate="access_feature6">Скидка 35%</li>
+            </ul>
+          </div>
+        </div>
+        <button class="purchase-access-btn" data-translate="purchase_access">Приобрести доступ</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-modal" id="settings-modal">
+    <div class="settings-modal-content">
+      <div class="settings-modal-header">
+        <h3 data-translate="settings">Настройки</h3>
+        <button id="close-settings" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="settings-modal-body">
+        <div class="settings-item">
+          <span data-translate="theme">Тема</span>
+          <button id="theme-toggle" class="theme-toggle-btn">
+            <i class="fas fa-moon"></i>
+            <span data-translate="dark_theme">Темная</span>
+          </button>
+        </div>
+        <div class="settings-item">
+          <span data-translate="language">Язык</span>
+          <button id="language-toggle" class="language-toggle-btn">RU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button id="close-sidebar" class="close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="sidebar-content">
+      <h3 data-translate="menu">Меню</h3>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> <span data-translate="home">Главная</span></a></li>
+        <li><a href="update-repository.html"><i class="fas fa-cloud-upload-alt"></i> <span
+              data-translate="update_repository">Обновить репозиторий</span></a></li>
+        <li><a href="app-search.html"><i class="fas fa-search"></i> <span data-translate="app_search">Поиск приложений в
+              AppStore</span></a></li>
+        <li><a href="converter.html"><i class="fas fa-exchange-alt"></i> <span
+              data-translate="converter">Конвертер</span></a></li>
+        <li><a href="obj-c-generator.html"><i class="fas fa-code"></i> <span
+              data-translate="obj_c_generator">Генератор кода OBJ-C</span></a></li>
+        <li><a href="#" id="settings-toggle-sidebar"><i class="fas fa-cog"></i> <span
+              data-translate="settings">Настройки</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="left-side">
+          <button id="menu-btn" class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="logo">IAppsBest</div>
+        </div>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Поиск приложений..."
+            data-translate-placeholder="search_placeholder">
+          <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <a href="https://bit.ly/3Xvdyab" class="buy-access-btn" id="buy-access-btn">
+          <i class="fas fa-crown"></i>
+          <span data-translate="buy_access">Купить доступ</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="top-bar">
+        <div class="results-count" id="results-count"><span data-translate="found_apps">Найдено приложений</span>:
+          <span>0</span></div>
+        <div class="display-settings">
+          <label for="sort-order" data-translate="sort_by">Сортировка:</label>
+          <select id="sort-order" class="custom-select">
+            <option value="default" data-translate="sort_default">По умолчанию</option>
+            <option value="newest" data-translate="sort_newest">Сначала новые</option>
+            <option value="oldest" data-translate="sort_oldest">Сначала старые</option>
+          </select>
+          <label for="cards-per-page" data-translate="apps_per_page">Приложений на странице:</label>
+          <select id="cards-per-page" class="custom-select">
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="app-cards fade-in-element" id="app-cards">
+
+      </div>
+
+      <div class="pagination" id="pagination">
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">IAppsBest</div>
+        <div class="footer-links">
+          <a href="#" data-translate="home">Главная</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://bit.ly/410kOxh" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 IAppsBest. <span data-translate="rights">Все права защищены</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+  <script src="animations.js"></script>
+</body>
+
+</html>

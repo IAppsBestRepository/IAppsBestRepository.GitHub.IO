@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Поиск приложений в AppStore</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="app-search.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="dark-theme app-search">
+  <div class="overlay" id="overlay"></div>
+
+  <div class="settings-modal" id="settings-modal">
+    <div class="settings-modal-content">
+      <div class="settings-modal-header">
+        <h3 data-translate="settings">Настройки</h3>
+        <button id="close-settings" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="settings-modal-body">
+        <div class="settings-item">
+          <span data-translate="theme">Тема</span>
+          <button id="theme-toggle" class="theme-toggle-btn">
+            <i class="fas fa-moon"></i>
+            <span data-translate="dark_theme">Темная</span>
+          </button>
+        </div>
+        <div class="settings-item">
+          <span data-translate="language">Язык</span>
+          <button id="language-toggle" class="language-toggle-btn">RU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button id="close-sidebar" class="close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="sidebar-content">
+      <h3 data-translate="menu">Меню</h3>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> <span data-translate="home">Главная</span></a></li>
+        <li><a href="update-repository.html"><i class="fas fa-cloud-upload-alt"></i> <span data-translate="update_repository">Обновить репозиторий</span></a></li>
+        <li><a href="app-search.html"><i class="fas fa-search"></i> <span data-translate="app_search">Поиск приложений в AppStore</span></a></li>
+        <li><a href="converter.html"><i class="fas fa-exchange-alt"></i> <span data-translate="converter">Конвертер</span></a></li>
+        <li><a href="obj-c-generator.html"><i class="fas fa-code"></i> <span data-translate="obj_c_generator">Генератор кода OBJ-C</span></a></li>
+        <li><a href="#" id="settings-toggle-sidebar"><i class="fas fa-cog"></i> <span data-translate="settings">Настройки</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="left-side">
+          <button id="menu-btn" class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="logo">IAppsBest</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="search-page-container">
+        <h1 data-translate="app_search_title">Поиск приложений в AppStore</h1>
+
+        <form id="searchform" class="search-form" style="margin-top: 15px;">
+          <input type="text" id="search" class="search-input" placeholder="Введите название приложения или BundleID" data-translate-placeholder="search_app_placeholder">
+          <select id="country" class="country-select">
+            <option value="us">🇺🇸 США</option>
+            <option value="ru">🇷🇺 Россия</option>
+            <option value="gb">🇬🇧 Великобритания</option>
+            <option value="de">🇩🇪 Германия</option>
+            <option value="fr">🇫🇷 Франция</option>
+            <option value="jp">🇯🇵 Япония</option>
+            <option value="cn">🇨🇳 Китай</option>
+            <option value="kr">🇰🇷 Южная Корея</option>
+            <option value="it">🇮🇹 Италия</option>
+            <option value="es">🇪🇸 Испания</option>
+            <option value="ca">🇨🇦 Канада</option>
+            <option value="au">🇦🇺 Австралия</option>
+            <option value="br">🇧🇷 Бразилия</option>
+            <option value="mx">🇲🇽 Мексика</option>
+            <option value="in">🇮🇳 Индия</option>
+          </select>
+          <button type="submit" class="search-button">
+            <i class="fas fa-search"></i>
+            <span data-translate="search_button">Искать</span>
+          </button>
+        </form>
+
+        <div id="results"></div>
+
+        <table id="results-table" class="results-table">
+          <tbody id="results"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">IAppsBest</div>
+        <div class="footer-links">
+          <a href="#" data-translate="home">Главная</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://bit.ly/410kOxh" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 IAppsBest. <span data-translate="rights">Все права защищены</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app-search.js"></script>
+</body>
+</html>

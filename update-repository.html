@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обновление репозитория</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="update-repository.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme update-repository">
+  <div class="overlay" id="overlay"></div>
+  
+  <div class="settings-modal" id="settings-modal">
+    <div class="settings-modal-content">
+      <div class="settings-modal-header">
+        <h3 data-translate="settings">Настройки</h3>
+        <button id="close-settings" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="settings-modal-body">
+        <div class="settings-item">
+          <span data-translate="theme">Тема</span>
+          <button id="theme-toggle" class="theme-toggle-btn">
+            <i class="fas fa-moon"></i>
+            <span data-translate="dark_theme">Темная</span>
+          </button>
+        </div>
+        <div class="settings-item">
+          <span data-translate="language">Язык</span>
+          <button id="language-toggle" class="language-toggle-btn">RU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button id="close-sidebar" class="close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="sidebar-content">
+      <h3 data-translate="menu">Меню</h3>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> <span data-translate="home">Главная</span></a></li>
+        <li><a href="update-repository.html"><i class="fas fa-cloud-upload-alt"></i> <span data-translate="update_repository">Обновить репозиторий</span></a></li>
+        <li><a href="app-search.html"><i class="fas fa-search"></i> <span data-translate="app_search">Поиск приложений в AppStore</span></a></li>
+        <li><a href="converter.html"><i class="fas fa-exchange-alt"></i> <span data-translate="converter">Конвертер</span></a></li>
+        <li><a href="obj-c-generator.html"><i class="fas fa-code"></i> <span data-translate="obj_c_generator">Генератор кода OBJ-C</span></a></li>
+        <li><a href="#" id="settings-toggle-sidebar"><i class="fas fa-cog"></i> <span data-translate="settings">Настройки</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="left-side">
+          <button id="menu-btn" class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="logo">IAppsBest</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="update-repo-container">
+        <h1 data-translate="update_repository_title" class="parallax-element" data-parallax-speed="0.1">Обновление репозитория</h1>
+        
+        <div class="button-group">
+          <div class="file-input-container">
+            <button class="action-btn">
+              <i class="fas fa-file-upload"></i>
+              <span data-translate="upload_json">Загрузить JSON</span>
+            </button>
+            <input type="file" id="jsonFileInput" accept=".json" onchange="loadJSON()">
+          </div>
+          <button class="action-btn" onclick="updateAppImages()">
+            <i class="fas fa-image"></i>
+            <span data-translate="update_images">Обновить изображения</span>
+          </button>
+          <button class="action-btn" onclick="generateAnnouncement()">
+            <i class="fas fa-bullhorn"></i>
+            <span data-translate="generate_announcement">Создать анонс</span>
+          </button>
+        </div>
+        
+        <h2 class="form-section-title" data-translate="app_edit_form">Форма редактирования приложения</h2>
+        
+        <div class="form-container fade-in-element hover-glow">
+          <div>
+            <div class="form-group autocomplete-container">
+              <label for="appName" data-translate="app_name">Название приложения</label>
+              <input type="text" id="appName" placeholder="Введите название" oninput="showMatches()">
+              <div id="matchesList"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="appBundle" data-translate="app_bundle">Bundle ID</label>
+              <input type="text" id="appBundle" placeholder="com.example.app">
+            </div>
+            
+            <div class="form-group">
+              <label for="appVersion" data-translate="app_version">Версия</label>
+              <input type="text" id="appVersion" placeholder="1.0.0">
+            </div>
+            
+            <div class="form-group">
+              <label for="appSize" data-translate="app_size">Размер (MB)</label>
+              <input type="text" id="appSize" placeholder="100">
+            </div>
+            
+            <div class="form-group">
+              <label for="appVersionIOS" data-translate="app_min_ios">Минимальная версия iOS</label>
+              <input type="text" id="appVersionIOS" placeholder="13.0">
+            </div>
+          </div>
+          
+          <div>
+            <div class="form-group">
+              <label for="appImage" data-translate="app_image">URL изображения</label>
+              <input type="text" id="appImage" placeholder="https://example.com/image.png">
+            </div>
+            
+            <div class="form-group">
+              <label for="appPackage" data-translate="app_package">URL пакета</label>
+              <input type="text" id="appPackage" placeholder="https://example.com/app.ipa">
+            </div>
+            
+            <div class="form-group">
+              <label for="appType" data-translate="app_type">Тип (платный/бесплатный)</label>
+              <select id="appType">
+                <option value="false">Бесплатное</option>
+                <option value="true">Платное</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="appCategory" data-translate="app_category">Категория</label>
+              <select id="appCategory">
+                <option value="0">Общие</option>
+                <option value="1">Игры</option>
+                <option value="2">Социальные сети</option>
+                <option value="3">Фото и видео</option>
+                <option value="4">Производительность</option>
+                <option value="5">Образование</option>
+                <option value="6">Развлечения</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="appDescription" data-translate="app_description">Описание</label>
+              <textarea id="appDescription" placeholder="Введите описание приложения"></textarea>
+            </div>
+          </div>
+        </div>
+        
+        <div class="button-group">
+          <button class="action-btn" onclick="applyChanges()">
+            <i class="fas fa-save"></i>
+            <span data-translate="apply_changes">Применить изменения</span>
+          </button>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <h2 class="form-section-title" data-translate="export_options">Экспорт</h2>
+        
+        <div class="button-group">
+          <button class="action-btn" onclick="installJSONWithBundle()">
+            <i class="fas fa-file-download"></i>
+            <span data-translate="download_with_bundle">Скачать JSON с Bundle</span>
+          </button>
+          <button class="action-btn" onclick="installJSONWithoutBundle()">
+            <i class="fas fa-file-download"></i>
+            <span data-translate="download_without_bundle">Скачать JSON без Bundle</span>
+          </button>
+          <button class="action-btn" onclick="parseJSON()">
+            <i class="fas fa-file-download"></i>
+            <span data-translate="download_parse">Скачать Parse JSON</span>
+          </button>
+        </div>
+        
+        <div id="jsonDataDisplay" class="json-display-container" style="display: none;">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">IAppsBest</div>
+        <div class="footer-links">
+          <a href="#" data-translate="home">Главная</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://bit.ly/410kOxh" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 IAppsBest. <span data-translate="rights">Все права защищены</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="update-repository.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>
