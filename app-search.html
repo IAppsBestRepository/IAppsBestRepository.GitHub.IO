@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Поиск приложений в AppStore</title>
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="app-search.css">
@@ -33,6 +33,21 @@
           <span data-translate="language">Язык</span>
           <button id="language-toggle" class="language-toggle-btn">RU</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscriptions Modal -->
+  <div class="subscriptions-modal" id="subscriptions-modal">
+    <div class="subscriptions-modal-content">
+      <div class="subscriptions-modal-header">
+        <h3 data-translate="subscriptions_title">Подписки приложения</h3>
+        <button id="close-subscriptions" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="subscriptions-modal-body" id="subscriptions-content">
+        <div id="subscriptions-list"></div>
       </div>
     </div>
   </div>
@@ -74,25 +89,27 @@
       <div class="search-page-container">
         <h1 data-translate="app_search_title">Поиск приложений в AppStore</h1>
 
-        <form id="searchform" class="search-form" style="margin-top: 15px;">
-          <input type="text" id="search" class="search-input" placeholder="Введите название приложения или BundleID" data-translate-placeholder="search_app_placeholder">
-          <select id="country" class="country-select">
-            <option value="us">🇺🇸 США</option>
-            <option value="ru">🇷🇺 Россия</option>
-            <option value="gb">🇬🇧 Великобритания</option>
-            <option value="de">🇩🇪 Германия</option>
-            <option value="fr">🇫🇷 Франция</option>
-            <option value="jp">🇯🇵 Япония</option>
-            <option value="cn">🇨🇳 Китай</option>
-            <option value="kr">🇰🇷 Южная Корея</option>
-            <option value="it">🇮🇹 Италия</option>
-            <option value="es">🇪🇸 Испания</option>
-            <option value="ca">🇨🇦 Канада</option>
-            <option value="au">🇦🇺 Австралия</option>
-            <option value="br">🇧🇷 Бразилия</option>
-            <option value="mx">🇲🇽 Мексика</option>
-            <option value="in">🇮🇳 Индия</option>
-          </select>
+        <form id="searchform" class="search-form">
+          <div class="search-wrapper">
+            <input type="text" id="search" class="search-input" placeholder="Введите название приложения или BundleID" data-translate-placeholder="search_app_placeholder">
+            <select id="country" class="country-select" aria-label="Выбор страны">
+              <option value="us">🇺🇸 США</option>
+              <option value="ru">🇷🇺 Россия</option>
+              <option value="gb">🇬🇧 Великобритания</option>
+              <option value="de">🇩🇪 Германия</option>
+              <option value="fr">🇫🇷 Франция</option>
+              <option value="jp">🇯🇵 Япония</option>
+              <option value="cn">🇨🇳 Китай</option>
+              <option value="kr">🇰🇷 Южная Корея</option>
+              <option value="it">🇮🇹 Италия</option>
+              <option value="es">🇪🇸 Испания</option>
+              <option value="ca">🇨🇦 Канада</option>
+              <option value="au">🇦🇺 Австралия</option>
+              <option value="br">🇧🇷 Бразилия</option>
+              <option value="mx">🇲🇽 Мексика</option>
+              <option value="in">🇮🇳 Индия</option>
+            </select>
+          </div>
           <button type="submit" class="search-button">
             <i class="fas fa-search"></i>
             <span data-translate="search_button">Искать</span>
@@ -100,10 +117,6 @@
         </form>
 
         <div id="results"></div>
-
-        <table id="results-table" class="results-table">
-          <tbody id="results"></tbody>
-        </table>
       </div>
     </div>
   </main>

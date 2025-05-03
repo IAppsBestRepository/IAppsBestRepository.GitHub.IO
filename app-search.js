@@ -22,7 +22,18 @@ const translations = {
     'help': 'Помощь',
     'rights': 'Все права защищены',
     'app_not_found_by_bundleid': 'Приложение с таким BundleID не найдено.',
-    'app_not_found_by_name': 'Приложение с таким названием не найдено.'
+    'app_not_found_by_name': 'Приложение с таким названием не найдено.',
+    'subscriptions_button': 'Подписки',
+    'subscriptions_title': 'Подписки приложения',
+    'loading': 'Загрузка...',
+    'close': 'Закрыть',
+    'no_subscriptions': 'Подписки не найдены',
+    'subscriptions_found': 'Найдено подписок',
+    'copy_to_clipboard': 'Скопировано в буфер обмена',
+    'error_loading': 'Ошибка загрузки данных',
+    'no_working_proxy': 'Не удалось подключиться ни к одному прокси-серверу',
+    'try_check_directly': 'Не удалось получить подписки через прокси. Попробуйте открыть приложение в App Store',
+    'open_in_appstore': 'Открыть в App Store'
   },
   'en': {
     'menu': 'Menu',
@@ -44,7 +55,18 @@ const translations = {
     'help': 'Help',
     'rights': 'All rights reserved',
     'app_not_found_by_bundleid': 'No application found with this BundleID.',
-    'app_not_found_by_name': 'No application found with this name.'
+    'app_not_found_by_name': 'No application found with this name.',
+    'subscriptions_button': 'Subscriptions',
+    'subscriptions_title': 'App Subscriptions',
+    'loading': 'Loading...',
+    'close': 'Close',
+    'no_subscriptions': 'No subscriptions found',
+    'subscriptions_found': 'Subscriptions found',
+    'copy_to_clipboard': 'Copied to clipboard',
+    'error_loading': 'Error loading data',
+    'no_working_proxy': 'Could not connect to any proxy server',
+    'try_check_directly': 'Could not retrieve subscriptions via proxy. Try opening the app in App Store',
+    'open_in_appstore': 'Open in App Store'
   }
 };
 
@@ -260,42 +282,169 @@ function handleAccessModal() {
   }
 }
 
+// New function to handle subscription modal
+function handleSubscriptionsModal() {
+  const closeSubscriptionBtn = document.getElementById('close-subscriptions');
+  const subscriptionsModal = document.getElementById('subscriptions-modal');
+  
+  if (closeSubscriptionBtn) {
+    closeSubscriptionBtn.addEventListener('click', () => {
+      subscriptionsModal.classList.remove('active');
+      document.body.style.overflow = '';
+      document.getElementById('overlay').classList.remove('active');
+    });
+  }
+  
+  if (subscriptionsModal) {
+    subscriptionsModal.addEventListener('click', (e) => {
+      if (e.target === subscriptionsModal) {
+        subscriptionsModal.classList.remove('active');
+        document.body.style.overflow = '';
+        document.getElementById('overlay').classList.remove('active');
+      }
+    });
+  }
+}
+
+// Массив прокси-серверов CORS для использования в приложении
+const corsProxies = [
+  'https://corsproxy.io/?',
+  'https://cors-anywhere.herokuapp.com/',
+  'https://api.allorigins.win/raw?url=',
+  'https://thingproxy.freeboard.io/fetch/',
+  'https://cors-proxy.taskcluster.net/',
+  'https://yacdn.org/proxy/',
+  'https://cors.bridged.cc/',
+  'https://api.codetabs.com/v1/proxy/?quest=',
+  'https://crossorigin.me/',
+  'https://cors-proxy.htmldriven.com/?url=',
+  'https://cors.eu.org/',
+  'https://worker-proxy.rayyan-tools.workers.dev/?url=',
+  'https://proxy.cors.sh/',
+  'https://cors-proxy.fringe.zone/',
+  'https://cors.zendev.se/',
+  'https://cors.site/',
+  'https://api.scraperapi.com/?api_key=free_api_key&url=',
+  'https://cors-proxy.devdal.workers.dev/?',
+  'https://app.cors.bridged.cc/',
+  'https://cors-fetch.vercel.app/?url='
+];
 
 function getBundleId(searchvalue) {
   var country = document.getElementById("country").value;
   var isBundleId = searchvalue.includes(".");
+  
+  // Показываем загрузку
+  $("#results").html(`<div class="loading-results"><i class="fas fa-spinner fa-spin"></i> ${translations[currentLanguage].loading}</div>`);
+  $("#results-table").hide();
 
-  if (isBundleId) {
-    $.getJSON(
-      `https://itunes.apple.com/lookup?bundleId=${searchvalue}&country=${country}&callback=?`,
-      function(json) {
-        $("#results").html("");
-        if (json.resultCount > 0) {
-          json.results.forEach((app) => {
-            displayApp(app);
-          });
-          $("#results-table").fadeIn();
-        } else {
-          $("#results").html(`<p>${translations[currentLanguage].app_not_found_by_bundleid}</p>`);
+  // Функция для поиска через прокси
+  function searchViaProxy(proxyIndex = 0) {
+    if (proxyIndex >= corsProxies.length) {
+      // Если все прокси испробованы, используем fallback на JSONP
+      fallbackToJSONP();
+      return;
+    }
+    
+    const currentProxy = corsProxies[proxyIndex];
+    let apiUrl;
+    
+    if (isBundleId) {
+      apiUrl = `https://itunes.apple.com/lookup?bundleId=${searchvalue}&country=${country}`;
+    } else {
+      apiUrl = `https://itunes.apple.com/search?limit=20&media=software&term=${searchvalue}&country=${country}`;
+    }
+    
+    fetch(currentProxy + encodeURIComponent(apiUrl))
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Proxy returned status: ${response.status}`);
         }
-      }
-    );
-  } else {
-    $.getJSON(
-      `https://itunes.apple.com/search?limit=20&media=software&term=${searchvalue}&country=${country}&callback=?`,
-      function(json) {
-        $("#results").html("");
-        if (json.resultCount > 0) {
-          json.results.forEach((app) => {
-            displayApp(app);
-          });
-          $("#results-table").fadeIn();
-        } else {
-          $("#results").html(`<p>${translations[currentLanguage].app_not_found_by_name}</p>`);
+        return response.text();
+      })
+      .then(data => {
+        try {
+          const json = JSON.parse(data);
+          displayResults(json, proxyIndex);
+        } catch (e) {
+          // Если не удалось разобрать JSON, пробуем следующий прокси
+          console.log(`Error parsing JSON from proxy ${proxyIndex + 1}:`, e);
+          searchViaProxy(proxyIndex + 1);
         }
-      }
-    );
+      })
+      .catch(error => {
+        console.log(`Proxy ${proxyIndex + 1} failed for search:`, error);
+        searchViaProxy(proxyIndex + 1);
+      });
   }
+
+  // Функция для отображения результатов поиска
+  function displayResults(json, proxyIndex) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '';
+    
+    if (json.resultCount > 0) {
+      // Создаем грид для карточек приложений
+      const appGrid = createAppGrid();
+      
+      // Добавляем каждое приложение
+      json.results.forEach((app) => {
+        displayApp(app);
+      });
+      
+      // Информация о прокси
+      const proxyInfo = document.createElement('div');
+      proxyInfo.className = 'proxy-info-search';
+      proxyInfo.innerHTML = `<small>Proxy: ${proxyIndex + 1}/${corsProxies.length}</small>`;
+      resultsDiv.appendChild(proxyInfo);
+    } else {
+      const noResults = document.createElement('p');
+      
+      if (isBundleId) {
+        noResults.className = 'no-results';
+        noResults.textContent = translations[currentLanguage].app_not_found_by_bundleid;
+      } else {
+        noResults.className = 'no-results';
+        noResults.textContent = translations[currentLanguage].app_not_found_by_name;
+      }
+      
+      resultsDiv.appendChild(noResults);
+    }
+  }
+  
+  // Fallback на JSONP в случае если все прокси не сработали
+  function fallbackToJSONP() {
+    if (isBundleId) {
+      $.getJSON(
+        `https://itunes.apple.com/lookup?bundleId=${searchvalue}&country=${country}&callback=?`,
+        function(json) {
+          if (json.resultCount > 0) {
+            displayResults(json, -1); // -1 означает, что мы используем JSONP, а не прокси
+          } else {
+            $("#results").html(`<p class="no-results">${translations[currentLanguage].app_not_found_by_bundleid}</p>`);
+          }
+        }
+      ).fail(function() {
+        $("#results").html(`<p class="error-results">${translations[currentLanguage].error_loading}</p>`);
+      });
+    } else {
+      $.getJSON(
+        `https://itunes.apple.com/search?limit=20&media=software&term=${searchvalue}&country=${country}&callback=?`,
+        function(json) {
+          if (json.resultCount > 0) {
+            displayResults(json, -1); // -1 означает, что мы используем JSONP, а не прокси
+          } else {
+            $("#results").html(`<p class="no-results">${translations[currentLanguage].app_not_found_by_name}</p>`);
+          }
+        }
+      ).fail(function() {
+        $("#results").html(`<p class="error-results">${translations[currentLanguage].error_loading}</p>`);
+      });
+    }
+  }
+  
+  // Начинаем поиск через прокси
+  searchViaProxy();
 }
 
 
@@ -310,33 +459,248 @@ function displayApp(app) {
   var lastUpdate = app.currentVersionReleaseDate ?
     new Date(app.currentVersionReleaseDate).toLocaleDateString() :
     "N/A";
+  var trackViewUrl = app.trackViewUrl;
 
-  var result = `
-    <tr>
-      <td>
-        <div class="app-icon-wrapper">
-          <img src="${artworkUrl}" alt="${appName}" onclick="copyToClipboard('${artworkUrl}')" title="Нажмите, чтобы скопировать URL">
-        </div>
-      </td>
-      <td class="app-info-cell">
+  // Создаем элемент карточки приложения
+  const appCard = document.createElement('div');
+  appCard.className = 'app-card';
+  
+  // Заголовок карточки с иконкой и названием
+  appCard.innerHTML = `
+    <div class="app-header">
+      <img src="${artworkUrl}" alt="${appName}" class="app-icon" onclick="copyToClipboard('${artworkUrl}')" title="${translations[currentLanguage].copy_to_clipboard}">
+      <div class="app-title-container">
         <h3 class="app-title">${appName}</h3>
-        <p style="line-height: 1.5;"><strong>BundleID:</strong>&nbsp;&nbsp;<span id="bundle_${appId}" class="bundleid" onclick="copyToClipboard('${bundleId}')">${bundleId}</span></p>
-        <p><strong>Artist:</strong>&nbsp;&nbsp;${artistName}</p>
-        <p><strong>Min iOS:</strong>&nbsp;&nbsp;${minimumIos}</p>
-        <p><strong>Last Version:</strong>&nbsp;&nbsp;${lastVersion}</p>
-        <p><strong>Last Update:</strong>&nbsp;&nbsp;${lastUpdate}</p>
-      </td>
-    </tr>`;
-  $("#results").append(result);
+        <p class="app-developer">${artistName}</p>
+      </div>
+    </div>
+    <div class="app-body">
+      <div class="app-details">
+        <div class="app-detail-item">
+          <div class="app-detail-label">BundleID:</div>
+          <div class="app-detail-value">
+            <span id="bundle_${appId}" class="bundleid" onclick="copyToClipboard('${bundleId}')">${bundleId}</span>
+          </div>
+        </div>
+        <div class="app-detail-item">
+          <div class="app-detail-label">Min iOS:</div>
+          <div class="app-detail-value">${minimumIos}</div>
+        </div>
+        <div class="app-detail-item">
+          <div class="app-detail-label">Last Version:</div>
+          <div class="app-detail-value">${lastVersion}</div>
+        </div>
+        <div class="app-detail-item">
+          <div class="app-detail-label">Last Update:</div>
+          <div class="app-detail-value">${lastUpdate}</div>
+        </div>
+      </div>
+    </div>
+    <div class="app-footer">
+      <button class="subscription-btn" onclick="fetchSubscriptions('${bundleId}', '${trackViewUrl}', '${appName}')">
+        <i class="fas fa-list"></i> ${translations[currentLanguage].subscriptions_button}
+      </button>
+    </div>
+  `;
+  
+  // Добавляем карточку в грид
+  const appGrid = document.querySelector('.app-grid') || createAppGrid();
+  appGrid.appendChild(appCard);
 }
 
+// Функция для создания грида приложений, если его еще нет
+function createAppGrid() {
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.innerHTML = ''; // Очищаем div
+  
+  const appGrid = document.createElement('div');
+  appGrid.className = 'app-grid';
+  resultsDiv.appendChild(appGrid);
+  
+  return appGrid;
+}
 
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
-    alert("Copied to clipboard: " + text);
+    showNotification(translations[currentLanguage].copy_to_clipboard + ": " + text);
   });
 }
 
+// Helper function for notifications
+function showNotification(message, duration = 2000) {
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 10);
+  
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 300);
+  }, duration);
+}
+
+// Function to fetch subscriptions using multiple CORS proxies
+function fetchSubscriptions(bundleId, trackViewUrl, appName) {
+  const subscriptionsModal = document.getElementById('subscriptions-modal');
+  const subscriptionsContent = document.getElementById('subscriptions-content');
+  const subscriptionsList = document.getElementById('subscriptions-list');
+  const subscriptionsTitle = document.querySelector('.subscriptions-modal-header h3');
+  
+  subscriptionsTitle.textContent = `${translations[currentLanguage].subscriptions_title}: ${appName}`;
+  subscriptionsList.innerHTML = `<div class="loading"><i class="fas fa-spinner fa-spin"></i> ${translations[currentLanguage].loading}</div>`;
+  
+  subscriptionsModal.classList.add('active');
+  document.getElementById('overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  
+  let proxyIndex = 0;
+  
+  function tryNextProxy() {
+    if (proxyIndex >= corsProxies.length) {
+      // All proxies failed
+      subscriptionsList.innerHTML = `<div class="error">${translations[currentLanguage].error_loading}: ${translations[currentLanguage].no_working_proxy}</div>`;
+      return;
+    }
+    
+    const currentProxy = corsProxies[proxyIndex];
+    
+    fetch(currentProxy + encodeURIComponent(trackViewUrl))
+      .then(response => {
+        if (!response.ok) {
+          // If forbidden or other error, try next proxy
+          if (response.status === 403 || response.status >= 400) {
+            throw new Error(`Proxy returned status: ${response.status}`);
+          }
+        }
+        return response.text();
+      })
+      .then(data => {
+        // Different RegEx patterns for different potential response formats
+        let matches = [];
+        const regexPatterns = [
+          /&offerName=(.*?)&/g,           // Standard format
+          /\\u0026offerName=(.*?)\\u0026/g, // Escaped format
+          /offerName=(.*?)(?:&|$)/g,      // URL parameter format
+          /"offerName":"(.*?)"/g,         // JSON format
+          /offerName%3D(.*?)%26/g,        // URL encoded format
+        ];
+        
+        // Try each regex pattern
+        for (const pattern of regexPatterns) {
+          const foundMatches = [...data.matchAll(pattern)];
+          if (foundMatches.length > 0) {
+            matches = foundMatches;
+            break;
+          }
+        }
+        
+        if (matches.length > 0) {
+          const subscriptions = matches.map(match => decodeURIComponent(match[1]));
+          const uniqueSubscriptions = [...new Set(subscriptions)]; // Remove duplicates
+          
+          subscriptionsList.innerHTML = '';
+          
+          uniqueSubscriptions.forEach((sub, index) => {
+            const item = document.createElement('div');
+            item.className = 'subscription-item';
+            item.innerHTML = `
+              <span class="subscription-number">${index + 1}.</span>
+              <span class="subscription-name">${sub}</span>
+              <button class="copy-btn" onclick="copyToClipboard('${sub}')">
+                <i class="fas fa-copy"></i>
+              </button>
+            `;
+            subscriptionsList.appendChild(item);
+          });
+          
+          // Add counter at the top
+          const counter = document.createElement('div');
+          counter.className = 'subscriptions-counter';
+          counter.innerHTML = `<span>${translations[currentLanguage].subscriptions_found}: ${uniqueSubscriptions.length}</span>`;
+          subscriptionsList.prepend(counter);
+          
+          // Add proxy info
+          const proxyInfo = document.createElement('div');
+          proxyInfo.className = 'proxy-info';
+          proxyInfo.innerHTML = `<small>Proxy: ${proxyIndex + 1}/${corsProxies.length}</small>`;
+          subscriptionsList.append(proxyInfo);
+        } else {
+          // Try alternative method - direct App Store API if no matches found
+          fetchSubscriptionsViaAPI(bundleId);
+        }
+      })
+      .catch(error => {
+        console.log(`Proxy ${proxyIndex + 1} failed:`, error);
+        // Try next proxy
+        proxyIndex++;
+        tryNextProxy();
+      });
+  }
+  
+  // Fallback method using iTunes API
+  function fetchSubscriptionsViaAPI(bundleId) {
+    const country = document.getElementById("country").value;
+    $.getJSON(
+      `https://itunes.apple.com/lookup?bundleId=${bundleId}&country=${country}&callback=?`,
+      function(json) {
+        if (json.resultCount > 0) {
+          const app = json.results[0];
+          // Check if there's in-app purchases data
+          if (app.ipadScreenshotUrls && app.ipadScreenshotUrls.length > 0) {
+            subscriptionsList.innerHTML = `<div class="info-message">${translations[currentLanguage].try_check_directly}</div>`;
+            
+            // Add a button to open App Store directly
+            const openStoreBtn = document.createElement('a');
+            openStoreBtn.href = app.trackViewUrl;
+            openStoreBtn.target = "_blank";
+            openStoreBtn.className = "open-store-btn";
+            openStoreBtn.innerHTML = `<i class="fas fa-external-link-alt"></i> ${translations[currentLanguage].open_in_appstore}`;
+            subscriptionsList.appendChild(openStoreBtn);
+          } else {
+            subscriptionsList.innerHTML = `<div class="no-data">${translations[currentLanguage].no_subscriptions}</div>`;
+          }
+        } else {
+          subscriptionsList.innerHTML = `<div class="no-data">${translations[currentLanguage].no_subscriptions}</div>`;
+        }
+      }
+    ).fail(function() {
+      subscriptionsList.innerHTML = `<div class="error">${translations[currentLanguage].error_loading}</div>`;
+    });
+  }
+  
+  // Start the proxy attempt chain
+  tryNextProxy();
+}
+
+// Добавляем функцию для отображения флага выбранной страны
+function updateCountryFlag() {
+  const countrySelect = document.getElementById('country');
+  const searchWrapper = document.querySelector('.search-wrapper');
+  const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+  
+  // Проверяем, существует ли элемент с флагом
+  let flagElement = document.querySelector('.country-flag');
+  
+  // Если элемента нет, создаем его
+  if (!flagElement) {
+    flagElement = document.createElement('span');
+    flagElement.className = 'country-flag';
+    searchWrapper.appendChild(flagElement);
+  }
+  
+  // Получаем текст опции, который содержит эмодзи флага
+  const optionText = selectedOption.text;
+  const flagEmoji = optionText.split(' ')[0]; // Первая часть текста - это эмодзи флага
+  
+  // Устанавливаем флаг
+  flagElement.textContent = flagEmoji;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   
@@ -361,6 +725,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   
   handleAccessModal();
+  
+  
+  handleSubscriptionsModal();
 
   
   $("#searchform").submit(function(event) {
@@ -390,7 +757,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Вызываем функцию при загрузке страницы
+  updateCountryFlag();
+  
+  // Добавляем слушатель событий на изменение страны
+  const countrySelect = document.getElementById('country');
+  countrySelect.addEventListener('change', updateCountryFlag);
 });
 
 
 window.copyToClipboard = copyToClipboard;
+window.fetchSubscriptions = fetchSubscriptions;
