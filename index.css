@@ -25,6 +25,8 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .app-card {
@@ -38,6 +40,10 @@
   cursor: pointer;
   border: 1px solid var(--border-color);
   height: 100%;
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .app-card:hover {
@@ -414,6 +420,11 @@ body.dark-theme .app-img {
   body {
     padding-top: 10px !important;
   }
+  
+  /* Принудительное отображение карточек приложений */
+  .app-img img {
+    display: block !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -470,7 +481,7 @@ body.dark-theme .app-img {
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
-  z-index: 50;
+  z-index: 5;
 }
 
 .app-slider {

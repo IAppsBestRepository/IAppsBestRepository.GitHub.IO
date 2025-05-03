@@ -322,13 +322,16 @@ function renderApps() {
     const appCard = document.createElement('div');
     appCard.className = 'app-card';
     appCard.setAttribute('data-bundle', app.appBundle);
+    appCard.style.opacity = "1";
+    appCard.style.visibility = "visible";
+    appCard.style.display = "flex";
 
     
     const formattedDescription = app.appDescription.replace(/\n/g, '<br>');
 
     appCard.innerHTML = `
       <div class="app-img">
-        <img src="${app.appImage}" alt="${app.appName}">
+        <img src="${app.appImage}" alt="${app.appName}" loading="lazy">
       </div>
       <div class="app-info">
         <div class="app-name">${app.appName}</div>
@@ -389,6 +392,22 @@ function renderApps() {
       behavior: 'smooth'
     });
   }
+  
+  // Добавляем проверку отображения карточек через небольшой таймаут
+  setTimeout(() => {
+    const cards = document.querySelectorAll('.app-card');
+    if (cards.length > 0) {
+      cards.forEach(card => {
+        if (getComputedStyle(card).display === 'none' || 
+            getComputedStyle(card).visibility === 'hidden' || 
+            getComputedStyle(card).opacity === '0') {
+          card.style.display = 'flex';
+          card.style.visibility = 'visible';
+          card.style.opacity = '1';
+        }
+      });
+    }
+  }, 300);
 }
 
 
