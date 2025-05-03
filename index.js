@@ -342,19 +342,9 @@ function renderApps() {
       </div>
       <div class="app-body">
         <div class="app-description">${shortDescription.replace(/\n/g, '<br>')}</div>
-        <div class="app-details">
-          <div class="app-detail-item">
-            <div class="app-detail-label">${translations[currentLanguage].ios_version}:</div>
-            <div class="app-detail-value">${app.appIOSVersion || "N/A"}</div>
-          </div>
-          <div class="app-detail-item">
-            <div class="app-detail-label">${translations[currentLanguage].app_size}:</div>
-            <div class="app-detail-value">${app.appSize || "N/A"}</div>
-          </div>
-          <div class="app-detail-item">
-            <div class="app-detail-label">${translations[currentLanguage].updated}:</div>
-            <div class="app-detail-value">${formattedDate}</div>
-          </div>
+        <div class="app-update-info">
+          <span class="app-update-label">${translations[currentLanguage].updated}</span>
+          <span class="app-update-date">${formattedDate}</span>
         </div>
       </div>
     `;

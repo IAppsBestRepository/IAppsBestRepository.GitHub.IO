@@ -336,7 +336,7 @@ const corsProxies = [
 function getBundleId(searchvalue) {
   var country = document.getElementById("country").value;
   var isBundleId = searchvalue.includes(".");
-  
+
   // Показываем загрузку
   $("#results").html(`<div class="loading-results"><i class="fas fa-spinner fa-spin"></i> <span data-translate="loading">${translations[currentLanguage].loading}</span></div>`);
   $("#results-table").hide();
@@ -417,33 +417,33 @@ function getBundleId(searchvalue) {
   
   // Fallback на JSONP в случае если все прокси не сработали
   function fallbackToJSONP() {
-    if (isBundleId) {
-      $.getJSON(
-        `https://itunes.apple.com/lookup?bundleId=${searchvalue}&country=${country}&callback=?`,
-        function(json) {
-          if (json.resultCount > 0) {
+  if (isBundleId) {
+    $.getJSON(
+      `https://itunes.apple.com/lookup?bundleId=${searchvalue}&country=${country}&callback=?`,
+      function(json) {
+        if (json.resultCount > 0) {
             displayResults(json, -1); // -1 означает, что мы используем JSONP, а не прокси
-          } else {
+        } else {
             $("#results").html(`<p class="no-results">${translations[currentLanguage].app_not_found_by_bundleid}</p>`);
           }
         }
       ).fail(function() {
         $("#results").html(`<p class="error-results">${translations[currentLanguage].error_loading}</p>`);
       });
-    } else {
-      $.getJSON(
-        `https://itunes.apple.com/search?limit=20&media=software&term=${searchvalue}&country=${country}&callback=?`,
-        function(json) {
-          if (json.resultCount > 0) {
+  } else {
+    $.getJSON(
+      `https://itunes.apple.com/search?limit=20&media=software&term=${searchvalue}&country=${country}&callback=?`,
+      function(json) {
+        if (json.resultCount > 0) {
             displayResults(json, -1); // -1 означает, что мы используем JSONP, а не прокси
-          } else {
+        } else {
             $("#results").html(`<p class="no-results">${translations[currentLanguage].app_not_found_by_name}</p>`);
           }
         }
       ).fail(function() {
         $("#results").html(`<p class="error-results">${translations[currentLanguage].error_loading}</p>`);
       });
-    }
+      }
   }
   
   // Начинаем поиск через прокси

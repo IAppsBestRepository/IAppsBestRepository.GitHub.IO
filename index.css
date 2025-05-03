@@ -135,6 +135,25 @@
   -webkit-box-orient: vertical;
 }
 
+.app-update-info {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  font-size: 14px;
+  color: var(--text-color-light);
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+}
+
+.app-update-label {
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+.app-update-date {
+  color: var(--text-color);
+}
+
 .app-details {
   display: flex;
   flex-direction: column;
@@ -721,6 +740,54 @@
   
   .app-slider {
     height: 300px !important;
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .app-cards {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .app-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .app-header {
+    padding: 15px;
+  }
+  
+  .app-body {
+    padding: 15px;
+  }
+
+  .app-update-info {
+    padding-top: 10px;
+    font-size: 13px;
+  }
+}
+
+/* Для совсем маленьких экранов */
+@media (max-width: 360px) {
+  .app-img {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+  }
+  
+  .app-name {
+    font-size: 16px;
+  }
+  
+  .app-version {
+    font-size: 12px;
+  }
+
+  .app-update-info {
+    font-size: 12px;
   }
 }
 
