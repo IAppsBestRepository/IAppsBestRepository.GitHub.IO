@@ -170,8 +170,33 @@ body.dark-theme .app-img {
   position: relative;
 }
 
+/* Малые планшеты */
+@media (min-width: 600px) and (max-width: 699px) {
+  .app-slide img {
+    max-width: 105px !important;
+    max-height: 105px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  .update-date-slide i {
+    font-size: 2.4rem !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.15rem !important;
+  }
+  
+  .app-slider {
+    height: 230px !important;
+  }
+}
+
 /* Средние планшеты */
-@media (min-width: 600px) and (max-width: 768px) {
+@media (min-width: 700px) and (max-width: 768px) {
   .app-slide img {
     max-width: 110px !important;
     max-height: 110px !important;
@@ -179,6 +204,41 @@ body.dark-theme .app-img {
   
   .update-date-slide h3 {
     font-size: 1.3rem !important;
+  }
+}
+
+/* iPhone и стандартные мобильные устройства */
+@media (min-width: 415px) and (max-width: 599px) {
+  .update-date-slide i {
+    font-size: 2.3rem !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.2rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .update-date-slide p {
+    font-size: 1rem !important;
+  }
+  
+  .app-slide img {
+    max-width: 95px !important;
+    max-height: 95px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.1rem !important;
+  }
+  
+  .app-slider {
+    height: 220px !important;
+  }
+  
+  .slider-dot {
+    width: 9px !important;
+    height: 9px !important;
   }
 }
 
