@@ -755,12 +755,9 @@ function initializeSlider() {
     appSlide.className = 'slider-slide app-slide';
     appSlide.setAttribute('data-bundle', app.appBundle);
     
-    const appSize = app.appSize ? `${(app.appSize / 1024 / 1024).toFixed(1)} MB` : '';
-    
     appSlide.innerHTML = `
       <img src="${app.appImage}" alt="${app.appName}">
       <h4>${app.appName}</h4>
-      <p>${translations[currentLanguage].ios_version} ${app.appMinIOSVersion} | ${appSize}</p>
     `;
     
     // Add click event to navigate to app details
@@ -781,12 +778,6 @@ function initializeSlider() {
   const controlsDiv = document.createElement('div');
   controlsDiv.className = 'slider-controls';
   
-  // Previous button
-  const prevBtn = document.createElement('button');
-  prevBtn.className = 'slider-arrow prev';
-  prevBtn.id = 'slider-prev';
-  prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-  
   // Dots container
   const dotsDiv = document.createElement('div');
   dotsDiv.className = 'slider-dots';
@@ -805,27 +796,9 @@ function initializeSlider() {
     dotsDiv.appendChild(dot);
   }
   
-  // Next button
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'slider-arrow next';
-  nextBtn.id = 'slider-next';
-  nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-  
   // Add controls to slider
-  controlsDiv.appendChild(prevBtn);
   controlsDiv.appendChild(dotsDiv);
-  controlsDiv.appendChild(nextBtn);
-  
   sliderContainer.appendChild(controlsDiv);
-  
-  // Add event listeners for controls
-  prevBtn.addEventListener('click', () => {
-    goToSlide(currentSlide - 1);
-  });
-  
-  nextBtn.addEventListener('click', () => {
-    goToSlide(currentSlide + 1);
-  });
   
   // Start auto-rotation
   startAutoRotation();
@@ -858,7 +831,7 @@ function goToSlide(index) {
 
 // Auto-rotation variables
 let sliderInterval;
-const autoRotationDelay = 5000; // 5 seconds
+const autoRotationDelay = 3000; // 3 seconds
 
 // Start auto-rotation
 function startAutoRotation() {

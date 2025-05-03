@@ -170,7 +170,7 @@ body.dark-theme .app-img {
   .top-bar {
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .results-count {
@@ -182,6 +182,11 @@ body.dark-theme .app-img {
 
   .app-cards {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  .app-slider-container {
+    margin-bottom: 20px;
+    margin-top: 10px;
   }
 }
 
@@ -331,6 +336,10 @@ body.dark-theme .app-img {
 }
 
 @media (max-width: 768px) {
+  .app-slider-container {
+    margin: 15px 0;
+  }
+  
   .app-slider {
     height: 250px;
   }

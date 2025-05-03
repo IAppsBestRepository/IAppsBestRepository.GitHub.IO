@@ -59,11 +59,24 @@
 @keyframes slideIn {
   0% {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(25px);
   }
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }
 
