@@ -227,7 +227,15 @@ function handleAccessModal() {
   }
 }
 
+function resetJSONDisplay() {
+    var jsonWrapper = document.querySelector('.json-wrapper');
+    if (jsonWrapper) {
+        jsonWrapper.style.display = 'none';
+    }
+}
+
 function loadJSON() {
+    resetJSONDisplay(); // Сбрасываем отображение предыдущего JSON
     var input = document.getElementById('jsonFileInput');
     var file = input.files[0];
     var reader = new FileReader();
@@ -343,6 +351,8 @@ function generateAnnouncement() {
 function displayJSON() {
     if (jsonData) {
         var jsonDataDisplay = document.getElementById('jsonDataDisplay');
+        var jsonWrapper = document.querySelector('.json-wrapper');
+        
         jsonDataDisplay.innerHTML = '';
 
         var formattedJSON = JSON.stringify(jsonData, null, 4);
@@ -353,30 +363,30 @@ function displayJSON() {
         preElement.innerHTML = syntaxHighlight(formattedJSON);
 
         jsonDataDisplay.appendChild(preElement);
-        jsonDataDisplay.style.display = "block";
+        jsonWrapper.style.display = "block";
     }
 }
 
 function showMatches() {
-    var input = document.getElementById('appName').value;
+    var input = document.getElementById('appBundle').value;
     var matchesList = document.getElementById('matchesList');
     matchesList.innerHTML = '';
 
     if (!jsonData || !jsonData.appRepositories || input.length < 2) return;
 
-    var matches = jsonData.appRepositories.filter(item => item.appName.toLowerCase().startsWith(input.toLowerCase()));
+    var matches = jsonData.appRepositories.filter(item => item.appBundle && item.appBundle.toLowerCase().includes(input.toLowerCase()));
 
     matches.slice(0, 5).forEach(match => {
         var div = document.createElement('div');
         div.classList.add('autocomplete-item');
-        div.textContent = match.appName;
+        div.textContent = match.appBundle;
         div.onclick = function() {
-            document.getElementById('appName').value = match.appName;
+            document.getElementById('appBundle').value = match.appBundle || '';
+            document.getElementById('appName').value = match.appName || '';
             document.getElementById('appDescription').value = match.appDescription || '';
             document.getElementById('appImage').value = match.appImage || '';
-            document.getElementById('appBundle').value = match.appBundle || '';
             
-                        if (match.appVersion) {
+            if (match.appVersion) {
                 const versionParts = match.appVersion.split('|');
                 if (versionParts.length >= 3) {
                     document.getElementById('appVersion').value = versionParts[0].trim();
@@ -394,13 +404,13 @@ function showMatches() {
         matchesList.appendChild(div);
     });
 
-    var inputField = document.getElementById('appName');
+    var inputField = document.getElementById('appBundle');
     matchesList.style.width = inputField.offsetWidth + 'px';
 }
 
 document.addEventListener('click', function(event) {
     var matchesList = document.getElementById('matchesList');
-    var inputField = document.getElementById('appName');
+    var inputField = document.getElementById('appBundle');
     if (matchesList && inputField && !matchesList.contains(event.target) && !inputField.contains(event.target)) {
         matchesList.innerHTML = '';
     }
@@ -463,7 +473,7 @@ function applyChanges() {
     }
 
     var existingAppIndex = jsonData.appRepositories.findIndex(function(app) {
-        return app.appName.toLowerCase() === appName.toLowerCase();
+        return app.appBundle.toLowerCase() === appBundle.toLowerCase();
     });
 
     if (existingAppIndex !== -1) {
@@ -496,8 +506,19 @@ function applyChanges() {
         jsonData.appRepositories.push(newApp);
         alert('Приложение успешно добавлено!');
     }
-
+    
+    // Обновляем отображение JSON перед очисткой полей
     displayJSON();
+    
+    // Очистка полей формы после сохранения
+    document.getElementById('appName').value = '';
+    document.getElementById('appBundle').value = '';
+    document.getElementById('appVersion').value = '';
+    document.getElementById('appSize').value = '';
+    document.getElementById('appVersionIOS').value = '';
+    document.getElementById('appImage').value = '';
+    document.getElementById('appPackage').value = '';
+    document.getElementById('appDescription').value = '';
 }
 
 function installJSONWithBundle() {
@@ -580,13 +601,17 @@ document.addEventListener('DOMContentLoaded', () => {
     loadUserPreferences();
 
     const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', toggleTheme);
+    themeToggle.addEventListener('click', toggleTheme);
 
     const languageToggle = document.getElementById('language-toggle');
-  languageToggle.addEventListener('click', () => {
-    const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
-    setLanguage(newLang);
-  });
+    languageToggle.addEventListener('click', () => {
+        const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
+        setLanguage(newLang);
+    });
+
+    // Установка значений по умолчанию для выпадающих списков
+    document.getElementById('appType').value = "true"; // Платное
+    document.getElementById('appCategory').value = "0"; // Приложения
 
     handleSidebar();
 
@@ -595,22 +620,22 @@ document.addEventListener('DOMContentLoaded', () => {
     handleAccessModal();
 
     const settingsToggleSidebar = document.getElementById('settings-toggle-sidebar');
-  if (settingsToggleSidebar) {
-    settingsToggleSidebar.addEventListener('click', (e) => {
-      e.preventDefault();
-      const settingsModal = document.getElementById('settings-modal');
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.getElementById('overlay');
+    if (settingsToggleSidebar) {
+        settingsToggleSidebar.addEventListener('click', (e) => {
+            e.preventDefault();
+            const settingsModal = document.getElementById('settings-modal');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
 
-      if (settingsModal) {
-        settingsModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        overlay.classList.add('active');
+            if (settingsModal) {
+                settingsModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                overlay.classList.add('active');
 
                 if (sidebar) {
-          sidebar.classList.remove('active');
-        }
-      }
-    });
-  }
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    }
 });

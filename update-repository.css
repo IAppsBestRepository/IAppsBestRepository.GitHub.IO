@@ -94,9 +94,11 @@
   border-radius: 8px;
   padding: 15px;
   margin-top: 20px;
+  margin-bottom: 20px;
   border: 1px solid var(--border-color);
   max-height: 500px;
   overflow-y: auto;
+  width: 100%;
 }
 
 .json-display {
@@ -128,6 +130,11 @@
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border-color);
   font-weight: 600;
+}
+
+.json-wrapper {
+  width: 100%;
+  display: none; /* Скрыт по умолчанию, показывать будем через JS */
 }
 
 .autocomplete-container {
@@ -192,6 +199,10 @@
     margin-top: 20px;
     font-size: 1.5rem;
   }
+  
+  .json-display-container {
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -206,6 +217,10 @@
   
   .update-repo-container .button-group {
     margin-top: 15px;
+  }
+  
+  .json-display-container {
+    margin-bottom: 30px;
   }
 }
 
@@ -234,5 +249,15 @@
   .form-group textarea, 
   .form-group select {
     width: 100%;
+  }
+  
+  .json-display-container {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .json-display-container {
+    margin-bottom: 20px;
   }
 }

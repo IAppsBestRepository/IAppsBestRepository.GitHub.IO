@@ -93,17 +93,17 @@
         
         <h2 class="form-section-title" data-translate="app_edit_form">Форма редактирования приложения</h2>
         
-        <div class="form-container fade-in-element hover-glow">
+        <div class="form-container fade-in-element">
           <div>
             <div class="form-group autocomplete-container">
-              <label for="appName" data-translate="app_name">Название приложения</label>
-              <input type="text" id="appName" placeholder="Введите название" oninput="showMatches()">
+              <label for="appBundle" data-translate="app_bundle">Bundle ID</label>
+              <input type="text" id="appBundle" placeholder="com.example.app" oninput="showMatches()">
               <div id="matchesList"></div>
             </div>
             
             <div class="form-group">
-              <label for="appBundle" data-translate="app_bundle">Bundle ID</label>
-              <input type="text" id="appBundle" placeholder="com.example.app">
+              <label for="appName" data-translate="app_name">Название приложения</label>
+              <input type="text" id="appName" placeholder="Введите название">
             </div>
             
             <div class="form-group">
@@ -136,21 +136,16 @@
             <div class="form-group">
               <label for="appType" data-translate="app_type">Тип (платный/бесплатный)</label>
               <select id="appType">
-                <option value="false">Бесплатное</option>
                 <option value="true">Платное</option>
+                <option value="false">Бесплатное</option>
               </select>
             </div>
             
             <div class="form-group">
               <label for="appCategory" data-translate="app_category">Категория</label>
               <select id="appCategory">
-                <option value="0">Общие</option>
+                <option value="0">Приложения</option>
                 <option value="1">Игры</option>
-                <option value="2">Социальные сети</option>
-                <option value="3">Фото и видео</option>
-                <option value="4">Производительность</option>
-                <option value="5">Образование</option>
-                <option value="6">Развлечения</option>
               </select>
             </div>
             
@@ -187,7 +182,9 @@
           </button>
         </div>
         
-        <div id="jsonDataDisplay" class="json-display-container" style="display: none;">
+        <div class="json-wrapper">
+          <div id="jsonDataDisplay" class="json-display-container">
+          </div>
         </div>
       </div>
     </div>
