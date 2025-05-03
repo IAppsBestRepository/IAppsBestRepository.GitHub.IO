@@ -166,6 +166,10 @@ body.dark-theme .app-img {
   color: var(--primary-color);
 }
 
+.tablet-spacing {
+  position: relative;
+}
+
 @media (max-width: 830px) {
   .top-bar {
     flex-direction: column;
@@ -192,48 +196,32 @@ body.dark-theme .app-img {
   }
   
   main {
-    padding-top: 180px !important;
+    padding-top: 230px !important;
     margin-top: 0 !important;
     position: relative !important;
   }
   
   header {
     height: auto !important;
+    min-height: 130px !important;
     padding-bottom: 10px !important;
   }
   
   .header-content {
     padding: 10px 0 !important;
   }
-}
-
-/* Специальные правила для средних размеров (планшеты и малые планшеты) */
-@media (min-width: 481px) and (max-width: 830px) {
-  main {
-    padding-top: 220px !important;
+  
+  .tablet-spacing {
+    margin-top: 35px !important;
   }
   
   .app-slider {
-    height: 270px;
+    height: 250px !important;
   }
   
-  .app-slider-container {
-    margin-top: 15px;
-  }
-}
-
-/* Специальные правила для размеров, где проблема особенно заметна */
-@media (min-width: 768px) and (max-width: 830px) {
-  main {
-    padding-top: 230px !important;
-  }
-  
-  .app-slider-container {
-    margin-top: 20px;
-  }
-  
-  header {
-    min-height: 140px !important;
+  /* Фиксированный отступ для всех устройств до 830px */
+  body {
+    padding-top: 10px !important;
   }
 }
 
@@ -243,7 +231,7 @@ body.dark-theme .app-img {
   }
   
   .app-slider {
-    height: 220px;
+    height: 220px !important;
   }
   
   .update-date-slide i {
@@ -255,8 +243,17 @@ body.dark-theme .app-img {
     max-height: 100px;
   }
   
+  /* Переопределяем высоту для мобильных устройств, чтобы она соответствовала планшетам */
   main {
-    padding-top: 220px !important;
+    padding-top: 230px !important;
+  }
+  
+  header {
+    min-height: 130px !important;
+  }
+  
+  .tablet-spacing {
+    margin-top: 35px !important;
   }
 }
 
@@ -267,6 +264,7 @@ body.dark-theme .app-img {
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
+  z-index: 50;
 }
 
 .app-slider {
@@ -399,98 +397,10 @@ body.dark-theme .app-img {
   transform: scale(1.2);
 }
 
-@media (max-width: 768px) {
-  .app-slider-container {
-    margin: 15px 0;
-  }
-  
-  .app-slider {
-    height: 250px;
-  }
-  
-  .update-date-slide h3 {
-    font-size: 1.2rem;
-  }
-  
-  .update-date-slide p {
-    font-size: 1rem;
-  }
-  
-  .app-slide img {
-    max-width: 120px;
-    max-height: 120px;
-  }
-  
-  .app-slide h4 {
-    font-size: 1.1rem;
-  }
-}
 
-/* Специальное правило точно для 768px (проблемная ширина) */
-@media only screen and (width: 768px), 
-       only screen and (min-width: 767px) and (max-width: 769px) {
-  .tablet-spacing {
-    margin-top: 70px !important;
-  }
-  
-  main {
-    padding-top: 280px !important;
-    margin-top: 60px !important;
-  }
-  
-  header {
-    min-height: 150px !important;
-  }
-  
-  .container {
-    padding-top: 40px !important;
-  }
-}
 
-/* Дополнительный диапазон для проблемных размеров устройств */
-@media only screen and (min-width: 700px) and (max-width: 800px) {
-  main {
-    padding-top: 260px !important;
-  }
-  
-  .app-slider-container {
-    margin-top: 25px !important;
-    padding-top: 10px !important;
-  }
-  
-  header {
-    min-height: 145px !important;
-  }
-}
 
-.tablet-spacing {
-  position: relative;
-}
 
-@media only screen and (min-width: 640px) and (max-width: 830px) {
-  .tablet-spacing {
-    margin-top: 50px !important;
-  }
-}
 
-@media only screen and (min-width: 700px) and (max-width: 830px) {
-  header {
-    height: auto !important;
-    min-height: 140px !important;
-  }
-}
 
-@media only screen and (width: 768px), 
-       only screen and (min-width: 767px) and (max-width: 769px) {
-  .tablet-spacing {
-    margin-top: 70px !important;
-  }
-  
-  main {
-    padding-top: 280px !important;
-  }
-  
-  header {
-    min-height: 150px !important;
-  }
-}
+
