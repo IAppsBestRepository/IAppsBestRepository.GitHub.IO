@@ -323,6 +323,10 @@ function renderApps() {
     const appCard = document.createElement('div');
     appCard.className = 'app-card';
     appCard.setAttribute('data-bundle', app.appBundle);
+    // Принудительно устанавливаем отображение карточки
+    appCard.style.opacity = "1";
+    appCard.style.visibility = "visible";
+    appCard.style.display = "flex";
     
     // Создаем краткое описание (ограничиваем длину)
     const shortDescription = app.appDescription.length > 150 
@@ -397,6 +401,22 @@ function renderApps() {
       behavior: 'smooth'
     });
   }
+  
+  // Дополнительная проверка для гарантии отображения карточек
+  setTimeout(() => {
+    const cards = document.querySelectorAll('.app-card');
+    if (cards.length > 0) {
+      cards.forEach(card => {
+        if (getComputedStyle(card).display === 'none' || 
+            getComputedStyle(card).visibility === 'hidden' || 
+            getComputedStyle(card).opacity === '0') {
+          card.style.display = 'flex';
+          card.style.visibility = 'visible';
+          card.style.opacity = '1';
+        }
+      });
+    }
+  }, 300);
 }
 
 
@@ -720,9 +740,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Дополнительная проверка отображения карточек после полной загрузки страницы
+  window.addEventListener('load', () => {
+    forceCardsVisibility();
+  });
+  
+  // Проверка отображения карточек при прокрутке
+  window.addEventListener('scroll', () => {
+    forceCardsVisibility();
+  });
+
   // Add event listener for window resize to adjust slider height if needed
   window.addEventListener('resize', () => {
     // You can add responsive adjustments for slider here if needed
+    forceCardsVisibility();
   });
 });
 
@@ -860,5 +891,25 @@ function updateSliderLanguage() {
   const updateSlideTitle = document.querySelector('.update-date-slide h3');
   if (updateSlideTitle) {
     updateSlideTitle.textContent = translations[currentLanguage].catalog_last_update;
+  }
+}
+
+// Функция для принудительного отображения карточек
+function forceCardsVisibility() {
+  const cards = document.querySelectorAll('.app-card');
+  if (cards.length > 0) {
+    cards.forEach(card => {
+      card.style.display = 'flex';
+      card.style.visibility = 'visible';
+      card.style.opacity = '1';
+    });
+  }
+  
+  // Принудительно отображаем контейнер
+  const appCardsContainer = document.getElementById('app-cards');
+  if (appCardsContainer) {
+    appCardsContainer.style.display = 'grid';
+    appCardsContainer.style.visibility = 'visible';
+    appCardsContainer.style.opacity = '1';
   }
 }
