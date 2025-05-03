@@ -133,6 +133,9 @@ function setLanguage(lang) {
         <option value="in">🇮🇳 Индия</option>
       `;
     }
+    
+    // Обновляем флаг страны после изменения языка
+    updateCountryFlag();
   }
 
   
@@ -335,7 +338,7 @@ function getBundleId(searchvalue) {
   var isBundleId = searchvalue.includes(".");
   
   // Показываем загрузку
-  $("#results").html(`<div class="loading-results"><i class="fas fa-spinner fa-spin"></i> ${translations[currentLanguage].loading}</div>`);
+  $("#results").html(`<div class="loading-results"><i class="fas fa-spinner fa-spin"></i> <span data-translate="loading">${translations[currentLanguage].loading}</span></div>`);
   $("#results-table").hide();
 
   // Функция для поиска через прокси
@@ -498,7 +501,7 @@ function displayApp(app) {
     </div>
     <div class="app-footer">
       <button class="subscription-btn" onclick="fetchSubscriptions('${bundleId}', '${trackViewUrl}', '${appName}')">
-        <i class="fas fa-list"></i> ${translations[currentLanguage].subscriptions_button}
+        <i class="fas fa-list"></i> <span data-translate="subscriptions_button">${translations[currentLanguage].subscriptions_button}</span>
       </button>
     </div>
   `;
@@ -553,7 +556,7 @@ function fetchSubscriptions(bundleId, trackViewUrl, appName) {
   const subscriptionsTitle = document.querySelector('.subscriptions-modal-header h3');
   
   subscriptionsTitle.textContent = `${translations[currentLanguage].subscriptions_title}: ${appName}`;
-  subscriptionsList.innerHTML = `<div class="loading"><i class="fas fa-spinner fa-spin"></i> ${translations[currentLanguage].loading}</div>`;
+  subscriptionsList.innerHTML = `<div class="loading"><i class="fas fa-spinner fa-spin"></i> <span data-translate="loading">${translations[currentLanguage].loading}</span></div>`;
   
   subscriptionsModal.classList.add('active');
   document.getElementById('overlay').classList.add('active');
@@ -564,7 +567,7 @@ function fetchSubscriptions(bundleId, trackViewUrl, appName) {
   function tryNextProxy() {
     if (proxyIndex >= corsProxies.length) {
       // All proxies failed
-      subscriptionsList.innerHTML = `<div class="error">${translations[currentLanguage].error_loading}: ${translations[currentLanguage].no_working_proxy}</div>`;
+      subscriptionsList.innerHTML = `<div class="error"><span data-translate="error_loading">${translations[currentLanguage].error_loading}</span>: <span data-translate="no_working_proxy">${translations[currentLanguage].no_working_proxy}</span></div>`;
       return;
     }
     
@@ -653,24 +656,24 @@ function fetchSubscriptions(bundleId, trackViewUrl, appName) {
           const app = json.results[0];
           // Check if there's in-app purchases data
           if (app.ipadScreenshotUrls && app.ipadScreenshotUrls.length > 0) {
-            subscriptionsList.innerHTML = `<div class="info-message">${translations[currentLanguage].try_check_directly}</div>`;
+            subscriptionsList.innerHTML = `<div class="info-message"><span data-translate="try_check_directly">${translations[currentLanguage].try_check_directly}</span></div>`;
             
             // Add a button to open App Store directly
             const openStoreBtn = document.createElement('a');
             openStoreBtn.href = app.trackViewUrl;
             openStoreBtn.target = "_blank";
             openStoreBtn.className = "open-store-btn";
-            openStoreBtn.innerHTML = `<i class="fas fa-external-link-alt"></i> ${translations[currentLanguage].open_in_appstore}`;
+            openStoreBtn.innerHTML = `<i class="fas fa-external-link-alt"></i> <span data-translate="open_in_appstore">${translations[currentLanguage].open_in_appstore}</span>`;
             subscriptionsList.appendChild(openStoreBtn);
           } else {
-            subscriptionsList.innerHTML = `<div class="no-data">${translations[currentLanguage].no_subscriptions}</div>`;
+            subscriptionsList.innerHTML = `<div class="no-data"><span data-translate="no_subscriptions">${translations[currentLanguage].no_subscriptions}</span></div>`;
           }
         } else {
-          subscriptionsList.innerHTML = `<div class="no-data">${translations[currentLanguage].no_subscriptions}</div>`;
+          subscriptionsList.innerHTML = `<div class="no-data"><span data-translate="no_subscriptions">${translations[currentLanguage].no_subscriptions}</span></div>`;
         }
       }
     ).fail(function() {
-      subscriptionsList.innerHTML = `<div class="error">${translations[currentLanguage].error_loading}</div>`;
+      subscriptionsList.innerHTML = `<div class="error"><span data-translate="error_loading">${translations[currentLanguage].error_loading}</span></div>`;
     });
   }
   
@@ -715,6 +718,9 @@ document.addEventListener('DOMContentLoaded', () => {
   languageToggle.addEventListener('click', () => {
     const newLang = currentLanguage === 'ru' ? 'en' : 'ru';
     setLanguage(newLang);
+    
+    // Обновляем текст на динамически созданных элементах
+    updateDynamicTranslations();
   });
 
   
@@ -766,6 +772,39 @@ document.addEventListener('DOMContentLoaded', () => {
   countrySelect.addEventListener('change', updateCountryFlag);
 });
 
+// Функция для обновления переводов на динамически добавленных элементах
+function updateDynamicTranslations() {
+  // Обновляем все элементы с data-translate атрибутами
+  const elements = document.querySelectorAll('[data-translate]');
+  elements.forEach(element => {
+    const key = element.getAttribute('data-translate');
+    if (translations[currentLanguage][key]) {
+      element.textContent = translations[currentLanguage][key];
+    }
+  });
+  
+  // Если есть активные результаты поиска, обновляем кнопки подписок
+  const subscriptionButtons = document.querySelectorAll('.subscription-btn span');
+  subscriptionButtons.forEach(button => {
+    button.textContent = translations[currentLanguage].subscriptions_button;
+  });
+  
+  // Обновляем тексты в модальном окне подписок, если оно открыто
+  const subscriptionsModal = document.getElementById('subscriptions-modal');
+  if (subscriptionsModal && subscriptionsModal.classList.contains('active')) {
+    const title = document.querySelector('.subscriptions-modal-header h3');
+    if (title && title.textContent.includes(':')) {
+      const appName = title.textContent.split(':')[1].trim();
+      title.textContent = `${translations[currentLanguage].subscriptions_title}: ${appName}`;
+    }
+    
+    const counter = document.querySelector('.subscriptions-counter span');
+    if (counter) {
+      const count = counter.textContent.split(':')[1].trim();
+      counter.textContent = `${translations[currentLanguage].subscriptions_found}: ${count}`;
+    }
+  }
+}
 
 window.copyToClipboard = copyToClipboard;
 window.fetchSubscriptions = fetchSubscriptions;
