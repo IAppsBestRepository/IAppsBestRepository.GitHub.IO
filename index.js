@@ -1,10 +1,12 @@
-
 let appsData = [];
 let currentPage = 1;
 let itemsPerPage = 20;
 let filteredApps = [];
 let currentLanguage = 'ru';
 let currentTheme = 'dark';
+let sliderApps = []; // Array to hold the 5 newest apps for the slider
+let currentSlide = 0;
+let totalSlides = 6; // 1 for update date + 5 for apps
 
 
 const translations = {
@@ -54,7 +56,12 @@ const translations = {
     'access_feature4': 'Ранний доступ к новинкам',
     'access_feature5': 'Скидка 15%',
     'access_feature6': 'Скидка 35%',
-    'purchase_access': 'Приобрести доступ'
+    'purchase_access': 'Приобрести доступ',
+    'catalog_last_update': 'Последнее обновление каталога',
+    'newest_apps': 'Новые приложения',
+    'see_details': 'Подробнее',
+    'ios_version': 'iOS',
+    'app_size': 'Размер'
   },
   'en': {
     'menu': 'Menu',
@@ -103,7 +110,12 @@ const translations = {
     'access_feature4': 'Early access to new releases',
     'access_feature5': '15% discount',
     'access_feature6': '35% discount',
-    'purchase_access': 'Purchase Access'
+    'purchase_access': 'Purchase Access',
+    'catalog_last_update': 'Catalog Last Update',
+    'newest_apps': 'New Releases',
+    'see_details': 'See Details',
+    'ios_version': 'iOS',
+    'app_size': 'Size'
   }
 };
 
@@ -132,7 +144,9 @@ function setLanguage(lang) {
 
   
   localStorage.setItem('preferred_language', lang);
-
+  
+  // Update slider language
+  updateSliderLanguage();
   
   updateResultsCount();
   renderApps();
@@ -192,6 +206,12 @@ async function loadAppsData() {
 
     appsData = await response.json();
     filteredApps = [...appsData];
+    
+    // Get 5 newest apps for the slider
+    sliderApps = [...appsData].sort((a, b) => new Date(b.appUpdateTime) - new Date(a.appUpdateTime)).slice(0, 5);
+    
+    // Initialize the slider
+    initializeSlider();
 
     
     const savedPage = sessionStorage.getItem('currentPage');
@@ -691,4 +711,173 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Add event listener for window resize to adjust slider height if needed
+  window.addEventListener('resize', () => {
+    // You can add responsive adjustments for slider here if needed
+  });
 });
+
+// Initialize slider function
+function initializeSlider() {
+  const sliderContainer = document.getElementById('app-slider');
+  if (!sliderContainer) return;
+  
+  // Clear existing content
+  sliderContainer.innerHTML = '';
+  
+  // Create slides container
+  const slidesContainer = document.createElement('div');
+  slidesContainer.className = 'slider-slides';
+  
+  // Get the most recent update date from the newest app
+  const latestUpdateDate = new Date(sliderApps[0].appUpdateTime);
+  const formattedDate = latestUpdateDate.toLocaleDateString(currentLanguage === 'ru' ? 'ru-RU' : 'en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+  
+  // Create update date slide
+  const updateSlide = document.createElement('div');
+  updateSlide.className = 'slider-slide update-date-slide';
+  updateSlide.classList.add('active'); // First slide is active
+  updateSlide.innerHTML = `
+    <i class="fas fa-sync-alt"></i>
+    <h3 data-translate="catalog_last_update">${translations[currentLanguage].catalog_last_update}</h3>
+    <p>${formattedDate}</p>
+  `;
+  slidesContainer.appendChild(updateSlide);
+  
+  // Create app slides
+  sliderApps.forEach(app => {
+    const appSlide = document.createElement('div');
+    appSlide.className = 'slider-slide app-slide';
+    appSlide.setAttribute('data-bundle', app.appBundle);
+    
+    const appSize = app.appSize ? `${(app.appSize / 1024 / 1024).toFixed(1)} MB` : '';
+    
+    appSlide.innerHTML = `
+      <img src="${app.appImage}" alt="${app.appName}">
+      <h4>${app.appName}</h4>
+      <p>${translations[currentLanguage].ios_version} ${app.appMinIOSVersion} | ${appSize}</p>
+    `;
+    
+    // Add click event to navigate to app details
+    appSlide.addEventListener('click', () => {
+      sessionStorage.setItem('app_bundle', app.appBundle);
+      sessionStorage.setItem('app_version', app.appVersion);
+      sessionStorage.setItem('app_description', app.appDescription);
+      sessionStorage.setItem('app_update_time', app.appUpdateTime);
+      window.location.href = 'app-details.html';
+    });
+    
+    slidesContainer.appendChild(appSlide);
+  });
+  
+  sliderContainer.appendChild(slidesContainer);
+  
+  // Create controls
+  const controlsDiv = document.createElement('div');
+  controlsDiv.className = 'slider-controls';
+  
+  // Previous button
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'slider-arrow prev';
+  prevBtn.id = 'slider-prev';
+  prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+  
+  // Dots container
+  const dotsDiv = document.createElement('div');
+  dotsDiv.className = 'slider-dots';
+  
+  // Create dots
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'slider-dot';
+    if (i === 0) dot.classList.add('active');
+    dot.setAttribute('data-index', i);
+    
+    dot.addEventListener('click', () => {
+      goToSlide(i);
+    });
+    
+    dotsDiv.appendChild(dot);
+  }
+  
+  // Next button
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'slider-arrow next';
+  nextBtn.id = 'slider-next';
+  nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+  
+  // Add controls to slider
+  controlsDiv.appendChild(prevBtn);
+  controlsDiv.appendChild(dotsDiv);
+  controlsDiv.appendChild(nextBtn);
+  
+  sliderContainer.appendChild(controlsDiv);
+  
+  // Add event listeners for controls
+  prevBtn.addEventListener('click', () => {
+    goToSlide(currentSlide - 1);
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    goToSlide(currentSlide + 1);
+  });
+  
+  // Start auto-rotation
+  startAutoRotation();
+}
+
+// Function to go to a specific slide
+function goToSlide(index) {
+  const slides = document.querySelectorAll('.slider-slide');
+  const dots = document.querySelectorAll('.slider-dot');
+  
+  if (index < 0) {
+    index = slides.length - 1;
+  } else if (index >= slides.length) {
+    index = 0;
+  }
+  
+  // Remove active class from all slides and dots
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  // Add active class to current slide and dot
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+  
+  currentSlide = index;
+  
+  // Reset auto-rotation timer
+  restartAutoRotation();
+}
+
+// Auto-rotation variables
+let sliderInterval;
+const autoRotationDelay = 5000; // 5 seconds
+
+// Start auto-rotation
+function startAutoRotation() {
+  clearInterval(sliderInterval);
+  sliderInterval = setInterval(() => {
+    goToSlide(currentSlide + 1);
+  }, autoRotationDelay);
+}
+
+// Restart auto-rotation
+function restartAutoRotation() {
+  clearInterval(sliderInterval);
+  startAutoRotation();
+}
+
+// Function to update slider text when language changes
+function updateSliderLanguage() {
+  const updateSlideTitle = document.querySelector('.update-date-slide h3');
+  if (updateSlideTitle) {
+    updateSlideTitle.textContent = translations[currentLanguage].catalog_last_update;
+  }
+}
