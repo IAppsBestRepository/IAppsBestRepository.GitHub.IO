@@ -205,6 +205,72 @@ body.dark-theme .app-img {
   .update-date-slide h3 {
     font-size: 1.3rem !important;
   }
+  
+  .update-date-slide i {
+    font-size: 2.5rem !important;
+  }
+  
+  .app-slider {
+    height: 240px !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Переходный диапазон между планшетами и десктопом */
+@media (min-width: 769px) and (max-width: 830px) {
+  .app-slide img {
+    max-width: 125px !important;
+    max-height: 125px !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.4rem !important;
+  }
+  
+  .update-date-slide i {
+    font-size: 2.7rem !important;
+  }
+  
+  .update-date-slide p {
+    font-size: 1.1rem !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.25rem !important;
+  }
+  
+  .app-slider {
+    height: 265px !important;
+  }
+}
+
+/* Десктопные устройства (плавный переход от планшетов) */
+@media (min-width: 831px) {
+  .app-slide img {
+    max-width: 140px !important;
+    max-height: 140px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  .update-date-slide i {
+    font-size: 3rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.3rem !important;
+  }
+  
+  .app-slider {
+    height: 300px !important;
+  }
 }
 
 /* iPhone и стандартные мобильные устройства */
@@ -342,33 +408,6 @@ body.dark-theme .app-img {
   
   .tablet-spacing {
     margin-top: 35px !important;
-  }
-  
-  .app-slider {
-    height: 250px !important;
-  }
-  
-  /* Адаптивный контент для слайдера */
-  .update-date-slide h3 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-  }
-  
-  .update-date-slide p {
-    font-size: 1.1rem;
-  }
-  
-  .update-date-slide i {
-    font-size: 2.5rem;
-  }
-  
-  .app-slide img {
-    max-width: 120px;
-    max-height: 120px;
-  }
-  
-  .app-slide h4 {
-    font-size: 1.2rem;
   }
   
   /* Фиксированный отступ для всех устройств до 830px */
@@ -562,6 +601,84 @@ body.dark-theme .app-img {
 .slider-dot.active {
   background-color: var(--primary-color);
   transform: scale(1.2);
+}
+
+/* Фиксированные медиа-запросы для плавных переходов */
+@media (min-width: 700px) and (max-width: 768px) {
+  .app-slide img {
+    max-width: 110px !important;
+    max-height: 110px !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.3rem !important;
+  }
+  
+  .update-date-slide i {
+    font-size: 2.5rem !important;
+  }
+  
+  .app-slider {
+    height: 240px !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Переходный диапазон между планшетами и десктопом */
+@media (min-width: 769px) and (max-width: 830px) {
+  .app-slide img {
+    max-width: 125px !important;
+    max-height: 125px !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.4rem !important;
+  }
+  
+  .update-date-slide i {
+    font-size: 2.7rem !important;
+  }
+  
+  .update-date-slide p {
+    font-size: 1.1rem !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.25rem !important;
+  }
+  
+  .app-slider {
+    height: 265px !important;
+  }
+}
+
+/* Десктопные устройства (плавный переход от планшетов) */
+@media (min-width: 831px) {
+  .app-slide img {
+    max-width: 140px !important;
+    max-height: 140px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  .update-date-slide i {
+    font-size: 3rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.3rem !important;
+  }
+  
+  .app-slider {
+    height: 300px !important;
+  }
 }
 
 
