@@ -148,6 +148,7 @@ function setLanguage(lang) {
   // Update slider language
   updateSliderLanguage();
   
+  // Обновляем отображение карточек приложений
   updateResultsCount();
   renderApps();
 }
@@ -309,8 +310,8 @@ function renderApps() {
 
   for (let i = startIndex; i < endIndex; i++) {
     const app = filteredApps[i];
-
     
+    // Форматируем дату обновления
     const updateDate = new Date(app.appUpdateTime);
     const formattedDate = updateDate.toLocaleDateString(currentLanguage === 'ru' ? 'ru-RU' : 'en-US', {
       day: 'numeric',
@@ -318,40 +319,57 @@ function renderApps() {
       year: 'numeric'
     });
 
-    
+    // Создаем элемент карточки
     const appCard = document.createElement('div');
     appCard.className = 'app-card';
     appCard.setAttribute('data-bundle', app.appBundle);
-    appCard.style.opacity = "1";
-    appCard.style.visibility = "visible";
-    appCard.style.display = "flex";
-
     
-    const formattedDescription = app.appDescription.replace(/\n/g, '<br>');
-
+    // Создаем краткое описание (ограничиваем длину)
+    const shortDescription = app.appDescription.length > 150 
+      ? app.appDescription.substring(0, 150) + '...'
+      : app.appDescription;
+    
+    // Заполняем карточку по новому формату
     appCard.innerHTML = `
-      <div class="app-img">
-        <img src="${app.appImage}" alt="${app.appName}" loading="lazy">
+      <div class="app-header">
+        <div class="app-img">
+          <img src="${app.appImage}" alt="${app.appName}" loading="lazy">
+        </div>
+        <div class="app-title-container">
+          <h3 class="app-name">${app.appName}</h3>
+          <p class="app-version">v${app.appVersion}</p>
+        </div>
       </div>
-      <div class="app-info">
-        <div class="app-name">${app.appName}</div>
-        <div class="app-version">${app.appVersion}</div>
-        <div class="app-description">${formattedDescription}</div>
-        <div class="app-update">${translations[currentLanguage].updated}: ${formattedDate}</div>
+      <div class="app-body">
+        <div class="app-description">${shortDescription.replace(/\n/g, '<br>')}</div>
+        <div class="app-details">
+          <div class="app-detail-item">
+            <div class="app-detail-label">${translations[currentLanguage].ios_version}:</div>
+            <div class="app-detail-value">${app.appIOSVersion || "N/A"}</div>
+          </div>
+          <div class="app-detail-item">
+            <div class="app-detail-label">${translations[currentLanguage].app_size}:</div>
+            <div class="app-detail-value">${app.appSize || "N/A"}</div>
+          </div>
+          <div class="app-detail-item">
+            <div class="app-detail-label">${translations[currentLanguage].updated}:</div>
+            <div class="app-detail-value">${formattedDate}</div>
+          </div>
+        </div>
       </div>
     `;
 
-    
+    // Добавляем обработчик клика для перехода на страницу деталей
     appCard.addEventListener('click', () => {
       sessionStorage.setItem('app_bundle', app.appBundle);
       sessionStorage.setItem('app_version', app.appVersion);
       sessionStorage.setItem('app_description', app.appDescription);
       sessionStorage.setItem('app_update_time', app.appUpdateTime);
-      sessionStorage.setItem('currentPage', currentPage); //Сохраняем текущую страницу
+      sessionStorage.setItem('currentPage', currentPage);
       sessionStorage.setItem('selected_card_bundle', app.appBundle); 
       sessionStorage.setItem('itemsPerPage', itemsPerPage); 
 
-      
+      // Сохраняем выбранную сортировку
       const sortOrder = document.getElementById('sort-order').value;
       sessionStorage.setItem('sortOrder', sortOrder);
 
@@ -361,11 +379,10 @@ function renderApps() {
     appCardsContainer.appendChild(appCard);
   }
 
-  
+  // Выделение выбранной карточки при возврате на страницу
   const selectedCardBundle = sessionStorage.getItem('selected_card_bundle');
 
   if (selectedCardBundle) {
-    
     setTimeout(() => {
       const selectedCard = document.querySelector(`.app-card[data-bundle="${selectedCardBundle}"]`);
       if (selectedCard) {
@@ -378,7 +395,6 @@ function renderApps() {
         
         sessionStorage.removeItem('selected_card_bundle');
       } else {
-        
         window.scrollTo({
           top: document.querySelector('main').offsetTop - 80,
           behavior: 'smooth'
@@ -386,28 +402,11 @@ function renderApps() {
       }
     }, 100); 
   } else {
-    
     window.scrollTo({
       top: document.querySelector('main').offsetTop - 80,
       behavior: 'smooth'
     });
   }
-  
-  // Добавляем проверку отображения карточек через небольшой таймаут
-  setTimeout(() => {
-    const cards = document.querySelectorAll('.app-card');
-    if (cards.length > 0) {
-      cards.forEach(card => {
-        if (getComputedStyle(card).display === 'none' || 
-            getComputedStyle(card).visibility === 'hidden' || 
-            getComputedStyle(card).opacity === '0') {
-          card.style.display = 'flex';
-          card.style.visibility = 'visible';
-          card.style.opacity = '1';
-        }
-      });
-    }
-  }, 300);
 }
 
 
