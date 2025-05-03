@@ -170,6 +170,75 @@ body.dark-theme .app-img {
   position: relative;
 }
 
+/* Средние планшеты */
+@media (min-width: 600px) and (max-width: 768px) {
+  .app-slide img {
+    max-width: 110px !important;
+    max-height: 110px !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Средние мобильные устройства */
+@media (min-width: 361px) and (max-width: 414px) {
+  .update-date-slide i {
+    font-size: 2.1rem !important;
+  }
+  
+  .app-slide img {
+    max-width: 85px !important;
+    max-height: 85px !important;
+  }
+  
+  .app-slider {
+    height: 210px !important;
+  }
+}
+
+/* Очень маленькие мобильные устройства */
+@media (max-width: 360px) {
+  .app-slider {
+    height: 200px !important;
+  }
+  
+  .update-date-slide i {
+    font-size: 2rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 6px !important;
+  }
+  
+  .update-date-slide p {
+    font-size: 0.9rem !important;
+  }
+  
+  .app-slide img {
+    max-width: 80px !important;
+    max-height: 80px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .app-slide h4 {
+    font-size: 1rem !important;
+    margin-bottom: 2px !important;
+  }
+  
+  .slider-dots {
+    gap: 5px !important;
+  }
+  
+  .slider-dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+}
+
 @media (max-width: 830px) {
   .top-bar {
     flex-direction: column;
@@ -219,6 +288,29 @@ body.dark-theme .app-img {
     height: 250px !important;
   }
   
+  /* Адаптивный контент для слайдера */
+  .update-date-slide h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+  
+  .update-date-slide p {
+    font-size: 1.1rem;
+  }
+  
+  .update-date-slide i {
+    font-size: 2.5rem;
+  }
+  
+  .app-slide img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.2rem;
+  }
+  
   /* Фиксированный отступ для всех устройств до 830px */
   body {
     padding-top: 10px !important;
@@ -235,12 +327,27 @@ body.dark-theme .app-img {
   }
   
   .update-date-slide i {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+  }
+  
+  .update-date-slide h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  
+  .update-date-slide p {
+    font-size: 1rem;
   }
   
   .app-slide img {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 90px;
+    max-height: 90px;
+    margin-bottom: 10px;
+  }
+  
+  .app-slide h4 {
+    font-size: 1.1rem;
+    margin-bottom: 3px;
   }
   
   /* Переопределяем высоту для мобильных устройств, чтобы она соответствовала планшетам */
