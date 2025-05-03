@@ -3,17 +3,17 @@
         "appName": "Yandex Music",
         "appBundle": "ru.yandex.mobile.music",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/82/e9/db/82e9db49-418c-8dca-e76f-3439005427e0/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/350x350.png",
-        "appVersion": "6.99 | 57.8 MB | IOS 16.0",
-        "appDescription": "▎Активирована подписка \"Plus\"",
-        "appUpdateTime": "2024-11-30T11:23:15+0530"
+        "appVersion": "7.21 | 73.7 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Plus\"\n▎Доступна установка музыки в кэш",
+        "appUpdateTime": "2025-05-03T03:08:29+0300"
     },
     {
         "appName": "VK Music",
         "appBundle": "com.music.vk",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/17/1e/98/171e985f-a3e2-0e0d-fc7d-acc1e5ebdfd0/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/350x350.jpg",
-        "appVersion": "7.6 | 77 MB | IOS 15.0",
+        "appVersion": "7.8.1 | 79.5 MB | IOS 15.0",
         "appDescription": "▎Активирована подписка \"Premium\"\n▎Доступно прослушивание в оффлайн\n▎Fix Extension",
-        "appUpdateTime": "2024-12-15T18:23:41+0530"
+        "appUpdateTime": "2025-05-03T03:11:05+0300"
     },
     {
         "appName": "Vpnify",
@@ -123,9 +123,9 @@
         "appName": "Simpler",
         "appBundle": "com.viamobi.Simpler",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6c/e2/c1/6ce2c10e-0076-269b-b943-5fb84d04b15a/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/350x350.png",
-        "appVersion": "6.0.17 | 98.9 MB | IOS 12.0",
-        "appDescription": "▎Активирована подписка \"Premium\"\n\nВходить в аккаунт нельзя, иначе ваша подписка слетит",
-        "appUpdateTime": "2024-05-19T22:00:00+0300"
+        "appVersion": "6.3.1 | 75.9 MB | IOS 12.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nВойдите в аккаунт и перезайдите в приложение",
+        "appUpdateTime": "2025-05-03T03:09:14+0300"
     },
     {
         "appName": "Artforintrovert",
@@ -163,9 +163,9 @@
         "appName": "Flo",
         "appBundle": "org.iggymedia.periodtracker",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/da/ae/9d/daae9d6e-ae73-b108-a01d-dacf1f7b674e/AppIcon-0-0-1x_U007ephone-0-0-sRGB-85-220.png/350x350.png",
-        "appVersion": "9.66.1 | 122.2 MB | IOS 15.0",
+        "appVersion": "9.77.0 | 102.3 MB | IOS 16.0",
         "appDescription": "▎Активирована подписка \"Premium\"\n\nДля активации подписки войдите в свой аккаунт",
-        "appUpdateTime": "2024-11-30T11:27:35+0530"
+        "appUpdateTime": "2025-05-03T02:01:30+0300"
     },
     {
         "appName": "SnapEdit",
@@ -195,9 +195,9 @@
         "appName": "TickTick",
         "appBundle": "com.TickTick.task",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/e5/8a/26e58ace-5d3b-43f2-a297-77ebbface832/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/350x350.png",
-        "appVersion": "7.3.20 | 92.2 MB | IOS 13.0",
+        "appVersion": "7.5.50 | 85.4 MB | IOS 13.0",
         "appDescription": "▎Активирована подписка \"Premium\"\n\nДля активации подписки войдите в свой аккаунт",
-        "appUpdateTime": "2024-09-22T13:44:40+0300"
+        "appUpdateTime": "2025-05-03T02:11:16+0300"
     },
     {
         "appName": "Mimo",
@@ -211,9 +211,9 @@
         "appName": "Leto Fonts",
         "appBundle": "biser.stories",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/27/10/a7/2710a7f7-013b-8c6c-fbbb-b5100cfb34f9/AppIcon-0-0-1x_U007ephone-0-0-sRGB-85-220.png/350x350.png",
-        "appVersion": "8.1.1 | 69.8 MB | IOS 14.0",
-        "appDescription": "▎Активирована подписка \"Premium\"",
-        "appUpdateTime": "2024-09-02T16:19:05+0300"
+        "appVersion": "8.3 | 69.8 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Pro+\"",
+        "appUpdateTime": "2025-05-03T02:36:46+0300"
     },
     {
         "appName": "AirBrush",
@@ -499,9 +499,9 @@
         "appName": "BoldVoice",
         "appBundle": "com.wellocution.iosapp",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4d/41/e1/4d41e1c1-2163-e748-59b3-b4f98bb72fd2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
-        "appVersion": "2.9.4 | 98.3 MB | IOS 13.4",
+        "appVersion": "3.1.3 | 104 MB | IOS 13.4",
         "appDescription": "▎Активирована подписка \"Premium\"\n▎Разблокированы все уроки\n\nВойдите в аккаунт и перезайдите в приложение для активации подписки и разблокирования всех уроков",
-        "appUpdateTime": "2025-01-11T23:08:59+0530"
+        "appUpdateTime": "2025-05-03T02:37:38+0300"
     },
     {
         "appName": "Seven",
@@ -554,10 +554,10 @@
     {
         "appName": "Duolingo",
         "appBundle": "com.duolingo.DuolingoMobile",
-        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/94/be/56/94be5669-bea2-a5d4-7664-a3506360a478/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
-        "appVersion": "7.55.0 | 128 MB | IOS 15.0",
-        "appDescription": "▎Активирована подписка \"Max\"\n▎Двойной опыт за уроки\n▎Fix Extension",
-        "appUpdateTime": "2025-01-11T23:42:48+0530"
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5c/4c/af/5c4caf3f-d4f4-4c8d-ba91-1794e1e15089/AppIcon-0-0-1x_U007epad-0-1-85-220.png/350x350.jpg",
+        "appVersion": "7.70.0 | 172 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Max\"\n▎Fix Extension",
+        "appUpdateTime": "2025-05-03T03:10:24+0300"
     },
     {
         "appName": "Sleep",
@@ -1155,9 +1155,9 @@
         "appName": "MyFitnessPal",
         "appBundle": "com.myfitnesspal.mfp",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ff/fd/e0/fffde0c3-d341-7ddf-e615-b898ed27c795/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
-        "appVersion": "25.5.0 | 93.6 MB | IOS 16.0",
-        "appDescription": "▎Активирована подписка \"Premium\"\n\nДля активации подписки войдите в свой аккаунт [Входите через Mail, если другие сервисы не доступны]",
-        "appUpdateTime": "2025-02-14T20:47:48+0300"
+        "appVersion": "25.16.0 | 119.2 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Premium+\"\n\nДля активации подписки войдите в свой аккаунт [Входите через Mail, если другие сервисы не доступны]",
+        "appUpdateTime": "2025-05-03T03:24:49+0300"
     },
     {
         "appName": "WindHub",
@@ -1227,9 +1227,9 @@
         "appName": "Textastic Code Editor",
         "appBundle": "com.textasticapp.textastic-universal",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c5/9f/c7/c59fc7db-90c8-bc59-8355-ceddcdda2fb0/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/350x350.png",
-        "appVersion": "10.4 | 9.2 MB | IOS 16.0",
-        "appDescription": "▎Платное приложение из AppStore",
-        "appUpdateTime": "2024-09-22T13:38:32+0300"
+        "appVersion": "10.6.2 | 10.7 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n▎Исправлена функция выбора файлов",
+        "appUpdateTime": "2025-05-03T02:12:29+0300"
     },
     {
         "appName": "Resume Maker",
@@ -1403,9 +1403,9 @@
         "appName": "SpeakApp AI",
         "appBundle": "com.voicepop.lab",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/39/e7/d1/39e7d123-d870-5052-0368-6535d4934964/AppIcon-0-0-1x_U007ephone-0-10-0-85-220.png/350x350.png",
-        "appVersion": "2.6 | 25.5 MB | IOS 15.5",
-        "appDescription": "▎Активирована подписка \"Premium\"",
-        "appUpdateTime": "2024-10-05T00:04:29+0300"
+        "appVersion": "3.0.2 | 27.2 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n▎Исправлена функция выбора файлов",
+        "appUpdateTime": "2025-05-03T02:45:19+0300"
     },
     {
         "appName": "Daily Yoga - Yoga For Fitness",
@@ -1579,9 +1579,9 @@
         "appName": "ITranslate Translator",
         "appBundle": "com.outerspaceapps.itranslate",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ef/46/ca/ef46ca28-7ca0-6855-3a0c-3883498cd79f/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/350x350.jpg",
-        "appVersion": "17.4.20 | 69.3 MB | IOS 14.0",
+        "appVersion": "17.4.31 | 68.3 MB | IOS 14.0",
         "appDescription": "▎Активирована подписка \"Pro\"\n▎Доступно использование языков в оффлайн\n▎Fix Extension",
-        "appUpdateTime": "2024-12-15T18:19:55+0530"
+        "appUpdateTime": "2025-05-03T03:09:46+0300"
     },
     {
         "appName": "Kinemaster - Video Editor & Maker",
@@ -1699,9 +1699,9 @@
         "appName": "Concepts",
         "appBundle": "com.tophatch.Concepts",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/20/0f/af/200fafeb-e62f-7fb5-3a51-ad3d7851219d/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-85-220.png/350x350.png",
-        "appVersion": "6.17.1 | 105.6 MB | IOS 15.0",
-        "appDescription": "▎Активирована подписка \"Pro\"",
-        "appUpdateTime": "2024-10-14T20:35:15+0300"
+        "appVersion": "6.23.1 | 63.2 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nВойдите в свой аккаунт и перезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:33:47+0300"
     },
     {
         "appName": "Coconote - AI Note Taker",
@@ -2475,9 +2475,9 @@
         "appName": "Wizard AI – Image Generator",
         "appBundle": "com.oneMoreThing.AI-LivePainting",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8b/62/d3/8b62d30a-ebf4-67dc-7f67-64f9842f8133/AppIcon-0-0-1x_U007epad-0-1-0-85-220.jpeg/350x350.jpg",
-        "appVersion": "9.2.8 | 66.3 MB | IOS 16.6",
-        "appDescription": "▎Активирована подписка \"Pro\"\n▎Исправлена генерация изображений через Midjourney",
-        "appUpdateTime": "2025-01-11T23:40:08+0530"
+        "appVersion": "9.4.4 | 104.8 MB | IOS 16.6",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nПерезайдите в приложение, если при попытке генерации изображения появляется окно с покупкой подписки",
+        "appUpdateTime": "2025-05-03T03:24:22+0300"
     },
     {
         "appName": "Movavi – Photo & Video Editor",
@@ -2539,17 +2539,17 @@
         "appName": "Remini – AI Photo Enhancer",
         "appBundle": "com.bigwinepot.nwdn.international",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d8/b6/36/d8b6364c-b397-4006-557b-bc38997542bd/AppIcon-0-0-1x_U007epad-0-85-220.png/350x350.jpg",
-        "appVersion": "2.10.98 | 71.7 MB | IOS 15.0",
-        "appDescription": "▎Активирована подписка \"Pro\"\n▎Удалены Watermark'и в категории \"AI-Фото\"\n▎Исправлена большая Watermark'a в категории \"AI-Фильтры\"\n▎Качество улучшений фото 100% вместо стандартных 80%\n\nФункция \"Улучшение видео\" не работает",
-        "appUpdateTime": "2025-01-19T15:22:54+0530"
+        "appVersion": "2.10.123 | 72.6 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n▎Удалены Watermark'и в категории \"AI-Фото\", \"AI-Видео\"\n▎Исправлена большая Watermark'a в категории \"AI-Фильтры\"\n▎Качество улучшений фото 100% вместо стандартных 80%\n▎Добавлено кастомное сохранение фотографий при использовании категории \"Улучшение Фото\" для обхода ограничений в сохранении 5 фотографий",
+        "appUpdateTime": "2025-05-03T03:25:55+0300"
     },
     {
         "appName": "Strength by Muscle & Motion",
         "appBundle": "com.musclemotion.strengthnative",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ca/55/80/ca5580f0-81cf-5260-a2d7-11cda3eff460/AppIcon_strength-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
-        "appVersion": "3.0.2 | 308.5 MB | IOS 16.0",
-        "appDescription": "▎Активирована подписка \"Pro\"\n\nВойдите в аккаунт для активации подписки",
-        "appUpdateTime": "2024-11-30T10:46:39+0530"
+        "appVersion": "3.1.3 | 296.5 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nВойдите в свой аккаунт для активации подписки",
+        "appUpdateTime": "2025-05-03T02:30:01+0300"
     },
     {
         "appName": "Fitness App – Gym Workout Plan",
@@ -3035,9 +3035,9 @@
         "appName": "iScreen – Widgets & Themes",
         "appBundle": "com.zerone.hidesktop",
         "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ea/97/2a/ea972a09-0053-f1d9-28be-ef25eac605fa/AppIcon-0-0-1x_U007epad-0-0-0-8-0-0-sRGB-85-220.png/350x350.jpg",
-        "appVersion": "4.1.50 | 300.7 MB | IOS 14.0",
+        "appVersion": "4.2.20 | 331.2 MB | IOS 14.0",
         "appDescription": "▎Активирована подписка \"VIP\"\n▎Fix Extension",
-        "appUpdateTime": "2024-12-15T18:00:17+0530"
+        "appUpdateTime": "2025-05-03T02:37:16+0300"
     },
     {
         "appName": "Widgetsmith",
@@ -4402,10 +4402,10 @@
     {
         "appName": "CloneAI – AI Hug Video Maker",
         "appBundle": "com.pixery.avatar",
-        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/87/aa/1c/87aa1cbf-3fe3-f34f-16f6-054c5fd0a881/AppIcon-1x_U007epad-0-1-0-sRGB-85-220-0.png/350x350.jpg",
-        "appVersion": "6.10.6 | 84.3 MB | IOS 15.0",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ee/e2/f0/eee2f0bb-4081-3b48-2dd7-9c89e95e67c6/AppIcon-1x_U007epad-0-1-0-sRGB-85-220-0.png/350x350.jpg",
+        "appVersion": "6.14.6 | 108.3 MB | IOS 15.0",
         "appDescription": "▎Активирована подписка \"Pro\"\n▎Бесконечное количество кредитов",
-        "appUpdateTime": "2025-02-14T20:49:41+0300"
+        "appUpdateTime": "2025-05-03T02:09:23+0300"
     },
     {
         "appName": "Selfix AI – Face & Photo Editor",
@@ -4694,5 +4694,645 @@
         "appVersion": "3.5 | 589.2 MB | IOS 12.0",
         "appDescription": "▎Платное приложение из AppStore",
         "appUpdateTime": "2025-02-26T23:41:11+0300"
+    },
+    {
+        "appName": "UpNote – notes, diary, journal",
+        "appBundle": "com.getupnote.ios",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ea/94/61/ea94612e-d8cc-70ba-29c6-e5a47f34267f/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "9.11.2 | 36.2 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nДля активации подписки войдите в свой аккаунт и перезайдите в приложение",
+        "appUpdateTime": "2025-05-03T02:02:52+0300"
+    },
+    {
+        "appName": "WEST – film & effects",
+        "appBundle": "andrew.sawyer.West",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1e/75/e6/1e75e6bc-5c15-686b-3c66-9e5115604819/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/350x350.jpg",
+        "appVersion": "4.1 | 105.7 MB | IOS 18.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nДля активации подписки перезайдите в приложение",
+        "appUpdateTime": "2025-05-03T02:03:58+0300"
+    },
+    {
+        "appName": "SUBCAP – Captions for Videos ",
+        "appBundle": "com.ratel.subcap",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c3/81/eb/c381eba5-fb93-16a0-023e-07fd6d3d0a15/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "3.2.3 | 51.4 MB | IOS 15.6",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:05:52+0300"
+    },
+    {
+        "appName": "Circuit Route Planner",
+        "appBundle": "com.underwoodapps.Circuit",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d1/cb/9d/d1cb9d0c-9bf8-6e6c-c94b-dca378752f86/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/350x350.jpg",
+        "appVersion": "3.17.13 | 36.3 MB | IOS 16.4",
+        "appDescription": "▎Активирована подписка \"Standard\"",
+        "appUpdateTime": "2025-05-03T02:06:51+0300"
+    },
+    {
+        "appName": "HiMommy – Ovulation & Pregnancy",
+        "appBundle": "com.himommyapp",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8b/98/2b/8b982b1c-e63a-1293-cf54-e58aacf140ea/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.jpeg/350x350.jpg",
+        "appVersion": "7.44.1 | 94.1 MB | IOS 16.6",
+        "appDescription": "▎Активирована подписка \"Plus\"",
+        "appUpdateTime": "2025-05-03T02:08:12+0300"
+    },
+    {
+        "appName": "FaceOff – AI Photo Generator",
+        "appBundle": "com.pixery.faceoff",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/12/c5/33/12c53391-008a-8b5a-1bde-1218502e0f37/AppIcon-1x_U007epad-0-1-0-sRGB-85-220-0.jpeg/350x350.jpg",
+        "appVersion": "4.10.1 | 189.8 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nКредиты обновляются автоматически при перезаходе в приложение",
+        "appUpdateTime": "2025-05-03T02:10:43+0300"
+    },
+    {
+        "appName": "Money Manager Expense & Budget",
+        "appBundle": "com.realbyteapps.MoneyManager2",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f2/80/ee/f280eeca-71e3-16a3-cb16-9775e7d6f9b2/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/350x350.jpg",
+        "appVersion": "2.11.18 | 23.8 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:13:20+0300"
+    },
+    {
+        "appName": "Grids – Posts & Templates",
+        "appBundle": "com.ultralabapps.instagrids",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a6/5c/05/a65c05bb-63b0-fbcd-caaf-2b2cc6d4f969/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "3.0.33 | 584.1 MB | IOS 15.6",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:14:25+0300"
+    },
+    {
+        "appName": "Video Up – Video Editor & Maker",
+        "appBundle": "video.up.editor.maker",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c8/dc/e1/c8dce148-1e60-8a81-bbfe-6dde0a3e0e33/AppIcon-Default-0-0-1x_U007emarketing-0-11-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "1.27.0 | 154.5 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:15:18+0300"
+    },
+    {
+        "appName": "SyncTasks",
+        "appBundle": "com.tohkarle.Notion-Todos",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/f9/12/15f9124e-87b3-454c-8e1b-90d5bec42184/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/350x350.jpg",
+        "appVersion": "2.4.1 | 48.8 MB | IOS 17.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:15:59+0300"
+    },
+    {
+        "appName": "NeuronaAI – Photo & Video Maker",
+        "appBundle": "com.pinborg-management.StableDiffusionApp",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/31/05/ab/3105ab50-9c1c-77c6-8c6e-6b87b401f86b/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/350x350.jpg",
+        "appVersion": "2.2.2 | 138.2 MB | IOS 15.6",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:16:57+0300"
+    },
+    {
+        "appName": "Galatea – Books & Audiobooks",
+        "appBundle": "org.reactjs.native.Inkitt.App.Colt",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/38/f3/e2/38f3e2e5-55ab-7c85-0a22-038a7d1f543b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "12.15.0 | 67 MB | IOS 15.1",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:17:50+0300"
+    },
+    {
+        "appName": "Boostcamp – Gym Workout Fitness",
+        "appBundle": "com.bpmhealth.boostfitness",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/02/05/2d/02052de4-9c6e-8ab0-0f02-360a5be0bb59/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/350x350.jpg",
+        "appVersion": "239 | 68.6 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:19:29+0300"
+    },
+    {
+        "appName": "Obscura — Pro Camera",
+        "appBundle": "com.benricemccarthy.obscura-3",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/77/14/31/77143103-274c-9578-336d-c00b685c61cb/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "2025.1 | 24.1 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Ultra\"",
+        "appUpdateTime": "2025-05-03T02:20:52+0300"
+    },
+    {
+        "appName": "Intermittent Fasting Tracker",
+        "appBundle": "com.leapfitness.fasting",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/65/c3/1c/65c31c86-45a8-676f-7a7d-8cb7ff256376/AppIcon-0-0-1x_U007emarketing-0-0-0-8-0-0-85-220.png/350x350.jpg",
+        "appVersion": "2.0.7 | 160 MB | IOS 12.4",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:25:44+0300"
+    },
+    {
+        "appName": "4English — Daily English Vocab",
+        "appBundle": "tungdx.vn.LearnEnglishByNews",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e0/c6/3f/e0c63f2c-f494-8ff0-05bb-7e7e2777ab20/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/350x350.jpg",
+        "appVersion": "9.6.22 | 55.6 MB | IOS 11.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nТребуется включение VPN из-за региональных ограничений",
+        "appUpdateTime": "2025-05-03T02:26:56+0300"
+    },
+    {
+        "appName": "PixKid AI for Kids & Education",
+        "appBundle": "com.pixery.PixKid",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ff/59/97/ff599787-6080-fedf-5a1b-8fd9b2cfad65/AppIcon-1x_U007epad-0-11-0-sRGB-85-220-0.png/350x350.jpg",
+        "appVersion": "3.0.0 | 103.3 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:27:39+0300"
+    },
+    {
+        "appName": "iWallpaper — Live Wallpapers",
+        "appBundle": "com.widget.fightenegery",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/56/25/4f/56254f83-cb97-23bd-0f8b-1f415ab07348/AppIcon-0-1x_U007ephone-0-10-0-85-220-0.png/350x350.jpg",
+        "appVersion": "1.5.9 | 249.9 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:28:33+0300"
+    },
+    {
+        "appName": "Anatomy by M&M",
+        "appBundle": "com.muscleandmotion.Anatomy",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c8/f2/54/c8f254a4-140f-d430-bc71-41f2b7394237/AppIcon_anatomy-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "3.0.2 | 332.4 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nВойдите в свой аккаунт для активации подписки",
+        "appUpdateTime": "2025-05-03T02:29:25+0300"
+    },
+    {
+        "appName": "Remake AI — AI Photo Generator",
+        "appBundle": "com.plusminusone.ai.photo.generator.remake",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/7d/31/037d319a-42b8-9243-c09f-327e20141d9e/AppIcon-0-0-1x_U007epad-0-0-85-220.png/350x350.jpg",
+        "appVersion": "1.3.7 | 70.3 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:31:22+0300"
+    },
+    {
+        "appName": "Plant Parent — Plant Care Guide",
+        "appBundle": "com.plant.parent",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b4/e4/fc/b4e4fcd7-455b-9691-b18a-ed2d58a01f2f/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "1.111 | 107.4 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:32:09+0300"
+    },
+    {
+        "appName": "Weatherzone — Weather Forecasts",
+        "appBundle": "com.weatherzone.wzlite",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/69/50/63/695063eb-23a3-2b88-8967-3275c9a31837/AppIcon-0-0-1x_U007emarketing-0-8-0-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "7.3.7 | 146.6 MB | IOS 12.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:33:00+0300"
+    },
+    {
+        "appName": "CoinSnap — Coin Identifier",
+        "appBundle": "com.coinidentifier.identifycoins",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/47/3b/72/473b72ce-453f-5757-44b5-3bd29ccf8e05/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "1.22.0 | 76.5 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:33:50+0300"
+    },
+    {
+        "appName": "MuscleFit Workout Planner",
+        "appBundle": "com.musclefit.app",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/47/06/7f/47067fb6-c0af-d3ce-ea71-e777926c3933/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/350x350.jpg",
+        "appVersion": "1.0.28 | 86.7 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:34:26+0300"
+    },
+    {
+        "appName": "LazyFit — Home Workout Planner",
+        "appBundle": "com.mejorai.com",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f4/dd/2c/f4dd2c46-6018-97ea-5c0b-8a64a4c3e412/Default-0-0-1x_U007epad-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "1.7.72 | 129.9 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:35:09+0300"
+    },
+    {
+        "appName": "Calo — AI Food Calorie Counter",
+        "appBundle": "com.foodscanner.ai",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f5/11/e2/f511e27a-6903-fbab-8aec-6fa56eff5067/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "1.2.29 | 55.1 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:36:05+0300"
+    },
+    {
+        "appName": "Fonts for iPhone & Keyboards",
+        "appBundle": "onelight.fonts",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cc/2a/e8/cc2ae89c-a92c-2295-a9a7-16df643c47e6/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/350x350.jpg",
+        "appVersion": "3.5.0 | 54.3 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Plus\"\n▎Fix Extension",
+        "appUpdateTime": "2025-05-03T02:39:24+0300"
+    },
+    {
+        "appName": "(Not Boring) Weather",
+        "appBundle": "com.andyworks.weather",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/90/d8/ad/90d8adeb-1373-731c-ff07-6bbade4b845d/AppIcon-0-0-1x_U007epad-0-1-0-0-P3-85-220.png/350x350.jpg",
+        "appVersion": "3.38 | 153.8 MB | IOS 17.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:40:13+0300"
+    },
+    {
+        "appName": "(Not Boring) Vibes",
+        "appBundle": "com.andyworks.vibes",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/75/7b/73/757b73dd-47f8-c19d-1922-fceab69a6bd0/AppIcon-0-0-1x_U007epad-0-1-0-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "1.18 | 202.9 MB | IOS 17.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:40:47+0300"
+    },
+    {
+        "appName": "(Not Boring) Habits",
+        "appBundle": "com.andyworks.streaks",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/67/4b/3f/674b3fda-9678-f69e-942e-dc17437dcfc5/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "3.17 | 165.4 MB | IOS 17.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:41:22+0300"
+    },
+    {
+        "appName": "Notevision — Sight Reading",
+        "appBundle": "com.roostersoftstudios.notesonastaff",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/53/1c/23/531c2350-0fdc-6b2d-45ac-973729153358/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "7.4 | 23.5 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:42:33+0300"
+    },
+    {
+        "appName": "Breathwrk — Breathing Exercises",
+        "appBundle": "com.breathwrk.ios",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ef/9f/0e/ef9f0e13-8ec9-99e5-64ca-283ef0610ac5/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "23.28 | 188.4 MB | IOS 16.4",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:43:23+0300"
+    },
+    {
+        "appName": "Storybeat — Reels & Story Maker",
+        "appBundle": "com.socialstories.storybeat",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fd/fb/72/fdfb72d1-e544-24e6-f888-8980768e1713/AppIcon-0-0-1x_U007ephone-0-1-0-0-85-220.png/350x350.jpg",
+        "appVersion": "4.37.1 | 97.8 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nВойдите в свой аккаунт для активации подписки",
+        "appUpdateTime": "2025-05-03T02:44:29+0300"
+    },
+    {
+        "appName": "BeautyCam — AI Photo Editor",
+        "appBundle": "com.meitu.myxj",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/55/26/2a/55262a51-d223-ebe4-fdbe-b7af73f171d1/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/350x350.jpg",
+        "appVersion": "12.6.30 | 206.5 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"VIP\"",
+        "appUpdateTime": "2025-05-03T02:46:12+0300"
+    },
+    {
+        "appName": "Cut — Photo Retouch & Enhance",
+        "appBundle": "com.ibakstudio.videomaker.cutmergevideo",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/aa/8a/99/aa8a99fb-e838-f787-d5fd-b8bba5d38ff8/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "7.3 | 235.8 MB | IOS 14.3",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:47:19+0300"
+    },
+    {
+        "appName": "Intermittent Fasting Planner +",
+        "appBundle": "com.wachanga.fasting",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cd/5d/dc/cd5ddc79-7c00-e29c-4d33-6b4ddaf0e767/AppIcon-0-0-1x_U007ephone-0-85-220.png/350x350.jpg",
+        "appVersion": "1.0.11 | 57.1 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:48:28+0300"
+    },
+    {
+        "appName": "Future Baby Face Generator AI",
+        "appBundle": "com.wachanga.babyface",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/24/c7/7f/24c77fe1-cc2f-ce06-b0e2-32895fc77ec6/AppIcon_3-0-0-1x_U007ephone-0-1-85-220.png/350x350.jpg",
+        "appVersion": "1.7.0 | 68.7 MB | IOS 15.6",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:49:08+0300"
+    },
+    {
+        "appName": "Castro — Podcast Player App",
+        "appBundle": "co.supertop.Castro-2",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/90/51/69/90516953-e72e-499b-b156-b5e324e5443b/DefaultIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "2025.4.2 | 223.5 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Plus\"",
+        "appUpdateTime": "2025-05-03T02:50:06+0300"
+    },
+    {
+        "appName": "Loopy Pro — Looper DAW Sampler",
+        "appBundle": "com.atastypixel.Loopy-Pro",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/93/8b/97/938b9729-e746-6156-3633-4393b5f34991/AppIcon-0-0-1x_U007emarketing-0-4-0-0-85-220.png/350x350.jpg",
+        "appVersion": "1.1.24 | 19 MB | IOS 12.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:51:05+0300"
+    },
+    {
+        "appName": "Koloro — Presets & Filters",
+        "appBundle": "org.skydomain.foodcamera",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f4/23/8f/f4238f30-3dbf-f136-d9a5-9033d04ea2bd/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/350x350.jpg",
+        "appVersion": "4.4.8 | 91.1 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"VIP\"",
+        "appUpdateTime": "2025-05-03T02:52:19+0300"
+    },
+    {
+        "appName": "OrNET AI — Chatbot Assistant",
+        "appBundle": "chat.ai.strongerapps",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/87/6d/4d/876d4d6c-d7a6-7b69-1ba4-28aea851215c/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/350x350.jpg",
+        "appVersion": "1.8.7 | 52 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:53:04+0300"
+    },
+    {
+        "appName": "Codalingo — Learn Flutter",
+        "appBundle": "pro.flutters.app",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/90/8f/ae/908fae73-51c3-b0d5-75c9-5620e96e54fd/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/350x350.jpg",
+        "appVersion": "1.1.2 | 43.4 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:53:45+0300"
+    },
+    {
+        "appName": "Video Converter, Compressor",
+        "appBundle": "app.remux.video.converter",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e6/a5/a3/e6a5a392-838a-b9dd-07d8-65413361162f/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "1.3.0 | 36.8 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n▎Исправлена функция выбора файлов",
+        "appUpdateTime": "2025-05-03T02:54:37+0300"
+    },
+    {
+        "appName": "Tiimo — AI Plan, Focus & To-do",
+        "appBundle": "com.tiimo.app",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/16/3f/b8/163fb8a8-1821-55df-1099-4675ea5a9600/AppIcon-0-1x_U007epad-0-1-0-85-220-0.png/350x350.jpg",
+        "appVersion": "3.11.0 | 95.5 MB | IOS 16.4",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:55:26+0300"
+    },
+    {
+        "appName": "Gliza — Healing Aesthetic editor",
+        "appBundle": "com.tbps.blingplus",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/e6/71/9f/e6719fc1-db28-516d-7b85-55d67f0bc12b/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/350x350.jpg",
+        "appVersion": "1.1.3 | 270.9 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T02:56:12+0300"
+    },
+    {
+        "appName": "Snap it — Retro Camera & Films",
+        "appBundle": "com.miiiao.XCam",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/37/8c/19378cf3-6921-650c-3bc8-e32043313c64/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "2.10 | 171.9 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"VIP\"",
+        "appUpdateTime": "2025-05-03T02:57:38+0300"
+    },
+    {
+        "appName": "Presets for Lightroom — Editor",
+        "appBundle": "com.marconypresets",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/bd/0e/4cbd0e02-5d7b-9c6d-b64e-1f9c8ab9c070/AppIcon-0-1x_U007emarketing-0-8-0-P3-85-220-0.png/350x350.jpg",
+        "appVersion": "1.2.20 | 85.7 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:58:47+0300"
+    },
+    {
+        "appName": "Carbon — B&W Filters & Effects",
+        "appBundle": "rr.carbon",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/aa/64/37aa64e6-2c1c-6d43-8e56-0e1f00c24656/AppIcon-Release-0-0-1x_U007emarketing-0-8-0-85-220.jpeg/350x350.jpg",
+        "appVersion": "14.4 | 78.1 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T02:59:40+0300"
+    },
+    {
+        "appName": "Pregnancy Tracker by Women",
+        "appBundle": "com.wachanga.pregnancy",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6e/b3/96/6eb396da-17c0-51d5-7f16-001a84a4b851/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/350x350.jpg",
+        "appVersion": "4.8.1 | 98.5 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nПерезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:00:40+0300"
+    },
+    {
+        "appName": "Clover — Period Tracker",
+        "appBundle": "com.wachanga.womancalendar",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/bc/47/94/bc479449-35cd-5083-fc6b-186bc6005a87/AppIcon-0-0-1x_U007ephone-0-1-0-0-85-220.png/350x350.jpg",
+        "appVersion": "5.4.1 | 61.2 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nПерезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:01:28+0300"
+    },
+    {
+        "appName": "PillBox — Medication Reminder",
+        "appBundle": "com.wachanga.pillstracker",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/c2/73/d6/c273d6a1-9254-f7e0-2770-c4e710257ba0/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/350x350.jpg",
+        "appVersion": "1.32.0 | 33.9 MB | IOS 12.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nПерезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:02:14+0300"
+    },
+    {
+        "appName": "Contraction Timer & Tracker",
+        "appBundle": "com.wachanga.contractions",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/86/81/ff/8681ff62-c252-b7d9-d207-30d3256cc847/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/350x350.jpg",
+        "appVersion": "2.36.1 | 21.6 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nПерезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:02:46+0300"
+    },
+    {
+        "appName": "Baby Tracker — Breastfeeding Log",
+        "appBundle": "com.wachanga.babycare",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/10/d5/e0/10d5e08f-2dcf-93de-fc88-1698ff251a10/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/350x350.jpg",
+        "appVersion": "3.27.0 | 80.3 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nПерезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:03:28+0300"
+    },
+    {
+        "appName": "Live Wallpaper Maker 4K",
+        "appBundle": "net.twinbit.wallpapers",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/68/55/47/68554728-2d9d-a902-6306-202d0c1f7c65/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "1.2.7 | 98.4 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:04:38+0300"
+    },
+    {
+        "appName": "Inaaya AI",
+        "appBundle": "com.iusmarttech.inaayaai",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ae/e2/88/aee288c2-cef0-7010-b4ce-f9bbb277a96f/AppIcon-1x_U007ephone-0-1-85-220-0.png/350x350.jpg",
+        "appVersion": "1.0.18 | 52 MB | IOS 15.1",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:05:16+0300"
+    },
+    {
+        "appName": "Packr Travel Packing List",
+        "appBundle": "com.jeremieleroy.packr",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/dc/d2/b6/dcd2b653-a50f-2604-67cb-1182ef925425/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/350x350.jpg",
+        "appVersion": "2.17.0 | 29.1 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nПерезайдите в приложение во время появления ошибки при первом входе",
+        "appUpdateTime": "2025-05-03T03:06:28+0300"
+    },
+    {
+        "appName": "FitHub — AI Calorie Tracker",
+        "appBundle": "fithub.ios",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/55/7a/ac/557aacfe-5a43-2281-ab41-aa9d357cb504/AppIcon-0-0-1x_U007ephone-0-85-220.png/350x350.jpg",
+        "appVersion": "1.2.6 | 37.1 MB | IOS 13.4",
+        "appDescription": "▎Активирована подписка \"Premium\"\n\nПройдите первоначальную настройку приложения и перезайдите в приложение на экране покупки подписки",
+        "appUpdateTime": "2025-05-03T03:07:46+0300"
+    },
+    {
+        "appName": "Echo — AI Voice Note Taker",
+        "appBundle": "com.tappzlabs.echo",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a8/13/17/a813174e-fd70-28d1-1281-04f42dd40940/AppIcon-0-1x_U007ephone-0-1-0-P3-85-220-0.png/350x350.jpg",
+        "appVersion": "1.4 | 61.7 MB | IOS 17.0",
+        "appDescription": "▎Активирована подписка \"Plus\"\n▎Исправлена функция выбора файлов",
+        "appUpdateTime": "2025-05-03T03:12:31+0300"
+    },
+    {
+        "appName": "Superlook Fashion AI",
+        "appBundle": "ai.superlook.fashion",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/10/01/a9/1001a9a7-6882-ca33-a024-1ff26e6a75d5/AppIcon-0-0-1x_U007ephone-0-1-0-0-85-220.jpeg/350x350.jpg",
+        "appVersion": "3.2.0 | 65.9 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T03:13:20+0300"
+    },
+    {
+        "appName": "Body Tune — Photo Editor",
+        "appBundle": "com.fitnesslabs.airtag",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f8/41/b1/f841b140-355a-2f49-bad4-3e43b88e01a2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "2.4.3 | 43.1 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T03:14:04+0300"
+    },
+    {
+        "appName": "VPN — Fast Unlimited Secure Vpn",
+        "appBundle": "com.optimal.vpn",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8d/de/11/8dde1127-bc37-f510-6638-c7b23927dfc2/AppIcon-0-0-1x_U007epad-0-0-85-220.png/350x350.jpg",
+        "appVersion": "3.7 | 48 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n▎Fix Extension",
+        "appUpdateTime": "2025-05-03T03:15:20+0300"
+    },
+    {
+        "appName": "HeyJapan — Learn Japanese",
+        "appBundle": "com.eup.heyjapan",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2b/a8/8b/2ba88b80-b8d0-850d-c612-cb054d91f5d9/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "2.0.4 | 108.2 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:16:09+0300"
+    },
+    {
+        "appName": "MusicHarbor — Track New Music",
+        "appBundle": "br.com.marcosatanaka.music-harbor",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c3/b2/f7/c3b2f762-611f-d0f7-7cfa-b74d03f3f791/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "5.0.1 | 46.5 MB | IOS 17.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:16:52+0300"
+    },
+    {
+        "appName": "Fortify VPN",
+        "appBundle": "com.spaceit.fortifyvpn",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ae/be/87/aebe8723-6fe5-7eaf-af70-90e0b1f329df/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "1.2.4 | 33.1 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n▎Fix Extension\n\nПерезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:17:57+0300"
+    },
+    {
+        "appName": "LanguageTool — Grammar Checker",
+        "appBundle": "org.languagetool.safari",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/8a/22/ef/8a22ef60-7dac-a0fc-8a4c-6895d4b82aa2/AppIcon-0-1x_U007emarketing-0-7-0-85-220.png/350x350.jpg",
+        "appVersion": "1.2.3 | 8.4 MB | IOS 14.5",
+        "appDescription": "▎Активирована подписка \"Premium\"\n▎Fix Extension",
+        "appUpdateTime": "2025-05-03T03:18:48+0300"
+    },
+    {
+        "appName": "OsmAnd Maps Travel & Navigate",
+        "appBundle": "net.osmand.maps",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d3/2e/85/d32e8567-5892-30de-2473-64622b402982/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/350x350.jpg",
+        "appVersion": "5.0.1 | 106 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Pro\"",
+        "appUpdateTime": "2025-05-03T03:19:25+0300"
+    },
+    {
+        "appName": "7 Minute Workout",
+        "appBundle": "com.stuartkhall.7minuteworkout",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/85/e9/2a/85e92af7-fea3-0d52-4dc1-16004897e52b/AppIcon-0-0-1x_U007epad-0-1-0-P3-85-220.png/350x350.jpg",
+        "appVersion": "16.0.3 | 46.3 MB | IOS 17.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:20:10+0300"
+    },
+    {
+        "appName": "Smooth Talker — Remove Silence",
+        "appBundle": "com.butlertools.smoothtalker",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f0/78/f0/f078f09c-b5a6-1664-815f-ba01bdfd516c/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/350x350.jpg",
+        "appVersion": "2.2 | 3.9 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Premium\"\n▎Исправлена работоспособность функции выбора файлов",
+        "appUpdateTime": "2025-05-03T03:21:11+0300"
+    },
+    {
+        "appName": "CHAI — Social AI Platform",
+        "appBundle": "com.beauchamp.Messenger.external",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/30/0d/54/300d549a-d743-a602-b5a2-22e63583dbab/AppIcon-dark-0-0-1x_U007emarketing-0-11-0-85-220.png/350x350.jpg",
+        "appVersion": "20250416.0.0 | 83.5 MB | IOS 14.0",
+        "appDescription": "▎Активирована подписка \"Ultra\"",
+        "appUpdateTime": "2025-05-03T03:22:38+0300"
+    },
+    {
+        "appName": "VPN — Super VPN Buck",
+        "appBundle": "com.super.free.supervpn",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/aa/ea/fb/aaeafb07-f99b-49d4-4550-ae68e3ea0318/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "1.0.6 | 33.5 MB | IOS 15.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n▎Fix Extension",
+        "appUpdateTime": "2025-05-03T03:23:47+0300"
+    },
+    {
+        "appName": "Lingokids — Play and Learn",
+        "appBundle": "es.monkimun.lingokids",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2a/0d/6f/2a0d6f53-7015-52e9-99d6-6eb4bc0e7e98/AppIconMain-0-0-1x_U007epad-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "8.111.0 | 104.7 MB | IOS 15.1",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nВойдите в свой аккаунт и перезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:26:56+0300"
+    },
+    {
+        "appName": "Meitu — Photo & Video Editor",
+        "appBundle": "com.meitu.mtxx",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0e/f1/82/0ef182ec-88fb-2e6e-b705-6f0fd57c1cb9/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/350x350.jpg",
+        "appVersion": "11.8.0 | 266.4 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"VIP+\"\n\nВход в приложение осуществлять только с VPN из-за региональных ограничений",
+        "appUpdateTime": "2025-05-03T03:27:53+0300"
+    },
+    {
+        "appName": "Fotor — AI Photo Editor",
+        "appBundle": "com.everimaging.photoeffectstudio",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d6/1a/32/d61a3268-b830-9a69-2c5f-f14c962fa7a6/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/350x350.jpg",
+        "appVersion": "10.8.6 | 126.6 MB | IOS 11.0",
+        "appDescription": "▎Активирована подписка \"Pro+\"",
+        "appUpdateTime": "2025-05-03T03:28:47+0300"
+    },
+    {
+        "appName": "PREVIEW — Planner for Instagram",
+        "appBundle": "com.sensio.instapreview",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/27/be/27/27be274b-9f6c-9cda-8afe-5edd2e852913/AppIcon-0-0-1x_U007emarketing-0-9-0-0-85-220.png/350x350.jpg",
+        "appVersion": "3.47.3 | 28.3 MB | IOS 12.4",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:29:45+0300"
+    },
+    {
+        "appName": "Kiwinote — AI Note Taker",
+        "appBundle": "studio.blackboard.Kiwinote",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c5/e5/c4/c5e5c4fe-471f-9484-540c-8757026e558f/AppIcon-0-1x_U007epad-0-1-0-sRGB-85-220-0.jpeg/350x350.jpg",
+        "appVersion": "1.0.16 | 33.3 MB | IOS 17.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n▎Исправлена работоспособность функции выбора файлов\n\nВойдите в свой аккаунт и перезайдите в приложение для активации подписки",
+        "appUpdateTime": "2025-05-03T03:31:02+0300"
+    },
+    {
+        "appName": "NeoServer — SSH Client, Terminal",
+        "appBundle": "com.neo.NeoMan",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/39/0b/c6/390bc6ac-c601-51a6-b14b-1f225c304a7d/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/350x350.jpg",
+        "appVersion": "7.7.2 | 15.9 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:31:54+0300"
+    },
+    {
+        "appName": "Vis — OKR Goals Planner",
+        "appBundle": "com.visionapp.vision2",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3e/d3/14/3ed31492-ade7-8c4b-e44e-afcc84685e85/AppIcon_1_1-0-0-1x_U007epad-0-0-0-1-0-0-85-220.png/350x350.jpg",
+        "appVersion": "4.1.4 | 43.2 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:32:48+0300"
+    },
+    {
+        "appName": "Sky Guide",
+        "appBundle": "com.fifthstarlabs.skyguide",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/88/0f/96/880f96f6-02a4-40a1-270d-1d60e2b25e92/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-P3-GLES2_U002c0-85-220.png/350x350.jpg",
+        "appVersion": "11.0.4 | 257.4 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Pro\"\n\nТребуется VPN для установки дополнительного контента",
+        "appUpdateTime": "2025-05-03T03:34:33+0300"
+    },
+    {
+        "appName": "Happy Scale",
+        "appBundle": "com.frontpocketsoftware.happyscale",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9e/32/ca/9e32caff-5b52-4814-d2f8-b1c21b090138/AppIcon-0-0-1x_U007epad-0-1-0-P3-85-220.png/350x350.jpg",
+        "appVersion": "2025.8.1 | 39.7 MB | IOS 16.0",
+        "appDescription": "▎Активирована подписка \"Plus\"",
+        "appUpdateTime": "2025-05-03T03:35:14+0300"
+    },
+    {
+        "appName": "AR Drawing — Sketch & Paint",
+        "appBundle": "com.ar.trace.drawing",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/93/e6/ec/93e6ec30-4c5f-8125-94d6-1c9819651db5/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "4.9.5 | 81.2 MB | IOS 13.0",
+        "appDescription": "▎Активирована подписка \"Premium\"",
+        "appUpdateTime": "2025-05-03T03:36:06+0300"
     }
 ]
