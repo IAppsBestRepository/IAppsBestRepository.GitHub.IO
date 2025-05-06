@@ -5334,5 +5334,13 @@
         "appVersion": "4.9.5 | 81.2 MB | IOS 13.0",
         "appDescription": "▎Активирована подписка \"Premium\"",
         "appUpdateTime": "2025-05-03T03:36:06+0300"
+    },
+    {
+        "appName": "Дед ВПН — Быстрый Proxy",
+        "appBundle": "com.limy.Turbo-NOVA",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9a/cb/c5/9acbc549-38c7-c154-c71a-26cce2837b6e/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/350x350.jpg",
+        "appVersion": "1.4 | 9.3 MB | IOS 15.0",
+        "appDescription": "▎Мод-меню с функцией сброса пробного периода\n\nДля сброса пробного периода вызовите мод-меню, коснувшись экрана тремя пальцами. Нажмите кнопку \"Change Device ID\", затем сгенерируйте новый идентификатор устройства, нажав на кнопку с изображением кубика. Подтвердите изменения кнопкой \"Confirm\" и перезапустите приложение",
+        "appUpdateTime": "2025-05-06T22:39:08+0300"
     }
 ]
