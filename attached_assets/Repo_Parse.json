@@ -5342,5 +5342,13 @@
         "appVersion": "1.4 | 9.3 MB | IOS 15.0",
         "appDescription": "▎Мод-меню с функцией сброса пробного периода\n\nДля сброса пробного периода вызовите мод-меню, коснувшись экрана тремя пальцами. Нажмите кнопку \"Change Device ID\", затем сгенерируйте новый идентификатор устройства, нажав на кнопку с изображением кубика. Подтвердите изменения кнопкой \"Confirm\" и перезапустите приложение",
         "appUpdateTime": "2025-05-06T22:39:08+0300"
+    },
+    {
+        "appName": "ArtWorkout — Learn How To Draw",
+        "appBundle": "com.momwillbeproud.artworkout.v3",
+        "appImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ef/8e/9c/ef8e9c07-f255-03c4-fb70-810fb77ae29b/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/350x350.jpg",
+        "appVersion": "1.9.8 | 219.3 MB | IOS 15.0",
+        "appDescription": "▎Разблокирован платный контент",
+        "appUpdateTime": "2025-05-08T04:18:28+0300"
     }
 ]
