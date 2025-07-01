@@ -308,7 +308,7 @@ function generateAnnouncement() {
     const updatedApps = [];
 
     currentApps.forEach(currentApp => {
-        const originalApp = originalApps.find(a => a.appName.toLowerCase() === currentApp.appName.toLowerCase());
+        const originalApp = originalApps.find(a => a.appBundle === currentApp.appBundle);
         if (!originalApp) {
             newApps.push(currentApp.appName);
         } else {
