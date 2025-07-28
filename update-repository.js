@@ -312,16 +312,9 @@ function generateAnnouncement() {
         if (!originalApp) {
             newApps.push(currentApp.appName);
         } else {
-            // Клонируем объекты без поля appUpdateTime
-            const { appUpdateTime: _, ...cleanCurrent } = currentApp;
-            const { appUpdateTime: __, ...cleanOriginal } = originalApp;
-
-            const currentString = JSON.stringify(cleanCurrent);
-            const originalString = JSON.stringify(cleanOriginal);
-
-            if (currentString !== originalString) {
-                updatedApps.push(currentApp.appName);
-            }
+            const keys = Object.keys(currentApp).filter(key => key !== 'appUpdateTime');
+            let isUpdated = keys.some(key => currentApp[key] !== originalApp[key]);
+            if (isUpdated) updatedApps.push(currentApp.appName);
         }
     });
 
