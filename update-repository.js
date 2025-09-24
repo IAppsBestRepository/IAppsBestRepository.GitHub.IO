@@ -310,6 +310,51 @@ function createUniqueAppId(app, index, appsArray) {
 }
 
 // Функция для поиска соответствующего приложения в оригинальном массиве
+// Функция для поиска существующего приложения при редактировании
+function findExistingAppForEdit(targetApp, appsArray) {
+    // Если bundleID уникален и не пустой, используем его
+    if (targetApp.appBundle && targetApp.appBundle.trim() !== '') {
+        const bundleMatches = appsArray.filter(a => 
+            a.appBundle && a.appBundle.toLowerCase() === targetApp.appBundle.toLowerCase()
+        );
+        if (bundleMatches.length === 1) {
+            return appsArray.findIndex(a => 
+                a.appBundle && a.appBundle.toLowerCase() === targetApp.appBundle.toLowerCase()
+            );
+        }
+    }
+    
+    // Если bundleID не уникален или пустой, ищем по комбинации параметров
+    for (let i = 0; i < appsArray.length; i++) {
+        const currentApp = appsArray[i];
+        
+        // Сравниваем по имени и bundleID
+        if (currentApp.appName === targetApp.appName && 
+            currentApp.appBundle === targetApp.appBundle) {
+            
+            // Проверяем, единственное ли это совпадение
+            const nameAndBundleMatches = appsArray.filter(a => 
+                a.appName === targetApp.appName && a.appBundle === targetApp.appBundle
+            );
+            
+            if (nameAndBundleMatches.length === 1) {
+                return i;
+            }
+            
+            // Если найдено несколько совпадений, проверяем дополнительные параметры
+            if (targetApp.appImage && currentApp.appImage === targetApp.appImage) {
+                return i;
+            }
+            if (targetApp.appPackage && currentApp.appPackage === targetApp.appPackage) {
+                return i;
+            }
+        }
+    }
+    
+    // Ничего не найдено
+    return -1;
+}
+
 function findMatchingApp(targetApp, targetIndex, searchArray, targetArray) {
     // Сначала пробуем найти по bundleID, если он уникален
     if (targetApp.appBundle && targetApp.appBundle.trim() !== '') {
@@ -528,9 +573,13 @@ function applyChanges() {
         jsonData.appRepositories = [];
     }
 
-    var existingAppIndex = jsonData.appRepositories.findIndex(function(app) {
-        return app.appBundle.toLowerCase() === appBundle.toLowerCase();
-    });
+    // Используем улучшенный поиск для работы с дублирующимися и пустыми bundleID
+    var existingAppIndex = findExistingAppForEdit({
+        appName: appName,
+        appBundle: appBundle,
+        appImage: appImage,
+        appPackage: appPackage
+    }, jsonData.appRepositories);
 
     if (existingAppIndex !== -1) {
         jsonData.appRepositories[existingAppIndex] = {
