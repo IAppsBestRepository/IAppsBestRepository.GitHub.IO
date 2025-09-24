@@ -366,40 +366,55 @@ function findExistingAppForEdit(targetApp, appsArray) {
 }
 
 function findMatchingApp(targetApp, targetIndex, searchArray, targetArray) {
-    // Сначала пробуем найти по bundleID, если он уникален
-    if (targetApp.appBundle && targetApp.appBundle.trim() !== '') {
-        const bundleMatches = searchArray.filter(a => a.appBundle === targetApp.appBundle);
-        if (bundleMatches.length === 1) {
-            return searchArray.findIndex(a => a.appBundle === targetApp.appBundle);
-        }
-    }
-    
-    // Если bundleID не уникален или пустой, ищем по комбинации параметров
+    // Ищем точное совпадение по всем ключевым параметрам
+    // Приоритет: название + bundleID + дополнительные параметры для точной идентификации
     for (let i = 0; i < searchArray.length; i++) {
         const searchApp = searchArray[i];
         
-        // Сравниваем по имени и bundleID
+        // Точное совпадение по названию и bundleID
         if (searchApp.appName === targetApp.appName && 
             searchApp.appBundle === targetApp.appBundle) {
             
-            // Если есть дополнительные совпадения, проверяем другие параметры
+            // Дополнительная проверка для избежания конфликтов при дубликатах
+            // Если совпадают название, bundleID и дополнительные параметры - это то же приложение
             const nameAndBundleMatches = searchArray.filter(a => 
                 a.appName === targetApp.appName && a.appBundle === targetApp.appBundle
             );
             
+            // Если это единственное совпадение по имени и bundleID, возвращаем его
             if (nameAndBundleMatches.length === 1) {
                 return i;
             }
             
-            // Если несколько совпадений, пробуем найти по дополнительным параметрам
-            if (searchApp.appImage === targetApp.appImage &&
-                searchApp.appPackage === targetApp.appPackage) {
+            // Если несколько совпадений по имени и bundleID, проверяем дополнительные параметры
+            if ((targetApp.appImage && searchApp.appImage === targetApp.appImage) ||
+                (targetApp.appPackage && searchApp.appPackage === targetApp.appPackage)) {
                 return i;
             }
         }
     }
     
-    // Если ничего не найдено, возвращаем -1
+    // Дополнительная проверка только по bundleID для случаев редактирования
+    // НО только если имена точно совпадают (не для дубликатов с разными именами)
+    if (targetApp.appBundle && targetApp.appBundle.trim() !== '') {
+        for (let i = 0; i < searchArray.length; i++) {
+            const searchApp = searchArray[i];
+            if (searchApp.appBundle === targetApp.appBundle && 
+                searchApp.appName === targetApp.appName) {
+                
+                // Убеждаемся, что это точное совпадение имени (не дубликат с измененным именем)
+                const exactMatches = searchArray.filter(a => 
+                    a.appBundle === targetApp.appBundle && a.appName === targetApp.appName
+                );
+                
+                if (exactMatches.length === 1) {
+                    return i;
+                }
+            }
+        }
+    }
+    
+    // Ничего не найдено - это новое приложение
     return -1;
 }
 
