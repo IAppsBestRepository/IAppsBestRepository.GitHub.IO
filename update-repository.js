@@ -295,6 +295,59 @@ async function updateAppImages() {
     alert('Обновление картинок завершено!');
 }
 
+// Функция для создания уникального идентификатора приложения
+function createUniqueAppId(app, index, appsArray) {
+    // Если bundleID уникален и не пустой, используем его
+    if (app.appBundle && app.appBundle.trim() !== '') {
+        const bundleCount = appsArray.filter(a => a.appBundle === app.appBundle).length;
+        if (bundleCount === 1) {
+            return app.appBundle;
+        }
+    }
+    
+    // Если bundleID дублируется или пустой, создаем комбинированный ID
+    return `${app.appName || 'unknown'}_${app.appBundle || 'no-bundle'}_${index}`;
+}
+
+// Функция для поиска соответствующего приложения в оригинальном массиве
+function findMatchingApp(targetApp, targetIndex, searchArray, targetArray) {
+    // Сначала пробуем найти по bundleID, если он уникален
+    if (targetApp.appBundle && targetApp.appBundle.trim() !== '') {
+        const bundleMatches = searchArray.filter(a => a.appBundle === targetApp.appBundle);
+        if (bundleMatches.length === 1) {
+            return searchArray.findIndex(a => a.appBundle === targetApp.appBundle);
+        }
+    }
+    
+    // Если bundleID не уникален или пустой, ищем по комбинации параметров
+    for (let i = 0; i < searchArray.length; i++) {
+        const searchApp = searchArray[i];
+        
+        // Сравниваем по имени и bundleID
+        if (searchApp.appName === targetApp.appName && 
+            searchApp.appBundle === targetApp.appBundle) {
+            
+            // Если есть дополнительные совпадения, проверяем другие параметры
+            const nameAndBundleMatches = searchArray.filter(a => 
+                a.appName === targetApp.appName && a.appBundle === targetApp.appBundle
+            );
+            
+            if (nameAndBundleMatches.length === 1) {
+                return i;
+            }
+            
+            // Если несколько совпадений, пробуем найти по дополнительным параметрам
+            if (searchApp.appImage === targetApp.appImage &&
+                searchApp.appPackage === targetApp.appPackage) {
+                return i;
+            }
+        }
+    }
+    
+    // Если ничего не найдено, возвращаем -1
+    return -1;
+}
+
 function generateAnnouncement() {
     if (!jsonData || !originalJsonData) {
         alert('Сначала загрузите JSON файл!');
@@ -307,8 +360,11 @@ function generateAnnouncement() {
     const newApps = [];
     const updatedApps = [];
 
-    currentApps.forEach(currentApp => {
-        const originalApp = originalApps.find(a => a.appBundle === currentApp.appBundle);
+    currentApps.forEach((currentApp, currentIndex) => {
+        // Ищем соответствующее приложение в оригинальном массиве
+        const originalAppIndex = findMatchingApp(currentApp, currentIndex, originalApps, currentApps);
+        const originalApp = originalAppIndex !== -1 ? originalApps[originalAppIndex] : null;
+        
         if (!originalApp) {
             newApps.push(currentApp.appName);
         } else {
