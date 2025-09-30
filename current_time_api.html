@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Time API</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #00ff00;
+        }
+        pre {
+            background: #000;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <h1>🕐 Current Time API</h1>
+    <pre id="output">Loading...</pre>
+    
+    <script>
+        function getTimeData() {
+            const now = new Date();
+            
+            // Get Unix timestamp in seconds
+            const unixtime = Math.floor(now.getTime() / 1000);
+            
+            // Format ISO datetime
+            const datetime = now.toISOString();
+            
+            // Get timezone offset
+            const offset = -now.getTimezoneOffset();
+            const offsetHours = Math.floor(Math.abs(offset) / 60);
+            const offsetMinutes = Math.abs(offset) % 60;
+            const timezone = (offset >= 0 ? '+' : '-') + 
+                           String(offsetHours).padStart(2, '0') + 
+                           String(offsetMinutes).padStart(2, '0');
+            
+            return {
+                datetime: datetime,
+                unixtime: unixtime,
+                timezone: timezone,
+                year: now.getUTCFullYear(),
+                month: now.getUTCMonth() + 1,
+                day: now.getUTCDate(),
+                hour: now.getUTCHours(),
+                minute: now.getUTCMinutes(),
+                second: now.getUTCSeconds()
+            };
+        }
+        
+        // Update every second
+        function update() {
+            const data = getTimeData();
+            document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+        }
+        
+        update();
+        setInterval(update, 1000);
+        
+        // Also make it available as JSONP callback
+        if (window.location.search.includes('callback=')) {
+            const params = new URLSearchParams(window.location.search);
+            const callback = params.get('callback');
+            if (callback) {
+                const script = document.createElement('script');
+                script.textContent = callback + '(' + JSON.stringify(getTimeData()) + ');';
+                document.body.appendChild(script);
+            }
+        }
+    </script>
+</body>
+</html>
